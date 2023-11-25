@@ -1,0 +1,146 @@
+﻿@model IEnumerable<Fab.ViewModels.ProductVM.GetallCategory>
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+ 
+<div class="mehsullar-accordion-filters">
+    <div class="top-filters">
+        <div class="accordion accordion-flush acc-border" id="accordionFlushExample">
+           
+            <div class="accordion-item">
+                @if (ViewBag.AllCategories != null)
+                {
+                    var categories = (SelectList)ViewBag.AllCategories;
+                    @foreach (var item in categories)
+                    {
+                        var collapseId = "flush-collapse-" + item.Value; // Benzersiz bir id oluştur
+                        <h2 class="accordion-header" id="flush-headingOne">
+                            <button class="accordion-button collapsed mehsullar-acc-button" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#@collapseId"
+                                    aria-expanded="false" aria-controls="@collapseId" id="@item.Value">
+                                @item.Text
+                            </button>
+                        </h2>
+                        <div id="@collapseId" class="accordion-collapse collapse"
+                             aria-labelledby="flush-heading-@item.Value" data-bs-parent="#accordionFlushExample">
+                            <div class="accordion-body">
+                                <ul class="column_acc_items p-left" id="subcategoryitems-@item.Value">
+
+
+                                </ul>
+                            </div>
+                        </div>
+                    }
+                }
+
+            </div>
+
+         
+        </div>
+    </div>
+    <div class="bottom-filters">
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item border-none" id="acc-itemforexp">
+                
+                
+            </div>
+          
+        </div>
+    </div>
+    <button style="height:fit-content;background-color:#EF2955;color:white;" id="searchLink" type="button" class="btn">
+        Search
+    </button>
+</div>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
+<!-- Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+        integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+</script>
+<script>
+    $(document).ready(function () {
+        $(".accordion-button").click(function () {
+            // debugger
+
+            var elementId = $(this).attr("id");
+            // $("#subcategoryitems").empty();
+            $.ajax({
+                type: "POST",
+                url: "/Product/GetAllSubCategory",
+                data: { id: elementId },
+                success: function (data) {
+                    var subcategory = data.subcategories;
+                    var exprop = data.extraProperties;
+                    console.log(exprop);
+                    console.log(exprop);
+                    var subcategoryContainerId = "subcategoryitems-" + elementId;
+                    var subcategoryContainer = $("#" + subcategoryContainerId);
+                    subcategoryContainer.empty();
+                    console.log(subcategory);
+                    $.each(subcategory, function (index, sub) {
+                        var newItem = $("<li>").append(
+                            // <a> elemanını oluştur ve id ve text değerlerini ata
+                            $("<a>").attr("id", sub.id).text(sub.name)
+                        );
+
+                        // #subcategoryItems olan ul'ye li elemanını ekle
+                        
+                        subcategoryContainer.append(newItem);
+                        // console.log(sub);
+                    });
+
+
+                    // var accordionContainer = $(".accordion-container");
+                    var accordioncollapse = $("#acc-itemforexp");
+                    accordioncollapse.empty();
+                    // Loop through the list and append an accordion for each item
+                    $.each(exprop, function (index, item) {
+                        // Create a unique ID for each accordion
+                        var accordionId = "collapse" + item.id;
+
+                        // Append the accordion to the container
+                        accordioncollapse.append(` 
+                    <h2 class="accordion-header" id="heading${item.id}">
+                        <button class="accordion-button collapsed mehsullar-acc-button-2 acc-buttonexp" type="button"
+                                data-bs-toggle="collapse" data-bs-target="#collapse${item.id}"
+                                aria-expanded="false" aria-controls="collapse${item.id}" id="${item.id}">
+                                ${item.name}
+                        </button>
+                    </h2>
+
+                       <div id="collapse${item.id}" class="accordion-collapse collapse"
+                            aria-labelledby="heading${item.id}" data-bs-parent="accordionExample">
+                    <div class="accordion-body" style="padding-top: 0;">
+                    <ul class="column_acc_items border-none">
+                     ${item.value.map(value => `<li><a href="#" id="${value.id}">${value.name}</a></li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+            `);
+
+
+
+
+
+                        // Set the text content of the button to the 'name' property from the current item
+                        // $(`.acc-buttonexp`).text(item.name);
+                    });
+
+
+                }
+            });
+        });
+       
+    });
+   
+</script>
+
+<script>
+    let categoryid = document.getElementById("searchLink");
+    let subcategoryid = document.getElementById("calendarstart").value;
+    let dateend = document.getElementById("calendarend").value;
+    let userfullname = document.getElementById("searchinppayment").value;
+    let statusvale = document.getElementById("statusbar").value;
+    let rosebarvalue = document.getElementById("rosebar").value;
+</script>

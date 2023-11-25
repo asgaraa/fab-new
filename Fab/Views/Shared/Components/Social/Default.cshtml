@@ -1,0 +1,45 @@
+﻿@model Fab.ViewModels.ContactComponentVM
+
+<div class="fab-footer-right">
+
+    <div class="social-media">
+        <a href="@Model.Contact.SocialLink1"><img src="~/assets/img/socialmedia/fb.png" alt="sm-img"></a>
+        <a href="@Model.Contact.SocialLink2"><img src="~/assets/img/socialmedia/instagram.png" alt="sm-img"></a>
+        <a href="@Model.Contact.SocialLink3"><img src="~/assets/img/socialmedia/youtube.png" alt="sm-img"></a>
+        <a href="@Model.Contact.SocialLink4"><img src="~/assets/img/socialmedia/in.png" alt="sm-img"></a>
+    </div>
+
+    <div class="fab-phone-number-adress">
+        <div class="numbers-fab">
+            <div class="flex-number">
+                <div class="fab-phone-number-t">
+                    <p>T:</p>
+                </div>
+                <div class="fab-phone-numbers">
+                    <p>@Model.Contact.Tel1 </p>
+                    <p>@Model.Contact.Tel2</p>
+                    <p>@Model.Contact.Tel3</p>
+                </div>
+            </div>
+            <div class="flex-number">
+                <div class="fab-phone-number-t">
+                    <p>F:</p>
+                </div>
+                <div class="fab-phone-numbers">
+                    @* <p>@Model.Contact.Fax1 </p> *@
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="fab-address">
+            <a href="#">
+                <p>@Model.Contact.Location</p>
+            </a>
+            <a href="#">
+                <p>E: @Model.Contact.Email</p>
+            </a>
+        </div>
+    </div>
+</div>

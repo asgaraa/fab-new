@@ -1,0 +1,29 @@
+﻿@model Fab.ViewModels.FooterCategoryVM
+    
+
+
+<div class="footer-list">
+    <div class="footer-list-title">
+        @if (Model.LangCode == "az")
+        {
+            <p>Məhsullar</p>
+        }
+        else if (Model.LangCode == "en")
+        {
+            <p>Products</p>
+        }
+        else
+        {
+            <p>Продукты</p>
+
+        }
+    </div>
+    <div class="footer-list-items">
+        @foreach (var category in Model.Categories)
+        {
+            <p>@category.Translates.FirstOrDefault().Name</p>
+        }
+        
+       
+    </div>
+</div>

@@ -1,0 +1,298 @@
+﻿@model Fab.Models.ProductFolder.Product;
+@{
+    ViewData["Title"] = "Edit";
+    var categ = ViewBag.ThisCategory;
+    int? categoryId = Model.CategoryId;
+    var subcateg = ViewBag.ThisSubcategory;
+    int? subcategoryId = Model.SubcategoryId;
+    var characteristic = ViewBag.ThisCharacteristic;
+    int? characteristicId = Model.CharacteristicId;
+    var application = ViewBag.ThisApplication;
+    int? applicationId = Model.AppearanceFieldId;
+    var appearence = ViewBag.ThisAppearence;
+    int? appearenceId = Model.ApplicationFieldId;
+}
+<div class="entert-form" style="padding-left: 50px;">
+    <h1 class="text-change-size">Edit Product</h1>
+    <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="Product">
+        <div class="form-group  mt-5 mb-4 my-5">
+            <div class="image-uploaddd">
+                <label class="labelstyle addimages-lbl" for="iconfile">
+                <div class="file-input" style="border:none;">
+                        <h3 class="mt-1 addlogoclass" style="color: black;">
+                            <span>+</span>  Add img
+                            <input type="file" id="Images" name="Images" class="form-control-file addhoverinput imagepreview1" onchange="CreateImgPre(this)" accept=".jpg,.png" />
+                        </h3>
+                        @if (Model.Images != null && Model.Images.Any())
+                        {
+                            <p>
+                                <img id="ImgPreviewbanner" style="width:50px; height:50px; border-style:none; border-color:white; margin-top:10px;" src="~/ModelImages/ProductImages/@Model.Images.FirstOrDefault(m => m.IsMain == true).Image">
+                            </p>
+                        }
+                    </div>
+                </label>
+                <output style="display:flex;" id="output1"></output>
+                <span style="color:gray;">.svg file, max-300kbt</span>
+            </div>
+        </div>
+
+
+        <div class="form-group  mt-2 mb-4 my-5">
+            <div class="File-uploaddd">
+
+                <label class="labelstyle addimages-lbl" for="Properties">
+                    <div class="file-input">
+                        <h3 class="mt-1 addlogoclass" style="color: black;">
+                            <span>+</span> Add Properties File
+                            <input type="file"  required id="Properties" name="Properties" class="form-control-file addhoverinput" onchange="CreatePdfPre(this)" accept=".pdf" />
+                        </h3>
+                    </div>
+                </label>
+                <output style="display:flex;" id="restaurantmenupdf">
+
+                    <iframe src="~/ModelImages/ProductImages/@Model.Properties" id="PdfPreviewbanner" style=" height: 300px;border: none;width:28%;"></iframe>
+                </output>
+
+
+
+                <output style="display:flex;" id="output1"></output>
+                <span style="color:gray;">(  .pdf file, max-1300kbt )</span>
+            </div>
+        </div>
+        <div class="btm-border">
+            <div class="form-group">
+                <label class="style_category-txt" for="categoryId">This Category is: </label>
+                @foreach (var categor in ViewBag.ThisCategory)
+                {
+                    <span>@categor.Name</span>
+                }
+            </div>
+            <br />
+            <div class="form-group style_frm-group">
+                <label for="categoryId">Category (Leave blank if you won't change')</label>
+                <select class="form-control" id="CategoryId" name="CategoryId">
+                    <option value="@categoryId">Select a category</option>
+                    @foreach (var category in ViewBag.Category)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="btm-border">
+            <div class="form-group">
+                <label class="style_category-txt" for="categoryId">This Subcategory is:</label>
+                @foreach (var subcategory in ViewBag.ThisSubcategory)
+                {
+                    <span>@subcategory.Name</span>
+                }
+            </div>
+            <br />
+            <div class="form-group style_frm-group">
+                <label for="subcategoryId">Subcategory (Leave blank if you won't change')</label>
+                <select class="form-control" id="SubcategoryId" name="SubcategoryId">
+                    <option value="@subcategoryId">Select a Subcategory</option>
+                    @foreach (var subcategory in ViewBag.Subcategory)
+                    {
+                        <option value="@subcategory.Id">@subcategory.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="btm-border">
+            <div class="form-group">
+                <label class="style_category-txt" for="characteristicId">This Characteristic is:</label>
+                @foreach (var chare in ViewBag.ThisCharacteristic)
+                {
+                    <span>@chare.Name</span>
+                }
+            </div>
+            <br />
+            <div class="form-group style_frm-group">
+                <label for="characteristicId">Characteristic (Leave blank if you won't change')</label>
+                <select class="form-control" id="CharacteristicId" name="CharacteristicId">
+                    <option value="@characteristicId">Select a Characteristic</option>
+                    @foreach (var chare in ViewBag.Characteristic)
+                    {
+                        <option value="@chare.Id">@chare.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="btm-border">
+            <div class="form-group">
+                <label class="style_category-txt" for="applicationId">This ApplyArea is:</label>
+                @foreach (var app in ViewBag.ThisApplication)
+                {
+                    <span>@app.Name</span>
+                }
+            </div>
+            <br />
+            <div class="form-group style_frm-group">
+                <label for="applicationId">Apply Area (Leave blank if you won't change')</label>
+                <select class="form-control" id="ApplicationId" name="ApplicationId">
+                    <option value="@applicationId">Select a Characteristic</option>
+                    @foreach (var app in ViewBag.Application)
+                    {
+                        <option value="@app.Id">@app.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="btm-border">
+            <div class="form-group">
+                <label class="style_category-txt" for="appearenceId">This Appearence is:</label>
+                @foreach (var app in ViewBag.ThisAppearence)
+                {
+                    <span>@app.Name</span>
+                }
+            </div>
+            <br />
+            <div class="form-group  style_frm-group">
+                <label for="appearenceId">Appearence (Leave blank if you won't change')</label>
+                <select class="form-control" id="AppearenceId" name="AppearenceId">
+                    <option value="@appearenceId">Select a Appearence</option>
+                    @foreach (var app in ViewBag.Appearence)
+                    {
+                        <option value="@app.Id">@app.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Brand">Brand</label>
+            <textarea id="Brand" name="Brand" asp-for="Brand" class="form-control addhoverinput" required></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="ProductCode">ProductCode</label>
+            <textarea id="ProductCode" name="ProductCode" asp-for="ProductCode" class="form-control addhoverinput" required></textarea>
+        </div>
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].LangCode">Language Code</label>
+            <input type="text" style="width:4%;" readonly id="translates[0].LangCode" name="Translates[0].LangCode" class="form-control addhoverinput" value="az" required>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Name">Name-az</label>
+            <textarea id="translates[0].Name" name="Translates[0].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Desc">Desc-az</label>
+            <textarea id="translates[0].Desc" name="Translates[0].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].ProducerCountry">ProducerCountry-az</label>
+            <textarea id="translates[0].ProducerCountry" name="Translates[0].ProducerCountry" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().ProducerCountry" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Length">Length-az</label>
+            <textarea id="translates[0].Length" name="Translates[0].Length" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Length" class="form-control addhoverinput" ></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Size">Size-az</label>
+            <textarea id="translates[0].Size" name="Translates[0].Size" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Size" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Color">Color-az</label>
+            <textarea id="translates[0].Color" name="Translates[0].Color" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Color" class="form-control addhoverinput" ></textarea>
+        </div>
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].LangCode">Language Code</label>
+            <input type="text" style="width:4%;" readonly id="translates[1].LangCode" name="Translates[1].LangCode" class="form-control addhoverinput" value="en" required>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Name">Name-en</label>
+            <textarea id="translates[1].Name" name="Translates[1].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Desc">Desc-az</label>
+            <textarea id="translates[1].Desc" name="Translates[1].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].ProducerCountry">ProducerCountry-az</label>
+            <textarea id="translates[1].ProducerCountry" name="Translates[1].ProducerCountry" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().ProducerCountry" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Length">Length-az</label>
+            <textarea id="translates[1].Length" name="Translates[1].Length" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Length" class="form-control addhoverinput"></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Size">Size-az</label>
+            <textarea id="translates[1].Size" name="Translates[1].Size" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Size" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Color">Color-az</label>
+            <textarea id="translates[1].Color" name="Translates[1].Color" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Color" class="form-control addhoverinput"></textarea>
+        </div>
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].LangCode">Language Code</label>
+            <input type="text" style="width:4%;" readonly id="translates[2].LangCode" name="Translates[2].LangCode" class="form-control addhoverinput" value="ru" required>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Name">Name-ru</label>
+            <textarea id="translates[2].Name" name="Translates[2].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Desc">Desc-az</label>
+            <textarea id="translates[2].Desc" name="Translates[2].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].ProducerCountry">ProducerCountry-az</label>
+            <textarea id="translates[2].ProducerCountry" name="Translates[2].ProducerCountry" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().ProducerCountry" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Length">Length-az</label>
+            <textarea id="translates[2].Length" name="Translates[2].Length" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Length" class="form-control addhoverinput"></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Size">Size-az</label>
+            <textarea id="translates[2].Size" name="Translates[2].Size" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Size" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Color">Color-az</label>
+            <textarea id="translates[2].Color" name="Translates[2].Color" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Color" class="form-control addhoverinput"></textarea>
+        </div>
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+        <button type="submit" style="color:green;" class="btn createbuttonn editbutton">Edit</button>
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+
+        function imageIsLoaded(e) {
+
+            $('#pdfprew' + abc)
+                .attr('src', e.target.result);
+        };
+
+
+        function CreatePdfPre(inputmenu) {
+            $('#restaurantmenupdf').css("display", "block")
+            //$("restaurantmenupdf").css("display", "block")
+            if (inputmenu.files[0]) {
+                var uploadimg = new FileReader();
+                uploadimg.onload = function (displayimg) {
+                    $("#PdfPreviewbanner").attr('src', displayimg.target.result);
+                }
+                uploadimg.readAsDataURL(inputmenu.files[0]);
+            }
+        }
+</script>

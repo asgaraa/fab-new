@@ -1,0 +1,422 @@
+﻿@model Fab.ViewModels.ProductVM.GetAllVM;
+
+@{
+    // var model = Model.Datas.SelectMany(x => x.Categories);
+    var language = "";
+    var prevlanguage = "";
+    var count = 1;
+    // var namecount="";
+    var prodata = Model;
+}
+
+<main>
+    <section id="head_bg" style="background-image: url(./assets/img/insan.resurslari/bg-other.png);">
+        <div class="container">
+            <div class="ir-title">
+                <div class="ir-title-links">
+                    <a href="index.html">Ana səhifə</a>
+                    <img src="./assets/img/ir.svg" alt="svg">
+                    <a href="insan.resurslari.html">Məhsullar</a>
+                    <img src="./assets/img/ir.svg" alt="svg">
+                    <a href="insan.resurslari.html">Boya</a>
+                </div>
+                <div class="ir-title-text">
+                    <p>Məhsullar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="All_Mehsullar">
+        <div class="container">
+            <div class="mehsulllar_grid">
+                @* @Html.Partial("_FilterPartial", Model.Categories) *@
+
+
+
+                <div class="mehsullar-accordion-filters">
+                    <div class="top-filters">
+                        <div class="accordion accordion-flush acc-border" id="accordionFlushExample">
+
+                            <div class="accordion-item">
+
+                                @foreach (var item in Model.Categories.Categories)
+                                {
+                                    var namecount = "";
+
+                                    if (count == 1)
+                                    {
+                                        namecount = "One";
+                                    }
+                                    else if (count == 2)
+                                    {
+                                        namecount = "Two";
+                                    }
+                                    else if (count == 3)
+                                    {
+                                        namecount = "Three";
+                                    }
+                                    else if (count == 4)
+                                    {
+                                        namecount = "Four";
+                                    }
+                                    else if (count == 5)
+                                    {
+                                        namecount = "Five";
+                                    }
+                                    else if (count == 6)
+                                    {
+                                        namecount = "Six";
+                                    }
+
+                                    var flushheading = "flush-heading" + namecount;
+                                    var flushcollapse = "#flush-collapse" + namecount;
+                                    var collapsecount = "#collapse" + namecount;
+                                    var collaps = "flush-collapse" + namecount;
+
+                                    <h2 class="accordion-header" id="@flushheading">
+                                        <button class="accordion-button collapsed mehsullar-acc-button" type="button"
+                                                data-bs-toggle="collapse" data-bs-target="@flushcollapse"
+                                                aria-expanded="false" aria-controls="@collaps">
+                                            @item.Name
+                                        </button>
+                                    </h2>
+
+                                    <div id="@collaps" class="accordion-collapse collapse"
+                                         aria-labelledby="@flushheading" data-bs-parent="#accordionFlushExample">
+                                        <div class="accordion-body">
+                                            <ul class="column_acc_items p-left" id="subcategoryitems-@item.Id">
+                                                @foreach (var subitem in item.Subcategories)
+                                                {
+                                                    <label>
+                                                        <a asp-controller="Product" asp-action="Index" asp-route-categoryid="@item.Id" asp-route-subctgid="@subitem.Id">@subitem.Name</a>
+                                                        @*    <input type="checkbox" name="option" id="@item.Id" value="@subitem.Id" class="subcategory-input">@subitem.Name *@
+                                                    </label>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    count++;
+                                }
+
+                            </div>
+
+                        </div>
+
+                        <div class="bottom-filters">
+                            <div class="accordion" id="accordionExample">
+                                <div class="accordion-item border-none" id="acc-itemforexp">
+
+                                    @if (Model.Categories.Applicat.Count() != 0)
+                                    {
+
+
+
+                                        <h2 class="accordion-header" id="flush-headingSeven">
+                                            <button class="accordion-button collapsed mehsullar-acc-button" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven"
+                                                    aria-expanded="false" aria-controls="flush-collapseSeven">
+                                                Tətbiq Sahələri
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseSeven" class="accordion-collapse collapse"
+                                             aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" style="padding-top: 0;">
+                                                <ul class="column_acc_items border-none">
+                                                    @foreach (var app in Model.Categories.Applicat)
+                                                    {
+                                                        <label>
+                                                            <input id="aplicatboxes" type="checkbox" name="appOption" data="@app.CategoryId" value="@app.Id">@app.Name
+                                                        </label>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    @if (Model.Categories.Apperance.Count() != 0)
+                                    {
+                                        <h2 class="accordion-header" id="flush-headingEight">
+                                            <button class="accordion-button collapsed mehsullar-acc-button" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseEight"
+                                                    aria-expanded="false" aria-controls="flush-collapseEight">
+                                                Görünüş
+                                            </button>
+                                        </h2>
+
+                                        <div id="flush-collapseEight" class="accordion-collapse collapse"
+                                             aria-labelledby="flush-headingEight" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" style="padding-top: 0;">
+                                                <ul class="column_acc_items border-none">
+                                                    @foreach (var apear in Model.Categories.Apperance)
+                                                    {
+                                                        <label>
+                                                            <input id="apperanceboxes" type="checkbox" name="apearOption" value="@apear.Id">@apear.Name
+                                                        </label>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    }
+
+                                    @if (Model.Categories.Chars.Count() != 0)
+                                    {
+                                        <h2 class="accordion-header" id="flush-headingNine">
+                                            <button class="accordion-button collapsed mehsullar-acc-button" type="button"
+                                                    data-bs-toggle="collapse" data-bs-target="#flush-collapseNine"
+                                                    aria-expanded="false" aria-controls="flush-collapseNine">
+                                                Xususiyyetler
+                                            </button>
+                                        </h2>
+
+                                        <div id="flush-collapseNine" class="accordion-collapse collapse"
+                                             aria-labelledby="flush-headingNine" data-bs-parent="#accordionFlushExample">
+                                            <div class="accordion-body" style="padding-top: 0;">
+                                                <ul class="column_acc_items border-none">
+                                                    @foreach (var charfield in Model.Categories.Chars)
+                                                    {
+                                                        <label>
+                                                            <input id="charboxes" type="checkbox" name="charOption" value="@charfield.TranslateIds">@charfield.Name
+                                                        </label>
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <button style="height:fit-content;background-color:#EF2955;color:white;" id="searchLink" type="button" class="btn">
+                            Search
+                        </button>
+                    </div>
+
+
+
+
+                    @*   <div class="mehsullar-accordion-filters">
+                    <div class="top-filters">
+                    <div class="accordion accordion-flush acc-border" id="accordionFlushExample">
+
+                    <div class="accordion-item">
+
+                    @foreach (var item in ViewBag.allcatg)
+                    {
+                    var collapseId = "flush-collapse-" + item.Id; // Benzersiz bir id oluştur
+                    <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed mehsullar-acc-button filtercategoryclass" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#@collapseId"
+                    aria-expanded="false" aria-controls="@collapseId" id="@item.Id">
+                    @item.Name
+                    </button>
+                    </h2>
+                    <div id="@collapseId" class="accordion-collapse collapse"
+                    aria-labelledby="flush-heading-@item.Id" data-bs-parent="#accordionFlushExample">
+                    <div class="accordion-body">
+                    <ul class="column_acc_items p-left" id="subcategoryitems-@item.Id">
+                    </ul>
+                    </div>
+                    </div>
+                    }
+
+
+                    </div>
+
+
+                    </div>
+                    </div>
+                    <div class="bottom-filters">
+                    <div class="accordion" id="accordionExample">
+                    <div class="accordion-item border-none" id="acc-itemforexp">
+                    <h2 class="accordion-header" id="heading${item.id}">
+                    <button class="accordion-button collapsed mehsullar-acc-button-2 acc-buttonexp" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#collapse${item.id}"
+                    aria-expanded="false" aria-controls="collapse${item.id}" id="${item.id}">
+                    ${item.name}
+                    </button>
+                    </h2>
+
+                    <div id="collapse${item.id}" class="accordion-collapse collapse"
+                    aria-labelledby="heading${item.id}" data-bs-parent="accordionExample">
+                    <div class="accordion-body" style="padding-top: 0;">
+                    <ul class="column_acc_items border-none">
+                    ${item.value.map(value => `
+                    <li><a href="#" class="valueid" id="${value.id}">${value.name}</a></li>`).join('')}
+                    </ul>
+                    </div>
+                    </div>
+                    </div>
+
+                    </div>
+                    </div>
+                    <button style="height:fit-content;background-color:#EF2955;color:white;" id="searchLink" type="button" class="btn">
+                    Search
+                    </button>
+                    </div> *@
+
+                    <div class="mehsullar-cards">
+                        @foreach (var item in prodata.Products.Datas)
+                        {
+                            <div class="mehsullar-card" id="@item.Id">
+                                <div class="mehsullar-card-img">
+                                    <a asp-action="Detail" asp-controller="Product" asp-route-id="@item.Id">
+                                        <img src="./assets/img/mehsullar/@item.Image" alt="mehsullar">
+                                    </a>
+                                </div>
+                                <div class="mehsullar-card-texts">
+                                    <p class="mehsullar-card-title">@item.Name</p>
+                                    <p class="mehsullar-card-desc">@item.Size</p>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+                <nav>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item @(Model.Products.TotalPages == 1 ? "disabled" : "")">
+                            @if (Model.LangCode == "az")
+                            {
+                                prevlanguage = "Əvvəl";
+                            }
+                            else if (Model.LangCode == "en")
+                            {
+                                prevlanguage = "Previous";
+                            }
+                            else
+                            {
+                                prevlanguage = "Предыдущий";
+                            }
+                            <a class="page-link" asp-action="Index" asp-route-page="@(Model.Products.TotalPages - 1)" tabindex="-1">@prevlanguage</a>
+                        </li>
+                        @if (Model.Products.TotalPages <= 10)
+                        {
+                            for (int i = 1; i <= Model.Products.TotalPages; i++)
+                            {
+                                <li class="page-item @(Model.Products.TotalPages == i ? "active" : "")">
+                                    <a class="page-link" asp-route-categoryid="ViewBag.Categoryid=categoryid" asp-route-subctgid="@ViewBag.SubCategoryid" asp-route-appearanceid="@ViewBag.Appear" asp-route-charid="@ViewBag.Charid" asp-route-applicationid="@ViewBag.Applicate" asp-action="Index" asp-route-page="@i">@i</a>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            int currentPage = Model.Products.PageIndex;
+                            int totalPages = Model.Products.TotalPages;
+
+                            int startPage = currentPage - 4;
+                            int endPage = currentPage + 5;
+
+                            if (startPage <= 0)
+                            {
+                                startPage = 1;
+                                endPage = 10;
+                            }
+                            else if (endPage > totalPages)
+                            {
+                                startPage = totalPages - 9;
+                                endPage = totalPages;
+                            }
+
+                            if (startPage > 1)
+                            {
+                                <li class="page-item">
+                                    <a class="page-link" asp-route-categoryid="ViewBag.Categoryid=categoryid" asp-route-subctgid="@ViewBag.SubCategoryid" asp-route-appearanceid="@ViewBag.Appear" asp-route-charid="@ViewBag.Charid" asp-route-applicationid="@ViewBag.Applicate" asp-action="Index" asp-route-page="1">1</a>
+                                </li>
+                                if (startPage > 2)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link">...</a>
+                                    </li>
+                                }
+                            }
+
+                            for (int i = startPage; i <= endPage; i++)
+                            {
+                                <li class="page-item @(currentPage == i ? "active" : "")">
+                                    <a class="page-link" asp-route-categoryid="ViewBag.Categoryid=categoryid" asp-route-subctgid="@ViewBag.SubCategoryid" asp-route-appearanceid="@ViewBag.Appear" asp-route-charid="@ViewBag.Charid" asp-route-applicationid="@ViewBag.Applicate" asp-action="Index" asp-route-page="@i">@i</a>
+                                </li>
+                            }
+
+                            if (endPage < totalPages)
+                            {
+                                if (endPage < totalPages - 1)
+                                {
+                                    <li class="page-item disabled">
+                                        <a class="page-link">...</a>
+                                    </li>
+                                }
+                                <li class="page-item">
+                                    <a class="page-link" asp-route-categoryid="ViewBag.Categoryid=categoryid" asp-route-subctgid="@ViewBag.SubCategoryid" asp-route-appearanceid="@ViewBag.Appear" asp-route-charid="@ViewBag.Charid" asp-route-applicationid="@ViewBag.Applicate" asp-action="Index" asp-route-page="@totalPages">@totalPages</a>
+                                </li>
+                            }
+                        }
+                        <li class="page-item @(Model.Products.PageIndex == Model.Products.TotalPages ? "disabled" : "")">
+                            @if (Model.LangCode == "az")
+                            {
+                                language = "Sonra";
+                            }
+                            else if (Model.LangCode == "en")
+                            {
+                                language = "Next";
+                            }
+                            else
+                            {
+                                language = "Следующий";
+                            }
+                            <a class="page-link" asp-route-categoryid="ViewBag.Categoryid=categoryid" asp-route-subctgid="@ViewBag.SubCategoryid" asp-route-appearanceid="@ViewBag.Appear" asp-route-charid="@ViewBag.Charid" asp-route-applicationid="@ViewBag.Applicate" asp-action="Index" asp-route-page="@(Model.Products.PageIndex + 1)">@language</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+    </section>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.getElementById('searchLink').addEventListener('click', function () {
+            // Create arrays to store the checked checkbox values
+            let applicats = [];
+            let apperances = [];
+            let chars = [];
+
+            // Checkboxes related to Application
+            document.querySelectorAll('#aplicatboxes:checked').forEach(function (checkbox) {
+                applicats.push(checkbox.value);
+                console.log(checkbox.value);
+            });
+
+            // Checkboxes related to Appearance
+            document.querySelectorAll('#apperanceboxes:checked').forEach(function (checkbox) {
+                apperances.push(checkbox.value);
+                console.log(checkbox.value);
+            });
+
+            // Checkboxes related to Characteristics
+            document.querySelectorAll('#charboxes:checked').forEach(function (checkbox) {
+                chars.push(checkbox.value);
+                console.log(checkbox.value);
+            });
+
+            // Send the checked values to the server using fetch
+            fetch(`/Product/Index?applicationid=${applicats}&appearanceid=${apperances}&charid=${chars}`, {
+                method: 'GET',
+            })
+                .then(response => response.json()) // Assuming the response is in JSON format
+                .then(data => {
+                    // Update the prodata variable directly
+                    prodata = data;
+                    console.log(data);
+                    window.location.reload();
+                })
+                .catch(error => {
+                    // Handle errors if any
+                    console.error(error);
+                });
+        });
+    });
+</script>

@@ -1,0 +1,116 @@
+﻿@model Fab.Models.Gornushler.AppearanceField;
+@{
+    ViewData["Title"] = "Edit";
+
+    var categ = ViewBag.ThisCategory;
+    int categoryId = Model.CategoryId;
+}
+
+
+<div class="entert-form" style=" padding-top: 70px ; padding-left: 50px;">
+
+    <h1>Edit Appearance</h1>
+
+
+    <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="Appearance">
+
+
+
+
+
+        <div class="form-group">
+            <label for="categoryId">This Category is ==></label>
+            @foreach (var categor in ViewBag.ThisCategory)
+            {
+                <span>@categor.Name</span>
+            }
+        </div>
+        <br />
+
+
+
+
+        <div class="form-group">
+            <label for="categoryId">Category (Leave blank if you won't change')</label>
+            <select class="form-control" id="CategoryId" name="CategoryId">
+                <option value="@categoryId">Select a category</option>
+                @foreach (var category in ViewBag.Category)
+                {
+                    <option value="@category.Id">@category.Name</option>
+                }
+            </select>
+        </div>
+
+
+
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].LangCode">Language Code</label>
+            <input type="text" style="width:4%;" readonly id="translates[0].LangCode" name="Translates[0].LangCode" class="form-control addhoverinput" value="az" required>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Name">Name-az</label>
+            <textarea id="translates[0].Name" name="Translates[0].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+
+
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].LangCode">Language Code</label>
+            <input type="text" style="width:4%;" readonly id="translates[1].LangCode" name="Translates[1].LangCode" class="form-control addhoverinput" value="en" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Name">Name-en</label>
+            <textarea id="translates[1].Name" name="Translates[1].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+
+
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].LangCode">Language Code</label>
+            <input type="text" style="width:4%;" readonly id="translates[2].LangCode" name="Translates[2].LangCode" class="form-control addhoverinput" value="ru" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Name">Name-ru</label>
+            <textarea id="translates[2].Name" name="Translates[2].Name" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Name" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <button type="submit" style="color:green;" class="btn createbuttonn">Edit</button>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+

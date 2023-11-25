@@ -1,0 +1,155 @@
+﻿@model Fab.ViewModels.ContactPageVM
+
+
+@{
+    ViewData["Title"] = "Index";
+}
+<main>
+    <section id="head_bg" style="background-image: url('/assets/img/insan.resurslari/bg-other.png');">
+        <div class="container">
+            <div class="ir-title">
+                @if (Model.LangCode == "az")
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Ana səhifə</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Əlaqə</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Əlaqə</p>
+                    </div>
+                }
+                else if (Model.LangCode == "en")
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Home</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Contact</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Contact</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Главная</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Контакт</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Контакт</p>
+                    </div>
+                }
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-fab">
+        <div class="container">
+            <div class="contact-fab-flex">
+                <div class="contact-fab-info">
+                    <div class="cf-number">
+                        <div class="numb_icon">
+                            <img src="~/assets/img/phone.svg" alt="phone_icon">
+                        </div>
+                        <div class="cf-numbers-texts">
+                            <p>@Model.Informations.Tel1</p>
+                            <p>@Model.Informations.Tel2 </p>
+                            <p>@Model.Informations.Tel3 </p>
+                        </div>
+                    </div>
+                    <div class="cf-e_mail">
+                        <div class="mail_icon">
+                            <img src="~/assets/img/letter.svg" alt="phone_icon">
+                        </div>
+                        <div class="cf-email-text">
+                            <a href="#">@Model.Informations.Email</a>
+                        </div>
+                    </div>
+                    <div class="cf-address">
+                        <div class="address_icon">
+                            <img src="~/assets/img/location.svg" alt="phone_icon">
+                        </div>
+                        <div class="cf-address-text">
+                            <p>@Model.Informations.Location</p>
+                        </div>
+                    </div>
+                    <div class="cf-social_media">
+                        <a href="@Model.Informations.SocialLink1"><img src="~/assets/img/socialmedia/fb.png" alt="sm-img"></a>
+                        <a href="@Model.Informations.SocialLink2"><img src="~/assets/img/socialmedia/instagram.png" alt="sm-img"></a>
+                        <a href="@Model.Informations.SocialLink3"><img src="~/assets/img/socialmedia/youtube.png" alt="sm-img"></a>
+                        <a href="@Model.Informations.SocialLink4"><img src="~/assets/img/socialmedia/in.png" alt="sm-img"></a>
+                    </div>
+                </div>
+                <div class="contact-fab-form">
+                    <form>
+                        @if (Model.LangCode == "az")
+                        {
+                            <div class="form-field">
+                                <input type="text" placeholder="Ad Soyad" name="adsoyad">
+                            </div>
+                            <div class="form-field">
+                                <input type="text" placeholder="E mail" name="email">
+                            </div>
+                            <div class="form-field">
+                                <textarea placeholder="Mesajınız" name="mesaj"></textarea>
+                            </div>
+                            <div class="sendbutton">
+                                <button type="submit">Gönder</button>
+                            </div>
+                        }
+                        else if (Model.LangCode == "en")
+                        {
+                            <div class="form-field">
+                                <input type="text" placeholder="Full Name" name="adsoyad">
+                            </div>
+                            <div class="form-field">
+                                <input type="text" placeholder="E mail" name="email">
+                            </div>
+                            <div class="form-field">
+                                <textarea placeholder="Message" name="mesaj"></textarea>
+                            </div>
+                            <div class="sendbutton">
+                                <button type="submit">Send</button>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="form-field">
+                                <input type="text" placeholder="Full Name" name="adsoyad">
+                            </div>
+                            <div class="form-field">
+                                <input type="text" placeholder="E mail" name="email">
+                            </div>
+                            <div class="form-field">
+                                <textarea placeholder="Message" name="mesaj"></textarea>
+                            </div>
+                            <div class="sendbutton">
+                                <button type="submit">Send</button>
+                            </div>
+                        }
+                        
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="google-map">
+        <div class="container">
+            <div class="mapouter">
+                <div class="gmap_canvas">
+                    <iframe id="gmap_canvas" style="width: 100%; height: 100%;"
+                            src="@Model.Informations.LocationLink"
+                            frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                    </iframe>
+                    <br>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>

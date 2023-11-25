@@ -1,0 +1,26 @@
+﻿@model List<Fab.Models.BlogsFolder.Blog>
+
+
+
+<form method="get" asp-action="search" asp-controller="blog">
+    <label for="searchWord">Search:</label>
+    <input type="text" id="searchWord" name="searchWord" />
+    <button type="submit">Search</button>
+</form>
+
+
+
+@if (Model != null && Model.Any())
+{
+    <h2>Search Results:</h2>
+    <ul>
+        @foreach (var blog in Model)
+        {
+            foreach (var translates in blog.Translates)
+            {
+                <li>@translates.Desc</li>
+            }
+            
+        }
+    </ul>
+}

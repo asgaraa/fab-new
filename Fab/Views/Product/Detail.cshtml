@@ -1,0 +1,272 @@
+﻿@model Fab.ViewModels.ProductVM.DetailVM
+
+<main>
+    <section id="head_bg" style="background-image: url(./assets/img/insan.resurslari/bg-other.png);">
+        <div class="container">
+            <div class="ir-title">
+                @if (Model.LangCode == "az")
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Ana səhifə</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Məhsullar</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">@Model.Product.Category.Translates.FirstOrDefault(m => m.LangCode == Model.LangCode).Name</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Məhsullar</p>
+                    </div>
+                }
+                else if (Model.LangCode == "en")
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Home</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Products</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">@Model.Product.Category.Translates.FirstOrDefault(m => m.LangCode == Model.LangCode).Name</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Products</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Главная</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Продукты</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">@Model.Product.Category.Translates.FirstOrDefault(m => m.LangCode == Model.LangCode).Name</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>MəПродукты</p>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>
+    </section>
+
+    <section id="All_Mehsullar">
+        <div class="container">
+
+            <div class="container-space">
+
+                <div class="mehs-detail-slider">
+                    <div class="img-overflow">
+                        <img class="img-fluid" id="bannerImage" src="~/ModelImages/ProductImages/@Model.Product.Images.FirstOrDefault(m => m.IsMain == true).Image"
+                             alt="img" />
+                    </div>
+                    <div class="slider-controls controls-style">
+                        <button id="prevButton" class="m-detail-prev">
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M6 1L1 6L6 11" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                        <button id="nextButton" class="m-detail-next">
+                            <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M1 1L6 6L1 11" stroke="black" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-thumbnails">
+                        <ul id="thumbnailList">
+                            @foreach (var images in Model.Product.Images)
+                            {
+                                <!--slider image 1-->
+                                <li class="thumbnail-active">
+                                    <img src="~/ModelImages/ProductImages/@images.Image" alt="img" />
+                                </li>
+                                <!--slider image 2-->
+                            }
+
+                        </ul>
+                    </div>
+
+                </div>
+                <div class="mehs-detail-info">
+                    <div class="title-desc-mehsullar">
+                        <div class="mehs-detail-title">
+                            <p>@Model.Product.Translates.FirstOrDefault().Name</p>
+                        </div>
+                        <div class="mehs-detail-desc">
+                            <p>
+                                @Model.Product.Translates.FirstOrDefault().Desc
+                            </p>
+                        </div>
+
+                    </div>
+                    <div class="other-info-product">
+                        <table border="1" class="style-table">
+                            <tbody class="flx-tbody">
+                                <tr class="tr-gap-m">
+                                    @if (Model.LangCode == "az")
+                                    {
+                                        <td> Ölçü </td>
+                                    }
+                                    else if (Model.LangCode == "en")
+                                    {
+                                        <td> Size </td>
+                                    }
+                                    else
+                                    {
+                                        <td> Размер </td>
+                                    }
+
+                                    <td>@Model.Product.Translates.FirstOrDefault().Size</td>
+                                </tr>
+                                <tr class="tr-gap-m">
+                                    @if (Model.LangCode == "az")
+                                    {
+                                        <td> Istehsalçı ölkə </td>
+                                    }
+                                    else if (Model.LangCode == "en")
+                                    {
+                                        <td> Producer Country </td>
+                                    }
+                                    else
+                                    {
+                                        <td> Страна производитель </td>
+                                    }
+                                    <td>@Model.Product.Translates.FirstOrDefault().ProducerCountry</td>
+                                </tr>
+                                @if (@Model.Product.Translates.FirstOrDefault().Color != null)
+                                {
+                                    <tr class="tr-gap-m">
+
+                                        @if (Model.LangCode == "az")
+                                        {
+                                            <td> Rəng </td>
+                                        }
+                                        else if (Model.LangCode == "en")
+                                        {
+                                            <td> Color </td>
+                                        }
+                                        else
+                                        {
+                                            <td> Цвет </td>
+                                        }
+                                        <td>@Model.Product.Translates.FirstOrDefault().Color</td>
+
+                                    </tr>
+
+                                }
+
+                                @if (@Model.Product.Translates.FirstOrDefault().Length != null)
+                                {
+                                    <tr class="tr-gap-m">
+
+                                        @if (Model.LangCode == "az")
+                                        {
+                                            <td> Uzunluq </td>
+                                        }
+                                        else if (Model.LangCode == "en")
+                                        {
+                                            <td> Length </td>
+                                        }
+                                        else
+                                        {
+                                            <td> Длина </td>
+                                        }
+                                        <td>@Model.Product.Translates.FirstOrDefault().Length</td>
+
+                                    </tr>
+
+                                }
+                                <tr class="tr-gap-m">
+                                    @if (Model.LangCode == "az")
+                                    {
+                                        <td> Məhsul Kodu </td>
+                                    }
+                                    else if (Model.LangCode == "en")
+                                    {
+                                        <td> Product code </td>
+                                    }
+                                    else
+                                    {
+                                        <td> Код продукта </td>
+                                    }
+                                    <td>@Model.Product.ProductCode</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="pdf-mehsul-detail">
+                        @if (Model.LangCode == "az")
+                        {
+                            <div class="mehsulun-xususiyyetleri">
+                                <img src="~/assets/img/pdf.png" alt="pdf">
+                                <p>Məhsul xüsusiyyətləri</p>
+                            </div>
+                            <div class="pdf-download-file">
+                                <a href="#">PDF faylını endirin</a>
+                            </div>
+                        }
+                        else if (Model.LangCode == "en")
+                        {
+                            <div class="mehsulun-xususiyyetleri">
+                                <img src="~/assets/img/pdf.png" alt="pdf">
+                                <p>Product features</p>
+                            </div>
+                            <div class="pdf-download-file">
+                                <a href="#">Download the PDF file</a>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="mehsulun-xususiyyetleri">
+                                <img src="~/assets/img/pdf.png" alt="pdf">
+                                <p>Особенности продукта</p>
+                            </div>
+                            <div class="pdf-download-file">
+                                <a href="#">Загрузите PDF-файл</a>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="diger-mehsullar">
+                <div class="diger-mehsullar-title">
+                    @if (Model.LangCode == "az")
+                    {
+
+                    }
+                    else if (Model.LangCode == "en")
+                    {
+                        <p>Other Products</p>
+                    }
+                    else
+                    {
+                        <p>Другие продукты</p>
+                    }
+                </div>
+                <div class="mehsullar-cards_4">
+                    @foreach (var otherProduct in Model.Others)
+                    {
+                        <div class="mehsullar-card">
+                            <div class="mehsullar-card-img">
+                                <a href="#">
+
+                                    <img src="~/ModelImages/ProductImages/@otherProduct.Images.FirstOrDefault(m => m.IsMain == true)?.Image" alt="mehsullar">
+                                </a>
+                            </div>
+                            <div class="mehsullar-card-texts">
+                                <p class="mehsullar-card-title">@otherProduct.Translates.FirstOrDefault().Name</p>
+                                <p class="mehsullar-card-desc">@otherProduct.Translates.FirstOrDefault().Size</p>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+</main>

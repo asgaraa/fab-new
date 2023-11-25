@@ -1,0 +1,726 @@
+﻿@model Fab.ViewModels.HomeVM
+
+
+<main>
+
+    <!--*****************    Top  Slider  Start    ***************************** -->
+    <div class="top-bg-slider">
+        <div class="container">
+            <div class="rev">
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+
+                        @foreach (var translate in Model.Banners)
+                        {
+                            @foreach (var item in translate.Translates)
+                            {
+                                <div class="swiper-slide">
+                                    @if (translate.Image.Contains("http://134.209.118.89/"))
+                                    {
+                                        <img src="@translate.Image" alt="img" class="responsive-img">
+
+                                    }
+                                    else
+                                    {
+                                        <img src="~/ModelImages/BannerImages/@translate.Image" alt="img" class="responsive-img">
+
+                                    }
+                                    <div class="over-elements-slider">
+                                        <div class="title-slider-fab">
+                                            <p>@item.Header</p>
+                                        </div>
+                                        <div class="description-slider-fab">
+                                            <p>
+                                                @item.Desc
+                                            </p>
+                                            @if (@item.LangCode == "az")
+                                            {
+                                            <button class="more-btn">Daha çox</button>
+                                            }
+                                            else if (item.LangCode == "en")
+                                            {
+                                                <button class="more-btn">More</button>
+                                            }
+                                            else
+                                            {
+                                                <button class="more-btn">Более</button>
+                                            }
+                                        </div>
+                                    </div>
+                                </div>
+
+                            }
+
+                        }
+
+
+
+
+
+                    </div>
+                    <div class="swiper-pagination">
+                    </div>
+                </div>
+                <div class="absolute-search-nav">
+                    <div class="flex-search-items">
+                        <div class="search-fab">
+                            <div class="question-search">
+                                @if (Model.LangCode == "az")
+                                {
+                                    <p>Nə axtarırsınız?</p>
+                                }
+                                else if (Model.LangCode == "en")
+                                {
+                                    <p>Looking for?</p>
+
+                                }
+                                else
+                                {
+                                    <p>Что Вы ищете?</p>
+                                }
+
+                            </div>
+                            <div class="custom-dropdown">
+                                <button class="custom-dropdown-button" onclick="toggleDropdown()">
+                                    <span id="selected-item">Mehsullar</span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none"
+                                         class="custom-dropdown-icon">
+                                        <path d="M4.95841 7.08333L8.50008 10.625L12.0417 7.08333" stroke="#484848" stroke-linecap="round"
+                                              stroke-linejoin="round" />
+                                    </svg>
+                                </button>
+                                <div class="custom-dropdown-content" id="custom-dropdown-content">
+                                    <div class="custom-dropdown-item" onclick="selectItem(this)">Mehsul 1</div>
+                                    <div class="custom-dropdown-item" onclick="selectItem(this)">Mehsul 2</div>
+                                    <div class="custom-dropdown-item" onclick="selectItem(this)">Mehsul 3</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="custom-search-container">
+                            @if (Model.LangCode == "az")
+                            {
+                                <input type="text" id="custom-search" placeholder="Axtardığınız sözü yazın">
+                                <button class="custom-search-button" type="submit">Axtar</button>
+                            }
+                            else if (Model.LangCode == "en")
+                            {
+                                <input type="text" id="custom-search" placeholder="Type the word you are looking for?">
+                                <button class="custom-search-button" type="submit">Search</button>
+
+                            }
+                            else
+                            {
+                                <input type="text" id="custom-search" placeholder="Введите слово, которое вы ищете">
+                                <button class="custom-search-button" type="submit">Поиск</button>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+    <!--*******************    Top  Slider  End    ******************************* -->
+    <!--*******************    Category  Start    ******************************* -->
+    <div id="Category">
+        <div class="container">
+            <div class="flex-category">
+                <div class="text-ctg">
+                    @if (Model.LangCode == "az")
+                    {
+                        <p>Məhsullarımız</p>
+                    }
+                    else if (Model.LangCode == "en")
+                    {
+                        <p>Products</p>
+
+                    }
+                    else
+                    {
+                        <p>Продукты</p>
+                    }
+
+                </div>
+                <div class="ctg-btn">
+                    @if (Model.LangCode == "az")
+                    {
+                        <button>
+                            <a asp-action="Index" asp-controller="Product">
+                                Kataloqa keç
+                            </a>
+                            </button>
+                    }
+                    else if (Model.LangCode == "en")
+                    {
+                        <button>
+                            <a asp-action="Index" asp-controller="Product">
+                                Catalog
+                            </a>
+                            
+                            </button>
+
+                    }
+                    else
+                    {
+                        <button>
+
+                            <a asp-action="Index" asp-controller="Product">
+                                Каталог
+                            </a>
+                            
+                            </button>
+                    }
+
+                </div>
+            </div>
+            <div class="slider-category">
+                <div class="slick-slider">
+                    @foreach (var category in Model.Categories)
+                    {
+                        <div class="element">
+                            <a>
+                            @*     @if (category.Image.Contains("http://134.209.118.89/"))
+                                {
+                                    <img class="fab-ctg-img" src="@category.Image" alt="img">
+                                }else{ *@
+                                    <img class="fab-ctg-img" src="~/ModelImages/CategoryImages/@category.Image" alt="img">
+                                @* } *@
+                                <div class="image-hover-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="50" viewBox="0 0 24 50" fill="none">
+                                        <path d="M19.2 20.4929H4.8V16.6667C4.8 16.0352 5.05286 15.4296 5.50294 14.9831C5.95303 14.5366 6.56348 14.2857 7.2 14.2857H9.6V2.38095C9.6 1.74948 9.85286 1.14388 10.3029 0.697365C10.753 0.25085 11.3635 0 12 0C12.6365 0 13.247 0.25085 13.6971 0.697365C14.1471 1.14388 14.4 1.74948 14.4 2.38095V14.2857H16.8C17.4365 14.2857 18.047 14.5366 18.4971 14.9831C18.9471 15.4296 19.2 16.0352 19.2 16.6667V20.4929ZM21.1416 22.8738C22.0303 23.5391 22.751 24.4 23.247 25.3887C23.7431 26.3775 24.0008 27.467 24 28.5714V45.2381C24 46.501 23.4943 47.7122 22.5941 48.6053C21.6939 49.4983 20.473 50 19.2 50H4.8C3.52696 50 2.30606 49.4983 1.40589 48.6053C0.505713 47.7122 0 46.501 0 45.2381V28.5714C0 26.2452 1.1208 24.1786 2.8584 22.8738H21.1416Z"
+                                          fill="#DF363C" />
+                                    </svg>
+                                </div>
+                                <div class="image-caption">
+                                    <p>
+                                        @category.Translates.FirstOrDefault().Name
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--*******************    Category  End    ******************************* -->
+    <!--*******************    Media  Start    ******************************* -->
+    <div id="Media">
+        <div class="media-tab">
+            <div class="container">
+                <div class="media-nav">
+                    <div class="flex-media-items">
+                        <div class="media-title">
+                            @if (Model.LangCode == "az")
+                            {
+                                <p>
+                                    Media
+                                </p>
+                            }
+                            else if (Model.LangCode == "en")
+                            {
+                                <p>
+                                    Media
+                                </p>
+
+                            }
+                            else
+                            {
+                                <p>
+                                    СМИ
+                                </p>
+                            }
+
+                        </div>
+                        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                            @if (Model.LangCode == "az")
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active orange-tab" id="ex1-tab-1" data-bs-toggle="tab" href="#ex1-tabs-1"
+                                   role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Xəbərlər</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="ex1-tab-2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
+                                   aria-controls="ex1-tabs-2" aria-selected="false">Press relizlər</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="ex1-tab-3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
+                                   aria-controls="ex1-tabs-3" aria-selected="false">Bloq</a>
+                                </li>
+                            }
+                            else if (Model.LangCode == "en")
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active orange-tab" id="ex1-tab-1" data-bs-toggle="tab" href="#ex1-tabs-1"
+                                   role="tab" aria-controls="ex1-tabs-1" aria-selected="true">News</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="ex1-tab-2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
+                                   aria-controls="ex1-tabs-2" aria-selected="false">Press releases</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="ex1-tab-3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
+                                   aria-controls="ex1-tabs-3" aria-selected="false">Blog</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active orange-tab" id="ex1-tab-1" data-bs-toggle="tab" href="#ex1-tabs-1"
+                                   role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Новости</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="ex1-tab-2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
+                                   aria-controls="ex1-tabs-2" aria-selected="false">Пресс-релизы</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="ex1-tab-3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
+                                   aria-controls="ex1-tabs-3" aria-selected="false">Блог</a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+
+                    <div class="media-nav-right-item">
+                        <div class="all-media-btn">
+                            @if (Model.LangCode == "az")
+                            {
+                                <a>
+                                    Hamısına bax
+                                </a>
+                            }
+                            else if (Model.LangCode == "en")
+                            {
+                                <a>
+                                    View all
+                                </a>
+
+                            }
+                            else
+                            {
+                                <a>
+                                    Посмотреть все
+                                </a>
+                            }
+
+                        </div>
+                        <div class="media-prev-next-btn" id="glider1">
+                            <div class="flex-np">
+                                <button aria-label="Previous" class="glider-prev glider-prev-1">
+                                    <i class="fa-solid fa-chevron-left icon-media"></i>
+                                </button>
+                                <button aria-label="Next" class="glider-next glider-next-1">
+                                    <i class="fa-solid fa-chevron-right icon-media"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="media-prev-next-btn" id="glider2" style="display: none;">
+                            <div class="flex-np">
+                                <button aria-label="Previous" class=" glider-prev glider-prev-2">
+                                    <i class="fa-solid fa-chevron-left icon-media"></i>
+                                </button>
+                                <button aria-label="Next" class=" glider-next glider-next-2">
+                                    <i class="fa-solid fa-chevron-right icon-media"></i>
+                                </button>
+
+                            </div>
+                        </div>
+                        <div class="media-prev-next-btn" id="glider3" style="display: none;">
+                            <div class="flex-np">
+                                <button aria-label="Previous" class=" glider-prev glider-prev-3">
+                                    <i class="fa-solid fa-chevron-left icon-media"></i>
+                                </button>
+                                <button aria-label="Next" class=" glider-next glider-next-3">
+                                    <i class="fa-solid fa-chevron-right icon-media"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="tab-content" id="ex1-content">
+                <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="ex1-tab-1">
+                    <div class="p-slider">
+                        <div class="glider-contain" style="width: 100%;">
+                            <div class="glider" id="glide-1">
+
+                                @foreach (var neww in Model.News)
+                                {
+                                    <div class="product-box">
+                                        <!--  Img  -->
+                                        <div class="p-img-container">
+                                            <div class="p-img">
+                                                <a href="#">
+                                                    @if (neww.Image.Contains("http://134"))
+                                                    {
+                                                        <img src="@neww.Image" class="p-img-front" alt="img">
+                                                    }else{
+                                                        <img src="~/ModelImages/NewsImages/@neww.Image" class="p-img-front" alt="img">
+
+                                                    }
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!--  Text  -->
+                                        <div class="p-box-text">
+
+
+                                            <!--title-->
+                                            <a href="#" class="media-title-box">
+                                                @neww.Translates.FirstOrDefault().Header
+                                            </a>
+
+                                            <!--date-->
+                                            <div class="media-date-box">
+                                                <span>@neww.Translates.FirstOrDefault().Date</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="ex1-tab-2">
+                    <div class="p-slider">
+                        <div class="glider-contain" style="width: 100%;">
+                            <div class="glider" id="glide-2">
+
+                                @foreach (var press in Model.Presses)
+                                {
+                                    <div class="product-box">
+                                        <!--  Img  -->
+                                        <div class="p-img-container">
+                                            <div class="p-img">
+                                                <a href="#">
+                                                    @if (press.Image.Contains("http://134"))
+                                                    {
+                                                        <img src="@press.Image" class="p-img-front" alt="img">
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/ModelImages/PressImages/@press.Image" class="p-img-front" alt="img">
+
+                                                    }
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!--  Text  -->
+                                        <div class="p-box-text">
+
+
+                                            <!--title-->
+                                            <a href="#" class="media-title-box">
+                                                @press.Translates.FirstOrDefault().Header
+                                            </a>
+
+                                            <!--date-->
+                                            <div class="media-date-box">
+                                                <span>@press.Translates.FirstOrDefault().Date</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+
+
+
+
+
+
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                    <div class="p-slider">
+                        <div class="glider-contain" style="width: 100%;">
+                            <div class="glider" id="glide-3">
+
+                                @foreach (var blog in Model.Blogs)
+                                {
+                                    <div class="product-box">
+                                        <!--  Img  -->
+                                        <div class="p-img-container">
+                                            <div class="p-img">
+                                                <a href="#">
+                                                    @if (blog.Image.Contains("http://134"))
+                                                    {
+                                                        <img src="@blog.Image" class="p-img-front" alt="img">
+
+                                                    }
+                                                    else
+                                                    {
+                                                        <img src="~/ModelImages/BlogImages/@blog.Image" class="p-img-front" alt="img">
+
+                                                    }
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!--  Text  -->
+                                        <div class="p-box-text">
+
+
+                                            <!--title-->
+                                            <a href="#" class="media-title-box">
+                                                @blog.Translates.FirstOrDefault().Header
+                                            </a>
+
+                                            <!--date-->
+                                            <div class="media-date-box">
+                                                <span>@blog.Translates.FirstOrDefault().Date</span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                }
+
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!--*******************    Media  End    ******************************* -->
+    <!--*******************    Interyer  helleri start    ******************************* -->
+    <div id="Interyer-helleri">
+        <div class="container">
+            <div class="info-int">
+                <div class="int-flex-items ">
+
+                    @foreach (var interior in Model.Interiors)
+                    {
+                        <div class="int-left-text">
+                            <div class="int-left-text-flex">
+                                <div class="int-left-text-title">
+
+                                    <p>@interior.Translates.FirstOrDefault().Header</p>
+                                </div>
+                                <div class="int-left-text-desciription">
+                                    <p>
+                                        @*@Html.Raw(interior.Translates.FirstOrDefault().Desc.Replace("\n", "<br />"))*@
+                                        @interior.Translates.FirstOrDefault().Desc
+                                    </p>
+                                </div>
+                                <div class="loadmore-btn">
+                                    @if (Model.LangCode == "az")
+                                    {
+                                        <button>Daha ətraflı</button>
+                                    }
+                                    else if (Model.LangCode == "en")
+                                    {
+                                        <button>Learn more</button>
+                                    }
+                                    else
+                                    {
+                                        <button>Узнать больше</button>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="int-right-img">
+
+                            @if (interior.Image.Contains("http://134"))
+                            {
+                                
+                            <img class="img-interyer1" src="@interior.Image" alt="interyer 1">
+                            }
+                            else
+                            {
+                                <img class="img-interyer1" src="~/ModelImages/InteriorImages/@interior.Image" alt="interyer 1">
+
+                            }
+                            <div class="int-over-text">
+                                <p>@interior.Translates.FirstOrDefault().CoverText</p>
+                            </div>
+
+                        </div>
+                    }
+
+                </div>
+
+                @foreach (var twin in Model.Twins)
+                {
+                    <div class="int-flex-items">
+                        <div class="int-left-img">
+                            @if (twin.Image.Contains("http://134"))
+                            {
+                                <img class="img-interyer1" src="@twin.Image" alt="interyer 1">
+
+                            }
+                            else{
+                                <img class="img-interyer1" src="~/ModelImages/TwinImages/@twin.Image" alt="interyer 1">
+
+                            }
+                            <div class="int-over-text">
+                                <p>@twin.Translates.FirstOrDefault().WideDesc</p>
+                            </div>
+                        </div>
+
+
+                        <div class="int-right-text">
+                            <div class="middle-int-text">
+                                <p>
+                                    @twin.Translates.FirstOrDefault().Desc
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+    <!--*******************    Interyer  helleri end    ******************************* -->
+    <!--*******************    Korporativ-sifarisler start    ******************************* -->
+    @foreach (var corporate in Model.Corporates)
+    {
+        <div id="Korporativ-sifarisler">
+            <div class="bg-img-k">
+                @if (corporate.BackgroundImage.Contains("http://134"))
+                {
+                    <img src="@corporate.BackgroundImage" alt="img">
+
+                }
+                else
+                {
+                    <img src="~/ModelImages/CorporateImages/@corporate.BackgroundImage" alt="img">
+
+                }
+            </div>
+
+            <div class="korporativ-flex">
+                <div class="container">
+                    <div class="betweenitems-korporativ">
+                        <div class="korporativ-img">
+                            @if (corporate.BackgroundImage.Contains("http://134"))
+                            {
+                                <img class="kp-back-img" src="@corporate.Image" alt="img-korporativ">
+
+                            }
+                            else
+                            {
+                                <img class="kp-back-img" src="~/ModelImages/CorporateImages/@corporate.Image" alt="img-korporativ">
+
+                            }
+
+                        </div>
+                        <div class="korporativ-texts">
+                            <div class="int-left-text">
+                                <div class="int-left-text-flex">
+                                    <div class="int-left-text-title">
+                                        <p>@corporate.Translates.FirstOrDefault().Header</p>
+                                    </div>
+                                    <div class="int-left-text-desciription">
+                                        <p>
+                                            @corporate.Translates.FirstOrDefault().Desc
+                                        </p>
+                                    </div>
+                                    <div class="loadmore-btn">
+                                        @if (Model.LangCode == "az")
+                                        {
+                                            <button>Daha ətraflı</button>
+                                        }
+                                        else if (Model.LangCode == "en")
+                                        {
+                                            <button>Learn more</button>
+                                        }
+                                        else
+                                        {
+                                            <button>Узнать больше</button>
+                                        }
+                                    </div>
+                                </div>
+                                <style>
+                                    .korporativ-img::before {
+                                        content: "";
+                                        background-image: url('/ModelImages/CorporateImages/@corporate.FrontImage');
+                                        background-repeat: no-repeat;
+                                        background-size: contain;
+                                        position: absolute;
+                                        z-index: 21;
+                                        width: 50%;
+                                        height: 50%;
+                                    }
+                                </style>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <!--*******************    Korporativ-sifarisler end    ******************************* -->
+    <!--*******************    Brands  start    ******************************* -->
+    <section id="Brands">
+        <div class="container">
+
+            <section class="customer-logos slider">
+
+                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo1.png" alt="brand-img"></div>
+                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo2.png" alt="brand-img"></div>
+                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo3.png" alt="brand-img"></div>
+                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo2.png" alt="brand-img"></div>
+                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo1.png" alt="brand-img"></div>
+                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo3.png" alt="brand-img"></div>
+                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo2.png" alt="brand-img"></div>
+
+            </section>
+
+        </div>
+    </section>
+    <!--*******************  Brands end    ******************************* -->
+
+
+</main>
+
+
+  </main>
+  <script>
+    document.addEventListener("click", function (event) {
+        var dropdown = document.querySelector(".custom-dropdown");
+        var dropdownContent = document.getElementById("custom-dropdown-content");
+        if (!event.target.classList.contains("subcategoryclass") && !dropdown.contains(event.target) && dropdownContent.style.display === "block") {
+            dropdownContent.style.display = "none";
+        }
+    });
+  </script>
+

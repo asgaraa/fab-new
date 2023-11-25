@@ -1,0 +1,470 @@
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@{
+    var httpContext = HttpContextAccessor.HttpContext;
+    var selectedLanguage = httpContext.Request.Cookies["selectedLanguage"] ?? "az";
+    Context.Items["SelectedLanguage"] = selectedLanguage;
+    selectedLanguage = selectedLanguage.ToLower();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAB WEBSITE</title>
+    @*<link rel="stylesheet" href="~/assets/css/style.css">*@
+    <link rel="stylesheet" href="~/assets/css/style.css">
+    <link rel="stylesheet" href="~/assets/css/responsive.css">
+    <link rel="stylesheet" href="~/assets/css/animation.css">
+    <!--  Bootstrap Css Imports Start   -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!--  Bootstrap Css Imports End   -->
+    <link rel="stylesheet" href="~/assets/css/glider.css">
+    <!--Font Awesome Imports Start   -->
+    <script src="https://kit.fontawesome.com/e0f20ffb07.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.css" rel="stylesheet" />
+
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-top">
+                <div class="fab-logo">
+                    <a asp-action="Index" asp-controller="Home">
+                        <img src="~/assets/img/logo.png" alt="logo">
+
+                    </a>
+                </div>
+                <div class="right-fab-items">
+                    <div class="address-fab">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="21" viewBox="0 0 14 21" fill="none">
+                            <path d="M7 9.89854C6.33696 9.89854 5.70107 9.63515 5.23223 9.16631C4.76339 8.69747 4.5 8.06159 4.5 7.39854C4.5 6.7355 4.76339 6.09962 5.23223 5.63078C5.70107 5.16194 6.33696 4.89854 7 4.89854C7.66304 4.89854 8.29893 5.16194 8.76777 5.63078C9.23661 6.09962 9.5 6.7355 9.5 7.39854C9.5 7.72685 9.43534 8.05194 9.3097 8.35525C9.18406 8.65857 8.99991 8.93417 8.76777 9.16631C8.53562 9.39846 8.26002 9.58261 7.95671 9.70824C7.65339 9.83388 7.3283 9.89854 7 9.89854ZM7 0.398544C5.14348 0.398544 3.36301 1.13604 2.05025 2.4488C0.737498 3.76155 0 5.54203 0 7.39854C0 12.6485 7 20.3985 7 20.3985C7 20.3985 14 12.6485 14 7.39854C14 5.54203 13.2625 3.76155 11.9497 2.4488C10.637 1.13604 8.85652 0.398544 7 0.398544Z"
+                                  fill="#484848" />
+                        </svg>
+                        @if (selectedLanguage == "az")
+                        {
+                            <a href="#"><p>Ünvanımız</p></a>
+
+                        }
+                        else if (selectedLanguage == "en")
+                        {
+                            <a href="#"> <p>Location</p></a>
+                           
+                        }
+                        else if (selectedLanguage == "ru")
+                        {
+                            <a href="#">  <p>Места</p></a>
+                           
+                        }
+
+                    </div>
+                    <div class="dropdown">
+                        <a href="#" class="styledrop" id="Dropdown" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                            <p id="selectedLanguageText">AZ</p>
+                            <img src="~/assets/img/language-flag/az.svg" class="flag-image" id="selectedLanguageFlag" alt="lang">
+                        </a>
+
+                        <ul class="dropdown-menu translate-drp" aria-labelledby="Dropdown">
+                            <li>
+                                <a value="az" class="dropdown-item" href="#" onclick="changeLanguage('AZ')" id="azerbaijaniOption">
+                                    <p value="az">AZ</p> <img class="flag-image" src="~/assets/img/language-flag/az.svg" alt="lang">
+                                </a>
+                            </li>
+                            <li>
+                                <a value="az" class="dropdown-item" href="#" onclick="changeLanguage('RU')" id="russianOption">
+                                    <p value="az">RU</p> <img class="flag-image" src="~/assets/img/language-flag/ru.svg" alt="lang">
+                                </a>
+                            </li>
+                            <li>
+                                <a value="az" class="dropdown-item" href="#" onclick="changeLanguage('EN')" id="englishOption">
+                                    <p value="az">EN</p> <img class="flag-image" src="~/assets/img/language-flag/en.svg" alt="lang">
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+
+                </div>
+            </div>
+            <nav class="navbar">
+                <div class="nav-items">
+
+                    <button class="navbar-menu-icon" id="menu-icon">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <button id="menu-close">
+                        <i class="fa-solid fa-x"></i>
+                    </button>
+
+                    @if (selectedLanguage == "az")
+                    {
+                        <ul class="navbar-nav-links" id="nav-linkss">
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Home">Ana səhifə</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="About">Haqqımızda</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Product">Məhsullar</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="HumanResources">İnsan resursları</a></li>
+                            <li class="nav-item"><a class="nav-link-fab">Media</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Contact">Əlaqə</a></li>
+                        </ul>
+                        <div class="qaynarxett">
+                            <button class="phone-call-btn"><i class="fa-solid fa-phone"></i></button>
+                            <div class="qaynarxett-texts">
+                                <p>Qaynar xətt</p>
+                                <p>891</p>
+                            </div>
+                        </div>
+
+                    }
+                    else if (selectedLanguage == "en")
+                    {
+                        <ul class="navbar-nav-links" id="nav-linkss">
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Home">Home</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="About">About us</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Product">Products</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="HumanResources">Human resources</a></li>
+                            <li class="nav-item"><a class="nav-link-fab">Media</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Contact">Contact</a></li>
+                        </ul>
+                        <div class="qaynarxett">
+                            <button class="phone-call-btn"><i class="fa-solid fa-phone"></i></button>
+                            <div class="qaynarxett-texts">
+                                <p>Call line</p>
+                                <p>891</p>
+                            </div>
+                        </div>
+                    }
+                    else if (selectedLanguage == "ru")
+                    {
+                        <ul class="navbar-nav-links" id="nav-linkss">
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Home">Главная</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="About">О нас</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Product">Продукты</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="HumanResources">Кадровые ресурсы</a></li>
+                            <li class="nav-item"><a class="nav-link-fab">Медиа</a></li>
+                            <li class="nav-item"><a class="nav-link-fab" asp-action="Index" asp-controller="Contact">Контакты</a></li>
+                        </ul>
+                        <div class="qaynarxett">
+                            <button class="phone-call-btn"><i class="fa-solid fa-phone"></i></button>
+                            <div class="qaynarxett-texts">
+                                <p>Линия поддержки</p>
+                                <p>891</p>
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </nav>
+        </div>
+    </header>
+
+
+    @RenderBody()
+
+
+    <footer>
+        <section class="footer-fab">
+            <div class="container">
+                <div class="bottom-gap">
+                    <div class="fab-flex-footer">
+                        <div class="fab-flex-left">
+                            <div class="logo-fab-footer">
+                                <a href="#"><img src="~/assets/img/logo.png" alt="img"></a>
+                            </div>
+                            @if (selectedLanguage == "az")
+                            {
+                                <div class="footer-list">
+                                    <div class="footer-list-title">
+                                        <p>Haqqımızda</p>
+                                    </div>
+                                    <div class="footer-list-items">
+                                        <a>
+                                            <p>Şirkət haqqında</p>
+                                        </a>
+                                        <a>
+                                            <p>Fəaliyyət sahələrimiz</p>
+                                        </a>
+                                        <a>
+                                            <p>Vizyon və missiyamız</p>
+                                        </a>
+                                        <a>
+                                            <p>Nəaliyyətlərimiz</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                            else if (selectedLanguage == "en")
+                            {
+                                <div class="footer-list">
+                                    <div class="footer-list-title">
+                                        <p>About us</p>
+                                    </div>
+                                    <div class="footer-list-items">
+                                        <a>
+                                            <p>Company</p>
+                                        </a>
+                                        <a>
+                                            <p>Our areas of activity</p>
+                                        </a>
+                                        <a>
+                                            <p>Vision and mission</p>
+                                        </a>
+                                        <a>
+                                            <p>Achievements </p>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                            else if (selectedLanguage == "ru")
+                            {
+                                <div class="footer-list">
+                                    <div class="footer-list-title">
+                                        <p>О нас</p>
+                                    </div>
+                                    <div class="footer-list-items">
+                                        <a>
+                                            <p>Компания</p>
+                                        </a>
+                                        <a>
+                                            <p>Наши сферы деятельности</p>
+                                        </a>
+                                        <a>
+                                            <p>Видение и миссия</p>
+                                        </a>
+                                        <a>
+                                            <p>Достижения</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+
+
+                            @await Component.InvokeAsync("My")
+
+                            <div class="footer-list">
+                                <div class="footer-list-title">
+                                    <p>Insan resursları</p>
+                                </div>
+                                <div class="footer-list-items">
+                                    <a href="#">
+                                        <p>Boya</p>
+                                    </a>
+                                    <a href="#">
+                                        <p>Nə üçün FAB Şirkətlər Qrupu?</p>
+                                    </a>
+                                    <a href="#">
+                                        <p>Vakansiyalar</p>
+                                    </a>
+                                    <a href="#">
+                                        <p>CV göndər</p>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="footer-list">
+                                @if (selectedLanguage == "az")
+                                {
+                                    <div class="footer-list-title">
+                                        <p>Media</p>
+                                    </div>
+                                    <div class="footer-list-items">
+                                        <a>
+                                            <p>Xəbərlər</p>
+                                        </a>
+                                        <a>
+                                            <p>Press-relizlər</p>
+                                        </a>
+                                        <a>
+                                            <p>Bloq</p>
+                                        </a>
+                                    </div>
+
+                                }
+                                else if (selectedLanguage == "en")
+                                {
+                                    <div class="footer-list-title">
+                                        <p>Media</p>
+                                    </div>
+                                    <div class="footer-list-items">
+                                        <a>
+                                            <p>News</p>
+                                        </a>
+                                        <a>
+                                            <p>Press releases</p>
+                                        </a>
+                                        <a>
+                                            <p>Blog</p>
+                                        </a>
+
+                                    </div>
+                                }
+                                else if (selectedLanguage == "ru")
+                                {
+                                    <div class="footer-list-title">
+                                        <p>СМИ</p>
+                                    </div>
+                                    <div class="footer-list-items">
+                                        <a>
+                                            <p>Новости</p>
+                                        </a>
+                                        <a>
+                                            <p>Пресс-релизы</p>
+                                        </a>
+                                        <a>
+                                            <p>Блог</p>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        @await Component.InvokeAsync("Social")
+
+                    </div>
+                    @if (selectedLanguage == "az")
+                    {
+                        <div class="fab-bottom-elements">
+                            <p>© Müəllif hüquqları 2023 - FAB Boya və Kimya Sənayesi</p>
+                            <p>Web səhifə Customar tərəfindən hazırlanmışdır</p>
+                        </div>
+
+                    }
+                    else if (selectedLanguage == "en")
+                    {
+                        <div class="fab-bottom-elements">
+                            <p>© Copyrights 2023 - FAB Paint & Chemical Industries</p>
+                            <p>Web page developed by Customar</p>
+                        </div>
+                    }
+                    else if (selectedLanguage == "ru")
+                    {
+                        <div class="fab-bottom-elements">
+                            <p>© Авторские права 2023 - FAB Красочная и химическая промышленность </p>
+                            <p>Сайт разработал Customar.</p>
+                        </div>
+
+                    }
+                </div>
+            </div>
+
+        </section>
+    </footer>
+
+    <!--*******************    FOOTER  END    ******************************* -->
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/5.4.5/js/swiper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.slick/1.4.1/slick.min.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js?render=reCAPTCHA_site_key"></script>
+    <!-- Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
+            integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous">
+    </script>
+    <script src="~/assets/js/glider.min.js"></script>
+    <script src="~/assets/js/script.js"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
+
+    <script>
+        // Function to set a cookie
+        function setCookie(name, value) {
+            document.cookie = name + "=" + value + "; path=/";
+        }
+
+        // Function to handle language change
+        function changeLanguage(language) {
+            // Set the selected language cookie
+            setCookie("selectedLanguage", language);
+
+            // Reload the page
+            location.reload();
+        }
+
+        // Check if there is a selected language cookie
+        const selectedLanguageCookie = document.cookie.replace(/(?:(?:^|.*;\s*)selectedLanguage\s*=\s*([^;]*).*$)|^.*$/, "$1");
+
+        // If a selected language cookie is found, set the initial language
+        if (selectedLanguageCookie) {
+            document.getElementById("selectedLanguageText").innerText = selectedLanguageCookie;
+
+            const flagImage = document.getElementById("selectedLanguageFlag");
+            flagImage.src = "assets/img/language-flag/" + selectedLanguageCookie.toLowerCase() + ".svg";
+            flagImage.alt = selectedLanguageCookie.toLowerCase();
+        }
+    </script>
+
+
+    @* <script>
+        Bu JavaScript kodu, seçilen dili tarayıcı çerezlerine kaydeder.
+        function changeLanguage(language) {
+            // Seçilen dili çereze kaydet
+            document.cookie = `selectedLanguage=${language}`;
+            updateLanguageUI(language);
+            // Sayfayı yenileme
+            location.reload();
+        }
+
+        
+
+        // Sayfa yüklendiğinde çerezleri kontrol et ve dil seçeneğini ayarla
+        window.onload = function () {
+            const cookies = document.cookie.split(';');
+            let selectedLanguage = 'az'; // Varsayılan dil: az
+            for (const cookie of cookies) {
+                const [name, value] = cookie.trim().split('=');
+                if (name === 'selectedLanguage') {
+                    selectedLanguage = value;
+                    break; // İlk dil bulunduğunda döngüyü kır
+                }
+            }
+
+            // Dil seçeneğini ayarla
+            updateLanguageUI(selectedLanguage);
+
+            // Dropdown menüsünün seçilen değerini güncelle
+            const dropdown = document.getElementById('languageDropdown');
+            dropdown.value = selectedLanguage;
+        }
+
+
+        function updateLanguageUI(language) {
+            const selectedLanguageText = document.getElementById('selectedLanguageText');
+            const selectedLanguageFlag = document.getElementById('selectedLanguageFlag');
+
+            if (language === 'az') {
+                selectedLanguageText.textContent = 'AZ';
+                selectedLanguageFlag.src = '~/assets/img/language-flag/az.svg';
+            } else if (language === 'ru') {
+                selectedLanguageText.textContent = 'RU';
+                selectedLanguageFlag.src = '~/assets/img/language-flag/ru.svg';
+            } else if (language === 'en') {
+                selectedLanguageText.textContent = 'EN';
+                selectedLanguageFlag.src = '~/assets/img/language-flag/eng.svg';
+            }
+        }
+    </script> *@
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
+
+
+
+

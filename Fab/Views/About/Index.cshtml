@@ -1,0 +1,149 @@
+﻿@model Fab.ViewModels.AboutPageVM
+
+<main>
+    <section id="head_bg" style="background-image: url(./assets/img/insan.resurslari/bg-other.png);">
+        <div class="container">
+            <div class="ir-title">
+
+                @if (Model.LangCode == "az")
+                {
+                    <div class="ir-title-links">
+                        <a>Ana səhifə</a>
+                        <img src="./assets/img/ir.svg" alt="svg">
+                        <a>Şirkət Haqqında</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Şirkət Haqqında</p>
+                    </div>
+                }
+                else if (Model.LangCode == "en")
+                {
+                    <div class="ir-title-links">
+                        <a>Home Page</a>
+                        <img src="./assets/img/ir.svg" alt="svg">
+                        <a>About Company</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>About Company</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="ir-title-links">
+                        <a>Главная</a>
+                        <img src="./assets/img/ir.svg" alt="svg">
+                        <a>О компании</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>О компании</p>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+
+    <section id="about-company">
+        <div class="container">
+            <div class="about-company-flex">
+                <div class="about-company-choose">
+                    <ul class="nav nav-tabs mb-3 about-company-tabs" id="ex1" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link bg-red active" id="about-tab-1" data-bs-toggle="tab"
+                               href="#about-tab-1-content" role="tab" aria-controls="about-tab-1-content"
+                               aria-selected="true">@Model.Abouts.FirstOrDefault().Translates.FirstOrDefault().Header</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link bg-red" id="about-tab-2" data-bs-toggle="tab" href="#about-tab-2-content"
+                               role="tab" aria-controls="about-tab-2-content" aria-selected="false">
+                                @Model.Activites.FirstOrDefault().Translates.FirstOrDefault().Header
+                            </a>
+                        </li>
+                        <li class class="nav-item" role="presentation">
+                            <a class="nav-link bg-red" id="about-tab-3" data-bs-toggle="tab" href="#about-tab-3-content"
+                               role="tab" aria-controls="about-tab-3-content" aria-selected="false">
+                                @Model.Visions.FirstOrDefault().Translates.FirstOrDefault().Header
+                            </a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link bg-red" id="about-tab-4" data-bs-toggle="tab" href="#about-tab-4-content"
+                               role="tab" aria-controls="about-tab-4-content"
+                               aria-selected="false">@Model.Achivements.FirstOrDefault().Translates.FirstOrDefault().Header</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="about-company-title">
+                    <div class="tab-content" id="ex1-content" style="padding: 0;">
+                        <div class="tab-pane fade show active" id="about-tab-1-content" role="tabpanel"
+                             aria-labelledby="about-tab-1">
+                            <div class="about-gap-tab-content">
+                                <div class="about-company-title">
+                                    <p>@Model.Abouts.FirstOrDefault().Translates.FirstOrDefault().Header</p>
+                                </div>
+                                <div class="about-company-description">
+                                    <p>
+                                        @Model.Abouts.FirstOrDefault().Translates.FirstOrDefault().Desc
+                                    </p>
+                                </div>
+                                <div class="about-company-image">
+                                    <img src="~/ModelImages/AboutImages/@Model.Abouts.FirstOrDefault().Image" alt="about png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="about-tab-2-content" role="tabpanel"
+                             aria-labelledby="about-tab-2">
+                            <div class="about-gap-tab-content">
+                                <div class="about-company-title">
+                                    <p>
+                                        @Model.Activites.FirstOrDefault().Translates.FirstOrDefault().Header
+                                    </p>
+                                </div>
+                                <div class="about-company-description">
+                                    <p>
+                                        @Model.Activites.FirstOrDefault().Translates.FirstOrDefault().Desc
+                                    </p>
+                                </div>
+                                <div class="about-company-image">
+                                    <img src="~/ModelImages/ActivityImages/@Model.Activites.FirstOrDefault().Image" alt="about png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="about-tab-3-content" role="tabpanel"
+                             aria-labelledby="about-tab-3">
+                            <div class="about-gap-tab-content">
+                                <div class="about-company-title">
+                                    <p>@Model.Activites.FirstOrDefault().Translates.FirstOrDefault().Header</p>
+                                </div>
+                                <div class="about-company-description">
+                                    <p>
+                                        @Model.Visions.FirstOrDefault().Translates.FirstOrDefault().Desc
+                                    </p>
+                                </div>
+                                <div class="about-company-image">
+                                    <img src="~/ModelImages/VisionImages/@Model.Visions.FirstOrDefault().Image" alt="about png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="about-tab-4-content" role="tabpanel"
+                             aria-labelledby="about-tab-4">
+                            <div class="about-gap-tab-content">
+                                <div class="about-company-title">
+                                    <p>@Model.Achivements.FirstOrDefault().Translates.FirstOrDefault().Header</p>
+                                </div>
+                                <div class="about-company-description">
+                                    <p>
+                                        @Model.Achivements.FirstOrDefault().Translates.FirstOrDefault().Desc
+                                    </p>
+                                </div>
+                                <div class="about-company-image">
+                                    <img src="~/ModelImages/AchivementImages/@Model.Achivements.FirstOrDefault().Image" alt="about png">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</main>

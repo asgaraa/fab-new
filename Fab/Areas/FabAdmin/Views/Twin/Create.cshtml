@@ -1,0 +1,182 @@
+﻿@model List<FabAdmin.ViewModels.TwinFolder.TwinVM>;
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="entert-form" style=" padding-left: 50px;">
+
+    <h1 style="margin-bottom: 2rem;" class="text-change-size">Create Twin</h1>
+
+
+    <form method="post" enctype="multipart/form-data" asp-action="Create" asp-controller="Twin">
+
+        <div class="form-group  mt-2 mb-4 my-5">
+            <div class="image-uploaddd">
+                <label class="labelstyle addimages-lbl" for="iconfile" style="display:flex; flex-direction:column; gap:2rem;">
+                    <div class="file-input" style="border:none;">
+                    <h3 class="mt-1 addlogoclass" style="color: black;">
+                           <span>+</span>  Add WideImage
+                        <input type="file" required id="ImageFile" name="ImageFile" class="form-control-file addhoverinput " onchange="CreateImgPrewid(this)" accept=".jpg,.png" />
+                    </h3>
+                    <p>
+                        <img id="ImgPreviewbannerwid" style="width:50px; height:50px; border-style:none; border-color:white; margin-top:10px;" src="~/admin/assets/images/seabreezfotoicone.png" />
+                    </p>
+                    </div>
+                    <div class="file-input" style="border:none;">
+                    <h3 class="mt-1 addlogoclass" style="color: black;">
+                            <span>+</span>  Add img
+                        <input type="file" required id="ImageFile" name="WideImageFile" class="form-control-file addhoverinput " onchange="CreateImgPre(this)" accept=".jpg,.png" />
+                    </h3>
+         
+
+                <p>
+                    <img id="ImgPreviewbanner" style="width:50px; height:50px; border-style:none; border-color:white;" src="~/admin/assets/images/seabreezfotoicone.png" />
+                </p>
+                <span style="color:gray;">.svg file, max-300kbt</span>
+                    </div>
+                </label>
+            </div>
+        </div>
+
+        @*/////////////////////////////////////////////////////////////////////////////////////*@
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].LangCode">Language Code</label>
+            <input type="text" style="width:5%;" readonly id="translates[0].LangCode" name="Translates[0].LangCode" class="form-control addhoverinput" value="az" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].WideDesc">WideDesc-az</label>
+            <textarea id="translates[0].WideDesc" name="Translates[0].WideDesc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Desc">Desc-az</label>
+            <textarea id="translates[0].Desc" name="Translates[0].Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        
+
+
+        @*////////////////////////////////////////////////////////////////////////////////////*@
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].LangCode">Language Code</label>
+            <input type="text" style="width:5%;" readonly id="translates[1].LangCode" name="Translates[1].LangCode" class="form-control addhoverinput" value="en" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].WideDesc">WideDesc-en</label>
+            <textarea id="translates[1].WideDesc" name="Translates[1].WideDesc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Desc">Desc-en</label>
+            <textarea id="translates[1].Desc" name="Translates[1].Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        
+
+        @*//////////////////////////////////////////////////////////////////////////////////////*@
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].LangCode">Language Code</label>
+            <input type="text" style="width:5%;" readonly id="translates[2].LangCode" name="Translates[2].LangCode" class="form-control addhoverinput" value="ru" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].WideDesc">WideDesc-ru</label>
+            <textarea id="translates[2].WideDesc" name="Translates[2].WideDesc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Desc">Desc-ru</label>
+            <textarea id="translates[2].Desc" name="Translates[2].Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        
+
+        @*////////////////////////////////////////////////////////////////////////////////////////*@
+
+
+        <button type="submit"  class="btn createbuttonn">Create</button>
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    @*////////////////////////////////////////////////// image preview unchange*@
+    <script>
+        function CreateImgPre(input) {
+            if (input.files[0]) {
+                var uploadimg = new FileReader();
+                uploadimg.onload = function (displayimg) {
+                    $("#ImgPreviewbanner").attr('src', displayimg.target.result);
+                }
+                uploadimg.readAsDataURL(input.files[0]);
+            }
+        }
+
+        function CreateImgPrewid(input) {
+            if (input.files[0]) {
+                var uploadimg = new FileReader();
+                uploadimg.onload = function (displayimg) {
+                    $("#ImgPreviewbannerwid").attr('src', displayimg.target.result);
+                }
+                uploadimg.readAsDataURL(input.files[0]);
+            }
+        }
+
+        //const outputaz = document.querySelector("#output1");
+
+        //const inputaz = document.querySelector(".imagepreview1");
+        //let imagesArrayaz = [];
+
+        //function displayImagesone() {
+        //    let images = ""
+        //    imagesArrayaz.forEach((image, index) => {
+        //        images += `<div class="image" style="display:flex;" >
+        //                                                        <img src="${URL.createObjectURL(image)}" alt="image" style="width:100px; height:100px; display:block;">
+        //                                                    <span onclick="deleteImageaz(${index})" style="cursor:pointer;">&times;</span>
+        //                                                  </div>`
+        //    })
+        //    outputaz.innerHTML = images
+
+
+        //}
+        //function deleteImageaz(index) {
+        //    imagesArrayaz.splice(index, 1)
+        //    inputaz.value = ""; // Clear the input element's value
+        //    updateInputFilesaz();
+        //    displayImagesone();
+
+        //}
+
+        //function updateInputFilesaz() {
+        //    const newFiles = new DataTransfer();
+        //    imagesArrayaz.forEach((image) => {
+        //        newFiles.items.add(image);
+        //    });
+        //    inputaz.files = newFiles.files;
+        //}
+
+        //inputaz.addEventListener("change", () => {
+        //    //const files = input.files
+        //    //for (let i = 0; i < files.length; i++) {
+        //    //    imagesArray.push(files[i])
+        //    //}
+        //    const filesaz = Array.from(inputaz.files);
+        //    imagesArrayaz = imagesArrayaz.concat(filesaz);
+
+        //    displayImagesone();
+        //})
+                                ///////////////// end of it
+    </script>
+

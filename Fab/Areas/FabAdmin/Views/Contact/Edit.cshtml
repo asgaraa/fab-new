@@ -1,0 +1,132 @@
+﻿@model Fab.Models.ContactFolder.ContactInformations;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="entert-form" style=" padding-top: 70px ; padding-left: 50px;">
+
+    <h1>Edit Contact Information</h1>
+
+
+    <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="Contact">
+
+
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="LocationLink">LocationLink</label>
+            <textarea id="Link" name="LocationLink" asp-for="LocationLink" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Tel1">Tel1</label>
+            <textarea id="Tel1" name="Tel1" asp-for="Tel1" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Tel2">Tel2</label>
+            <textarea id="Tel2" name="Tel2" asp-for="Tel2" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Tel3">Tel3</label>
+            <textarea id="Tel3" name="Tel3" asp-for="Tel3" class="form-control addhoverinput" required></textarea>
+        </div>
+
+       @*  <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Fax1">Fax1</label>
+            <textarea id="Fax1" name="Fax1" asp-for="Fax1" class="form-control addhoverinput" required></textarea>
+        </div> *@
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="SocialLink1">SocialLink1</label>
+            <textarea id="SocialLink1" name="SocialLink1" asp-for="SocialLink1" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="SocialLink2">SocialLink2</label>
+            <textarea id="SocialLink2" name="SocialLink2" asp-for="SocialLink2" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="SocialLink3">SocialLink3</label>
+            <textarea id="SocialLink3" name="SocialLink3" asp-for="SocialLink3" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="SocialLink4">SocialLink4</label>
+            <textarea id="SocialLink4" name="SocialLink4" asp-for="SocialLink4" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Email">Email</label>
+            <textarea id="Email" name="Email" asp-for="Email" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Location">Location</label>
+            <textarea id="Location" name="Location" asp-for="Location" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+
+
+
+
+        <button type="submit" style="color:green;" class="btn createbuttonn">Edit</button>
+
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    @*////////////////////////////////////////////////// image preview unchange*@
+    <script>
+        const outputaz = document.querySelector("#output1");
+
+        const inputaz = document.querySelector(".imagepreview1");
+        let imagesArrayaz = [];
+
+        function displayImagesone() {
+            let images = ""
+            imagesArrayaz.forEach((image, index) => {
+                images += `<div class="image" style="display:flex;" >
+                                                                        <img src="${URL.createObjectURL(image)}" alt="image" style="width:100px; height:100px; display:block;">
+                                                                    <span onclick="deleteImageaz(${index})" style="cursor:pointer;">&times;</span>
+                                                                  </div>`
+            })
+            outputaz.innerHTML = images
+
+
+        }
+        function deleteImageaz(index) {
+            imagesArrayaz.splice(index, 1)
+            inputaz.value = ""; // Clear the input element's value
+            updateInputFilesaz();
+            displayImagesone();
+
+        }
+
+        function updateInputFilesaz() {
+            const newFiles = new DataTransfer();
+            imagesArrayaz.forEach((image) => {
+                newFiles.items.add(image);
+            });
+            inputaz.files = newFiles.files;
+        }
+
+        inputaz.addEventListener("change", () => {
+            //const files = input.files
+            //for (let i = 0; i < files.length; i++) {
+            //    imagesArray.push(files[i])
+            //}
+            const filesaz = Array.from(inputaz.files);
+            imagesArrayaz = imagesArrayaz.concat(filesaz);
+
+            displayImagesone();
+        })
+                                        ///////////////// end of it
+    </script>
+

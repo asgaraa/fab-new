@@ -1,0 +1,171 @@
+﻿@model Fab.Models.CorporateFolder.Corporate;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="entert-form" style="padding-left: 50px;">
+
+    <h1 style="margin-bottom: 2rem;" class="text-change-size">Edit Corporate</h1>
+
+
+    <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="Corporate">
+
+        <div class="form-group  mt-2 mb-4 my-5">
+            <div class="image-uploaddd">
+                <label class="labelstyle addimages-lbl" style="display:flex; flex-direction:column; gap:2rem;" for="iconfile">
+                    <div class="file-input" style="border:none;">
+
+                    <h3 class="mt-1 addlogoclass" style="color: black;">
+                        <span>+</span>  Add img
+                        <input type="file" id="ImageFile" name="ImageFile" class="form-control-file addhoverinput imagepreview1" onchange="CreateImgPre(this)" accept=".jpg,.png" />
+                    </h3>
+                    <p>
+                            <img id="ImgPreviewbanner" style="width:50px; height:50px; border-style:none; border-color:white; margin-top:10px;" src="~/ModelImages/CorporateImages/@Model.Image" />
+                    </p>
+                    </div>
+                     <div class="file-input" style="border:none;">
+                    @*-------------------------------------------*@
+                    <h3 class="mt-1 addlogoclass" style="color: black;">
+                          <span>+</span>  Add FrontImage
+                        <input type="file" id="FrontImageFile" name="FrontImageFile" class="form-control-file addhoverinput imagepreview1" onchange="CreateImgPre(this)" accept=".jpg,.png" />
+                    </h3>
+                    <p>
+                            <img id="ImgPreviewbanner" style="width:50px; height:50px; border-style:none; border-color:white; margin-top:10px;" src="~/ModelImages/CorporateImages/@Model.FrontImage" />
+                    </p>
+                    </div>
+                    @*-------------------------------------------*@
+                    <div class="file-input" style="border:none;">
+
+                    <h3 class="mt-1 addlogoclass" style="color: black;">
+                         <span>+</span>  Add BackgroundImage
+
+                        <input type="file" id="BackgroundImageFile" name="BackgroundImageFile" class="form-control-file addhoverinput imagepreview1" onchange="CreateImgPre(this)" accept=".jpg,.png" />
+                    </h3>
+                    <p>
+                            <img id="ImgPreviewbanner" style="width:50px; height:50px; border-style:none; border-color:white; margin-top:10px;" src="~/ModelImages/CorporateImages/@Model.BackgroundImage" />
+                    </p>
+                    </div>
+
+                </label>
+
+                <output style="display:flex;" id="output1"></output>
+                <span style="color:gray;">.svg file, max-300kbt</span>
+            </div>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].LangCode">Language Code</label>
+            <input type="text" style="width:5%;" readonly id="translates[0].LangCode" name="Translates[0].LangCode" class="form-control addhoverinput" value="az" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Head">Head-az</label>
+            <textarea id="translates[0].Header" name="Translates[0].Header" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Header" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Desc">Desc-az</label>
+            <textarea id="translates[0].Desc" name="Translates[0].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].LangCode">Language Code</label>
+            <input type="text" style="width:5%;" readonly id="translates[1].LangCode" name="Translates[1].LangCode" class="form-control addhoverinput" value="en" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Header">Head-en</label>
+            <textarea id="translates[1].Header" name="Translates[1].Header" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Header" class="form-control addhoverinput" required></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Desc">Desc-en</label>
+            <textarea id="translates[1].Desc" name="Translates[1].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].LangCode">Language Code</label>
+            <input type="text" style="width:5%;" readonly id="translates[2].LangCode" name="Translates[2].LangCode" class="form-control addhoverinput" value="ru" required>
+
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Header">Head-ru</label>
+            <textarea id="translates[2].Header" name="Translates[2].Header" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Header" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Desc">Desc-ru</label>
+            <textarea id="translates[2].Desc" name="Translates[2].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+
+
+
+
+        <button type="submit" style="color:green;" class="btn createbuttonn editbutton">Edit</button>
+
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    @*////////////////////////////////////////////////// image preview unchange*@
+    <script>
+        const outputaz = document.querySelector("#output1");
+
+        const inputaz = document.querySelector(".imagepreview1");
+        let imagesArrayaz = [];
+
+        function displayImagesone() {
+            let images = ""
+            imagesArrayaz.forEach((image, index) => {
+                images += `<div class="image" style="display:flex;" >
+                                                                <img src="${URL.createObjectURL(image)}" alt="image" style="width:100px; height:100px; display:block;">
+                                                            <span onclick="deleteImageaz(${index})" style="cursor:pointer;">&times;</span>
+                                                          </div>`
+            })
+            outputaz.innerHTML = images
+
+
+        }
+        function deleteImageaz(index) {
+            imagesArrayaz.splice(index, 1)
+            inputaz.value = ""; // Clear the input element's value
+            updateInputFilesaz();
+            displayImagesone();
+
+        }
+
+        function updateInputFilesaz() {
+            const newFiles = new DataTransfer();
+            imagesArrayaz.forEach((image) => {
+                newFiles.items.add(image);
+            });
+            inputaz.files = newFiles.files;
+        }
+
+        inputaz.addEventListener("change", () => {
+            //const files = input.files
+            //for (let i = 0; i < files.length; i++) {
+            //    imagesArray.push(files[i])
+            //}
+            const filesaz = Array.from(inputaz.files);
+            imagesArrayaz = imagesArrayaz.concat(filesaz);
+
+            displayImagesone();
+        })
+                                ///////////////// end of it
+    </script>
+

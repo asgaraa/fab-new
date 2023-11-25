@@ -1,0 +1,33 @@
+﻿@model List<Fab.Models.BlogsFolder.Blog>
+
+
+<table>
+    <tr>
+        <th>
+            Header
+        </th>
+        <th>
+            Desc
+        </th>
+    </tr>
+
+    
+        @foreach (var translate in Model.Where(m => m.IsDeleted == false))
+        {
+            @foreach (var item in translate.Translates.Where(m => m.LangCode.StartsWith("e")))
+            {
+            <tr>
+                <td>
+                    @item.Header
+                </td>
+                <td>
+                    @item.Desc
+                </td>
+            </tr>
+            }
+        }
+        
+    
+
+
+</table>    

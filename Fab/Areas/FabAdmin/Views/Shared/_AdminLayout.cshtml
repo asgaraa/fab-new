@@ -1,0 +1,125 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="description"
+          content="Responsive HTML Admin Dashboard Template based on Bootstrap 5" />
+    <meta name="author" content="NobleUI" />
+    <meta name="keywords"
+          content="nobleui, bootstrap, bootstrap 5, bootstrap5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web" />
+
+    <title>Fab Admin Template</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap"
+          rel="stylesheet" />
+    <!-- End fonts -->
+    <!-- core:css -->
+    <link rel="stylesheet" href="~/css/" href="~/admin/assets/vendors/core/core.css"  />
+    <!-- endinject -->
+    <!-- Plugin css for this page -->
+    <link rel="stylesheet"
+          href="~/admin/assets/vendors/flatpickr/flatpickr.min.css" />
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet"
+          href="~/admin/assets/fonts/feather-font/css/iconfont.css" />
+    <link rel="stylesheet"
+          href="~/admin/assets/vendors/flag-icon-css/css/flag-icon.min.css" />
+    <!-- endinject -->
+    <!-- Layout styles -->
+    <link rel="stylesheet" href="~/admin/assets/css/demo1/style.css" />
+    <!-- End layout styles -->
+
+    <link rel="shortcut icon" href="~/admin/assets/images/favicon.png" />
+</head>
+<body>
+    <div class="main-wrapper">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <a asp-controller="dashboard" asp-action="index" class="sidebar-brand" style="margin-top: 2rem;">
+                        <img src="~/admin/fablogo/FAB YENI LOGO 1.svg"/>
+                </a>
+            </div>
+            <div class="sidebar-body">
+                <ul class="nav" style="padding: 70px 15px 50px 25px">
+                    
+                    <li class="nav-item">
+                        <a asp-controller="dashboard" asp-action="index"
+                           class="nav-link"
+                           style="padding: 1.5rem 0.4rem">
+                            <span class="link-titlee">
+                                <svg width="24"
+                                     height="24"
+                                     viewBox="0 0 24 24"
+                                     fill="none"
+                                     xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.5776 12.8527L20.5486 13.1282L20.7668 13.2989L22.97 15.0216C22.9704 15.022 22.9708 15.0223 22.9712 15.0226C23.1857 15.1939 23.2511 15.4975 23.1125 15.7557L20.8118 19.74L20.8117 19.7399L20.8058 19.7506C20.715 19.9172 20.528 20.032 20.3198 20.032C20.2487 20.032 20.1797 20.0192 20.1111 19.9928C20.1104 19.9925 20.1097 19.9922 20.109 19.992L17.5041 18.946L17.2503 18.8441L17.0276 19.0028C16.5292 19.358 16.0432 19.6402 15.5517 19.8624L15.3018 19.9755L15.2628 20.2471L14.8659 23.0171L14.8658 23.0171L14.8646 23.0265C14.8329 23.2819 14.5988 23.5 14.3018 23.5H9.70182C9.40712 23.5 9.17122 23.2852 9.13806 23.0167L9.13815 23.0167L9.13676 23.007L8.74076 20.247L8.70175 19.9751L8.45138 19.8622C7.94214 19.6326 7.44814 19.3457 6.97621 19.0054L6.75295 18.8445L6.49754 18.947L3.90232 19.9889C3.59175 20.1 3.31993 19.9716 3.19227 19.7387L3.19238 19.7386L3.18671 19.7288L0.89614 15.7658C0.750027 15.4934 0.820661 15.191 1.0293 15.0247C1.02967 15.0245 1.03003 15.0242 1.0304 15.0239L3.23575 13.3L3.45362 13.1297L3.42516 12.8546C3.39153 12.5295 3.37583 12.2541 3.37583 12C3.37583 11.7459 3.39149 11.4705 3.42514 11.1467L3.45373 10.8716L3.23581 10.7012L1.03235 8.97814C1.03199 8.97786 1.03163 8.97757 1.03127 8.97728C0.807357 8.79898 0.749791 8.48021 0.892139 8.23962L0.892162 8.23963L0.894707 8.23523L3.19168 4.26121L3.19181 4.26129L3.19785 4.25021C3.31706 4.03141 3.63223 3.9082 3.89306 4.00743L6.49953 5.05399L6.75318 5.15584L6.97584 4.9973C7.47359 4.6429 7.96038 4.35996 8.45116 4.13891L8.7018 4.02602L8.74078 3.75392L9.13776 0.982908L9.13785 0.98292L9.13901 0.973574C9.17079 0.717467 9.40448 0.5 9.70083 0.5H14.3008C14.5953 0.5 14.8316 0.715687 14.8646 0.98158L14.8645 0.981591L14.8659 0.991003L15.2619 3.75199L15.3009 4.02436L15.5519 4.1371C16.0606 4.36559 16.5544 4.65232 17.0273 4.99347L17.2506 5.15457L17.5061 5.05199L20.1017 4.00999C20.4084 3.89972 20.6841 4.0277 20.8111 4.25992L20.811 4.25999L20.8169 4.2702L23.1074 8.23308C23.2536 8.50646 23.182 8.80871 22.9737 8.97401C22.9734 8.97425 22.9731 8.97449 22.9728 8.97473L20.7669 10.6991L20.5476 10.8705L20.5778 11.1471C20.6053 11.4004 20.6268 11.6926 20.6268 11.999C20.6268 12.3045 20.6045 12.5968 20.5776 12.8527ZM7.50082 12C7.50082 14.4821 9.51867 16.5 12.0008 16.5C14.4829 16.5 16.5008 14.4821 16.5008 12C16.5008 9.51787 14.4829 7.50002 12.0008 7.50002C9.51867 7.50002 7.50082 9.51787 7.50082 12Z"
+                                          stroke="#8F9297" />
+                                </svg>
+                                Admin Panel
+                            </span>
+                        </a>
+                    </li>
+                   
+                </ul>
+                <div>
+                    <div class="sidebar-logout" style="position: absolute; bottom: 2rem;">
+                        <a asp-action="Logout" asp-controller="Account" class="text-muted mb-1 mb-md-0 log-out" >
+                            <svg width="24"
+                                 height="24"
+                                 viewBox="0 0 24 24"
+                                 fill="none"
+                                 xmlns="http://www.w3.org/2000/svg">
+                                <g clip-path="url(#clip0_239_2266)">
+                                    <path d="M11.9602 21.9668H2.99002C2.43984 21.9668 1.99336 21.5203 1.99336 20.9702V3.02992C1.99336 2.47975 2.43989 2.03326 2.99002 2.03326H11.9602C12.5113 2.03326 12.9568 1.58776 12.9568 1.03661C12.9568 0.48545 12.5113 0.039856 11.9602 0.039856H2.99002C1.34152 0.039856 0 1.38142 0 3.02992V20.9701C0 22.6186 1.34152 23.9601 2.99002 23.9601H11.9602C12.5113 23.9601 12.9568 23.5146 12.9568 22.9635C12.9568 22.4123 12.5113 21.9668 11.9602 21.9668Z"
+                                          fill="#FF7070" />
+                                    <path d="M23.703 11.2904L17.6432 5.31028C17.2525 4.92356 16.6206 4.92858 16.2339 5.32027C15.8472 5.71196 15.8512 6.34285 16.2439 6.72956L20.5744 11.0033H8.97011C8.41895 11.0033 7.97345 11.4488 7.97345 12C7.97345 12.5511 8.41895 12.9967 8.97011 12.9967H20.5744L16.2439 17.2704C15.8512 17.6571 15.8482 18.288 16.2339 18.6797C16.4292 18.877 16.6864 18.9767 16.9435 18.9767C17.1967 18.9767 17.4498 18.881 17.6432 18.6896L23.703 12.7095C23.8924 12.5222 24 12.267 24 11.9999C24 11.7329 23.8934 11.4788 23.703 11.2904Z"
+                                          fill="#FF7070" />
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_239_2266">
+                                        <rect width="24" height="24" fill="white" />
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                            Log out
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </nav>
+
+
+
+    @*/////////////////////////////////////////////////*@
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    @*/////////////////////////////////////////////////*@
+
+
+
+        <footer class="footer d-flex flex-column flex-md-row align-items-center justify-content-between px-4 py-3 border-top small">
+        </footer>
+    </div>
+    </div>
+    <script src="~/admin/assets/vendors/core/core.js"></script>
+    <script src="~/admin/assets/vendors/flatpickr/flatpickr.min.js"></script>
+    <script src="~/admin/assets/vendors/apexcharts/apexcharts.min.js"></script>
+    <script src="~/admin/assets/vendors/feather-icons/feather.min.js"></script>
+    <script src="~/admin/assets/js/template.js"></script>
+    <script src="~/admin/assets/js/dashboard-light.js"></script>
+    @RenderSection("Scripts", required:false)
+</body>
+</html>

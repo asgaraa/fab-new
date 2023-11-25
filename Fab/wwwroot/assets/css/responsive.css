@@ -1,0 +1,1305 @@
+/* Mobile */
+@media screen and (max-width: 480px) {
+  .mehsulun-xususiyyetleri img {
+    width: 18px;
+    height: 24px;
+}
+  .mehsullar-cards_4 {
+    grid-template-columns: 1fr;
+  }
+  .mehs-detail-title p {
+    font-size: 27px;
+  }
+  .mehsulun-xususiyyetleri p {
+    font-size: 12px;
+  }
+  .pdf-download-file a {
+    font-size: 12px;
+  }
+  .diger-mehsullar-title p {
+    font-size: 24px;
+  }
+  .container-space {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+  .mehsullar-acc-button::after {
+    top: 10px;
+  }
+  .mehsullar-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .mehsulllar_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+  .mehsullar-card-texts{
+    gap: 0.5rem;
+  }
+  .mehsullar-card-texts p:nth-child(1),
+  .mehsullar-card-texts p:nth-child(2) {
+    font-size: 16px;
+    line-height: 22px;
+  }
+  .mehsullar-acc-button-2 {
+    font-size: 14px !important;
+  }
+  .mehsullar-acc-button {
+    font-size: 14px !important;
+  }
+  .sendbutton button{
+    font-size: 14px;
+    padding: 1px 32px;
+  }
+
+  .cf-email-text a, .cf-address-text {
+    font-size: 14.5px;
+  }
+  .cf-numbers-texts p {
+    font-size: 14.5px;
+  }
+  .contact-fab-flex {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+
+  .about-company-title p {
+    font-size: 22px;
+  }
+  .about-company-description p {
+    font-size: 14px;
+  }
+  .about-company-flex {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .other-news-card {
+    flex-direction: column;
+    padding: 1rem 0rem;
+  }
+  .other-news-card-texts-p_1 {
+    font-size: 18px;
+  }
+  .other-news-card-texts {
+    justify-content: center;
+  }
+  .other-news-card-img img {
+    width: 100%;
+    height: auto;
+  }
+  .detail-left-title p {
+    font-size: 20px;
+  }
+  .media-detail-img img{
+    max-width: 100%;
+    height: auto;
+  }
+  .media-detail-flex {
+    display: grid;
+    grid-template-columns:  1fr;
+  }
+  .media-date-box span {
+    font-size: 14px;
+  }
+  .media-title-box {
+    font-size: 16px;
+  }
+  .media-tab-cards {
+   display: grid;
+   grid-template-columns: 1fr;
+  }
+  .media-tab-card {
+    width: 100%;
+  }
+  #insan_resurslari {
+    background-position: center;
+  }
+  #bizimle_calis {
+    background-position: right;
+  }
+  .bizimle_calis_flex {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .custom-file-upload {
+    padding: 4px 14px;
+    font-size: 11px;
+  }
+  .bizimle_calis-texts p:nth-child(2) {
+    font-size: 14px;
+  }
+  .btn-fab-submit {
+    font-size: 12px;
+  }
+  .bizimle_calis-texts p:nth-child(1) {
+    font-size: 26px;
+  }
+  .vakansiyalar-boxs{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .fab-info-box {
+    justify-content: start;
+  }
+.fab-info-box-img{
+  text-align: left;
+}
+
+.fab-info-box-img img {
+  width: 100%;
+  height: auto;
+  max-width: 85%;
+}
+.fab-info-boxs {
+  flex-direction: column;
+}
+.ir-title-text p,
+.why_fab_question p,
+.vakansiyalar-title p {
+  font-size: 18px;
+}
+
+.fab-info-box-texts p:nth-child(2) {
+  font-size: 12px;
+}
+.fab-info-box-texts p:nth-child(1) {
+  font-size: 16px;
+}
+  .orange-tab{
+    padding: 0;
+  }
+ 
+  .over-elements-slider{
+    gap: 0rem;
+  }
+  .description-slider-fab button{
+    margin-top: 0.5rem !important;
+  }
+  .korporativ-img::before {
+    right: 44px;
+}
+
+  .int-left-text-title p {
+    font-size: 32px;
+  }
+
+  .kp-back-img {
+    max-width: 53%;
+  }
+ 
+  .bg-img-k img {
+      height: 66vh !important;
+  }
+
+  .betweenitems-korporativ {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .img-interyer1 {
+    width: 100%;
+  }
+
+  .int-right-text {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0rem;
+  }
+
+  .middle-int-text {
+    margin-bottom: 0;
+    margin-left: 0;
+  }
+  .int-flex-items {
+    flex-direction: column;
+  }
+  .middle-int-text p {
+    font-size: 16px;
+  }
+  .int-over-text p {
+    font-size: 16px;
+ }
+  .media-prev-next-btn{
+    text-align: right !important;
+    justify-content: end !important;
+  }
+  .media-nav-right-item {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between !important;
+    align-items: start;
+   }
+  .media-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.flex-media-items {
+  display: flex;
+  text-align: left;
+  align-items: start;
+  flex-direction: column;
+  gap: 2rem;
+  justify-content: space-between;
+}
+  .element a {
+    width: 98%;
+  }
+  #Category {
+    padding: 10rem 0rem;
+  }
+  .absolute-search-nav {
+    bottom: -93px;
+  }
+  .flex-search-items {
+    padding: 1rem 2rem;
+  }
+  .flex-category {
+    gap: 2rem;
+  }
+  .ctg-btn button {
+    font-size: 14px;
+    padding: 7px 22px;
+  }
+  .text-ctg p {
+    font-size: 14px;
+  }
+  /* .ctg-btn {
+    width: 100%;
+  } */
+  .flex-category {
+    flex-direction: column;
+  }
+  .flex-search-items {
+    gap: 1rem;
+    padding: 1rem 1rem;
+  }
+  #custom-search::placeholder {
+    font-size: 12px;
+  }
+  .custom-search-button {
+    padding: 3px 1.9rem;
+    font-size: 14px;
+  }
+  #custom-search {
+    padding: 0;
+  }
+  .flex-search-items {
+    flex-direction: column;
+  }
+  .custom-dropdown-button {
+    padding: 0;
+  }
+  #selected-item {
+    font-size: 13px;
+    padding: 4px;
+  }
+  .question-search {
+    font-size: 14px;
+  }
+  .search-fab {
+    width: 100%;
+    justify-content: space-between;
+    border: none;
+  }
+  .title-slider-fab p {
+    font-size: 14px;
+  }
+  .over-elements-slider {
+    top: 0;
+  }
+  .description-slider-fab p {
+    font-size: 8px;
+  }
+
+  .description-slider-fab {
+    margin: 0 !important;
+  }
+
+  .more-btn {
+    padding: 0px 9px;
+    font-size: 10px;
+    line-height: 33px;
+    margin-top: 0.5rem;
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    left: 5% !important;
+    width: auto !important;
+    padding: 0;
+    bottom: 14% !important;
+  }
+
+  .progressbar-sliderr {
+    width: 60px;
+    height: 2px;
+  }
+
+  .swiper-pagination-current {
+    font-size: 15px;
+  }
+
+  .swiper-pagination-total {
+    font-size: 10px;
+  }
+
+  .description-slider-fab {
+    width: 50%;
+  }
+
+  .responsive-img {
+    height: 30vh;
+  }
+}
+
+/* Tablet */
+@media screen and (min-width: 481px) and (max-width: 767px) {
+  .mehsullar-cards_4 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .mehs-detail-title p {
+    font-size: 27px;
+  }
+  .mehsulun-xususiyyetleri p {
+    font-size: 16px;
+  }
+  .pdf-download-file a {
+    font-size: 16px;
+  }
+  .diger-mehsullar-title p {
+    font-size: 24px;
+  }
+  .container-space {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+  .mehsullar-acc-button::after {
+    top: 11px;
+  }
+  .mehsullar-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .mehsulllar_grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+  .mehsullar-card-texts{
+    gap: 0.5rem;
+  }
+  .mehsullar-card-texts p:nth-child(1),
+  .mehsullar-card-texts p:nth-child(2) {
+    font-size: 12px;
+    line-height: 22px;
+  }
+  .mehsullar-acc-button-2 {
+    font-size: 14px !important;
+  }
+  .mehsullar-acc-button {
+    font-size: 14px !important;
+  }
+  .sendbutton button{
+    font-size: 14px;
+    padding: 1px 32px;
+  }
+
+  .cf-email-text a, .cf-address-text {
+    font-size: 14.5px;
+  }
+  .cf-numbers-texts p {
+    font-size: 14.5px;
+  }
+  .contact-fab-flex {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+}
+  .about-company-title p {
+    font-size: 22px;
+  }
+  .about-company-description p {
+    font-size: 14px;
+  }
+  .about-company-flex {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .other-news-card-texts-p_1 {
+    font-size: 18px;
+  }
+  .other-news-card-texts {
+    justify-content: center;
+  }
+  .other-news-card-img img {
+    width: 223px;
+    height: auto;
+  }
+  .detail-left-title p {
+    font-size: 26px;
+  }
+  .media-detail-img img{
+    max-width: 100%;
+    height: auto;
+  }
+  .media-detail-flex {
+    display: grid;
+    grid-template-columns:  1fr;
+  }
+  .media-date-box span {
+    font-size: 14px;
+  }
+  .media-title-box {
+    font-size: 16px;
+  }
+  .media-tab-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  .media-tab-card {
+    width: 100%;
+  }
+  .bizimle_calis_flex {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+  .custom-file-upload {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+ 
+  .bizimle_calis-texts p:nth-child(2) {
+    font-size: 14px;
+  }
+  .btn-fab-submit {
+    font-size: 12px;
+  }
+  .bizimle_calis-texts p:nth-child(1) {
+    font-size: 26px;
+  }
+  .vakansiyalar-boxs{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .fab-info-box {
+    justify-content: start;
+  }
+.fab-info-box-img{
+  text-align: left;
+}
+
+.fab-info-box-img img {
+  width: 100%;
+  height: auto;
+  max-width: 85%;
+}
+.fab-info-boxs {
+  flex-direction: column;
+}
+.ir-title-text p,
+.why_fab_question p,
+.vakansiyalar-title p {
+  font-size: 22px;
+}
+
+.fab-info-box-texts p:nth-child(2) {
+  font-size: 14px;
+}
+.fab-info-box-texts p:nth-child(1) {
+  font-size: 18px;
+}
+  .description-slider-fab button {
+    margin-top: 0rem ;
+  }
+  .over-elements-slider{
+    margin-top: 0rem;
+  }
+  .over-elements-slider{
+    gap: 0;
+  }
+  .absolute-search-nav{
+   bottom: -134px !important;
+  }
+#Category{
+  padding-top: 13rem;
+}
+
+  .fab-flex-left {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .fab-bottom-elements {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .social-media {
+    justify-content: start;
+  }
+  .fab-flex-footer {
+    flex-direction: column;
+}
+  .fab-phone-number-adress {
+    margin: 0;
+    gap: 1rem;
+
+  }
+  .fab-flex-left {
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  .korporativ-img::before {
+    right: 28px;
+    width: 50%;
+    height: 50%;
+  }
+  .kp-back-img{
+    max-width: 60%;
+  }
+  .kp-front-img{
+    max-width: 50%;
+  }
+  .bg-img-k img {
+    height: 100vh !important;
+  }
+
+  .korporativ-over-img {
+    top: 58px;
+    right: -4%;
+  }
+  .betweenitems-korporativ {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .img-interyer1 {
+    width: 100%;
+  }
+  .int-right-text {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0rem;
+  }
+  .middle-int-text {
+    margin-bottom: 0;
+    margin-left: 0;
+}
+  .int-flex-items {
+    flex-direction: column;
+}
+  .middle-int-text p {
+    font-size: 16px;
+  }
+  .int-over-text p {
+    font-size: 16px;
+ }
+
+  .media-prev-next-btn{
+    text-align: right !important;
+    justify-content: end !important;
+  }
+  .media-nav-right-item {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: space-between !important;
+    align-items: start;
+}
+  .media-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.flex-media-items {
+  display: flex;
+  text-align: left;
+  align-items: start;
+  justify-content: space-between;
+}
+  .element a{
+      width: 96%;
+    }
+  .flex-search-items {
+    padding: 1rem 2rem;
+  }
+  .ctg-btn button {
+    font-size: 14px;
+    padding: 7px 22px;
+  }
+  .flex-category {
+    gap: 2rem;
+  }
+  /* .ctg-btn {
+    width: 100%;
+  } */
+  .flex-category {
+    flex-direction: column;
+  }
+  .text-ctg p {
+    font-size: 14px;
+  }
+
+  .flex-search-items {
+    gap: 1rem;
+  }
+  #custom-search::placeholder {
+    font-size: 12px;
+  }
+  .custom-search-button {
+    padding: 3px 1.9rem;
+    font-size: 14px;
+  }
+  #custom-search {
+    padding: 0;
+  }
+  .flex-search-items {
+    flex-direction: column;
+  }
+  .custom-dropdown-button {
+    padding: 0;
+  }
+  #selected-item {
+    font-size: 13px;
+    padding: 4px;
+  }
+  .question-search {
+    font-size: 14px;
+  }
+  .search-fab {
+    width: 100%;
+    justify-content: space-between;
+    border: none;
+  }
+  .responsive-img {
+    height: 35vh;
+  }
+  .title-slider-fab p {
+    font-size: 14px;
+  }
+  .over-elements-slider {
+    top: 0;
+  }
+  .description-slider-fab p {
+    font-size: 8px;
+  }
+
+  .description-slider-fab {
+    margin: 0 !important;
+  }
+
+  .more-btn {
+    padding: 1px 10px;
+    font-size: 8px;
+    line-height: 17px;
+    margin-top: 0.5rem;
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    left: 5% !important;
+    width: auto !important;
+    padding: 0;
+    bottom: 9% !important;
+  }
+
+  .progressbar-sliderr {
+    width: 60px;
+    height: 2px;
+  }
+
+  .swiper-pagination-current {
+    font-size: 15px;
+  }
+
+  .swiper-pagination-total {
+    font-size: 10px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+  .mehsullar-cards_4 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .mehs-detail-title p {
+    font-size: 27px;
+  }
+  .mehsulun-xususiyyetleri p {
+    font-size: 16px;
+  }
+  .pdf-download-file a {
+    font-size: 16px;
+  }
+  .diger-mehsullar-title p {
+    font-size: 24px;
+  }
+  .container-space {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+  .mehsullar-acc-button::after {
+    top: 10px;
+  }
+  .mehsullar-acc-button::after {
+    top: 7px;
+    right: 5px;
+  }
+  .mehsullar-card-texts{
+    gap: 0.5rem;
+  }
+  .mehsullar-card-texts p:nth-child(1),
+  .mehsullar-card-texts p:nth-child(2) {
+    font-size: 11px;
+    line-height: 22px;
+  }
+  .mehsullar-acc-button-2 {
+    font-size: 10px !important;
+  }
+  .mehsullar-acc-button {
+    font-size: 10px !important;
+  }
+  .sendbutton button{
+    font-size: 14px;
+    padding: 1px 32px;
+  }
+  .form-field textarea::placeholder {
+    font-size: 11px;
+  }
+  
+  .form-field input::placeholder {
+    font-size: 11px;
+  }
+  .cf-email-text a, .cf-address-text {
+    font-size: 14.5px;
+  }
+  .cf-numbers-texts p {
+    font-size: 14.5px;
+  }
+  .contact-fab-flex {
+    grid-template-columns: 1fr 2fr;
+    gap: 2rem;
+}
+  .about-company-title p {
+    font-size: 28px;
+  }
+  .about-company-description p {
+    font-size: 14px;
+  }
+  .about-company-flex {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .other-news-card-texts-p_1 {
+    font-size: 18px;
+  }
+  .other-news-card-texts {
+    justify-content: center;
+  }
+  .other-news-card-img img {
+    width: 223px;
+    height: auto;
+  }
+  .detail-left-title p {
+    font-size: 28px;
+  }
+  .media-detail-img img{
+    max-width: 100%;
+    height: auto;
+  }
+  .media-detail-flex {
+    display: grid;
+    grid-template-columns:  1fr;
+  }
+  .media-tab-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .media-tab-card {
+    width: 100%;
+  }
+  .custom-file-upload {
+    padding: 4px 10px;
+    font-size: 11px;
+  }
+  .bizimle_calis_flex {
+    gap: 0rem;
+  }
+  .bizimle_calis-texts p:nth-child(2) {
+    font-size: 14px;
+  }
+  .btn-fab-submit {
+    font-size: 12px;
+  }
+  .bizimle_calis-texts p:nth-child(1) {
+    font-size: 26px;
+  }
+  .vakansiyalar-boxs {
+    gap: 2rem;
+  }
+  .fab-info-box {
+    justify-content: start;
+  }
+  .fab-info-box-img{
+    text-align: left;
+  }
+
+  .fab-info-box-img img {
+    width: 100%;
+    height: auto;
+    max-width: 60%;
+}
+  .fab-info-boxs {
+    flex-direction: column;
+  }
+  .ir-title-text p,
+  .why_fab_question p,
+  .vakansiyalar-title p {
+    font-size: 22px;
+  }
+
+  .fab-info-box-texts p:nth-child(2) {
+    font-size: 14px;
+  }
+  .fab-info-box-texts p:nth-child(1) {
+    font-size: 18px;
+  }
+  .social-media {
+    justify-content: start;
+  }
+  .fab-flex-footer {
+    flex-direction: column;
+}
+  .fab-phone-number-adress {
+    margin: 0;
+    gap: 1rem;
+
+  }
+  .fab-flex-left {
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  .korporativ-img::before {
+    right: -9px;
+    width: 45%;
+    height: 45%;
+  }
+  .bg-img-k img {
+    height: 100vh !important;
+  }
+  .korporativ-over-img {
+    top: 88px;
+    right: 3%;
+}
+  .betweenitems-korporativ {
+    display: flex;
+
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .img-interyer1 {
+    width: 100%;
+  }
+  .int-right-text {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 0rem;
+  }
+  .middle-int-text {
+    margin-bottom: 0;
+    margin-left: 0;
+}
+  .int-flex-items {
+    flex-direction: column;
+}
+  .middle-int-text p {
+    font-size: 20px;
+  }
+  .int-over-text p {
+    font-size: 20px;
+ }
+  .element a{
+    width: 96%;
+  }
+  .flex-search-items {
+    padding: 1rem 2rem;
+  }
+  /* .ctg-btn {
+    width: 100% !important;
+  } */
+  .question-search {
+    font-size: 14px;
+  }
+  .custom-dropdown-button {
+    padding: 0;
+  }
+  #selected-item {
+    font-size: 13px;
+  }
+
+  .search-fab {
+    width: 70%;
+  }
+  .title-slider-fab p {
+    font-size: 18px;
+  }
+  .description-slider-fab p {
+    font-size: 10px;
+  }
+
+  .description-slider-fab {
+    margin: 0 !important;
+  }
+
+  .more-btn {
+    padding: 0px 10px;
+    font-size: 10px;
+    line-height: 33px;
+    margin-top: 1rem;
+  }
+
+  .swiper-pagination {
+    position: absolute;
+    left: 5% !important;
+    width: auto !important;
+    padding: 0;
+    bottom: 18% !important;
+  }
+
+  .progressbar-sliderr {
+    width: 60px;
+    height: 2px;
+  }
+
+  .swiper-pagination-current {
+    font-size: 15px;
+  }
+
+  .swiper-pagination-total {
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  
+ 
+  #nav-linkss {
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar-nav-links {
+    position: absolute;
+    top: 100%;
+    text-align: left;
+    background: white;
+    width: 100%;
+    padding-bottom: 2rem;
+    padding-left: 0;
+    display: none;
+    transition: opacity 0.5s ease; /* Add a transition for the opacity property */
+  }
+
+  .navbar-nav-links.show {
+    display: block;
+  }
+
+  .navbar-nav-links li {
+    margin-left: 1rem;
+    padding: 0.3rem;
+  }
+
+  .navbar-menu-icon {
+    display: block;
+  }
+
+  .qaynarxett {
+    margin-right: 1rem;
+  }
+}
+
+@media screen and (min-width: 1024px){
+  #nav-linkss {
+    display: flex !important;
+    flex-direction: row;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1024px) and (max-width: 1200px) {
+  .mehs-detail-title p {
+    font-size: 27px;
+  }
+  .mehsulun-xususiyyetleri p {
+    font-size: 16px;
+  }
+  .pdf-download-file a {
+    font-size: 16px;
+  }
+  .diger-mehsullar-title p {
+    font-size: 24px;
+  }
+  .mehsullar-acc-button::after {
+    top: 10px;
+  }
+  .mehsullar-card-texts p:nth-child(1),
+  .mehsullar-card-texts p:nth-child(2) {
+    font-size: 12px;
+  }
+  .mehsullar-acc-button-2 {
+    font-size: 12px !important;
+  }
+  .mehsullar-acc-button {
+    font-size: 12px !important;
+  }
+  .about-company-flex {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+  }
+  .about-company-title p {
+    font-size: 28px;
+  }
+  .about-company-description p {
+    font-size: 14px;
+  }
+  .other-news-card-img img {
+    width: 223px;
+  }
+  .detail-left-title p {
+    font-size: 28px;
+  }
+  .media-detail-img img{
+    max-width: 100%;
+    height: auto;
+  }
+  .media-detail-flex {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+  }
+  .media-tab-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .media-tab-card {
+    width: 100%;
+  }
+  .btn-fab-submit {
+    font-size: 12px;
+  }
+  .custom-file-upload {
+    font-size: 12px;
+  }
+  .bizimle_calis-texts p:nth-child(1) {
+    font-size: 34px;
+  }
+  .ir-title-text p,
+  .why_fab_question p,
+  .vakansiyalar-title p {
+    font-size: 22px;
+  }
+
+  .fab-info-box-texts p:nth-child(2) {
+    font-size: 14px;
+  }
+  .fab-info-box-texts p:nth-child(1) {
+    font-size: 18px;
+  }
+  .social-media {
+    justify-content: start;
+  }
+  .fab-flex-footer {
+    flex-direction: column;
+}
+  .fab-phone-number-adress {
+    margin: 0;
+    gap: 1rem;
+
+  }
+  .fab-flex-left {
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  .korporativ-img::before {
+    right: -46px;
+    width: 42%;
+    height: 42%;
+  }
+  .korporativ-over-img {
+    top: 63px;
+    right: -9%;
+}
+  /* .korporativ-img img {
+    max-width: 78%;
+  } */
+  .middle-int-text p {
+    font-size: 20px;
+  }
+  .int-over-text p {
+    font-size: 20px;
+ }
+  .element a {
+    width: 96%;
+  }
+  /* .ctg-btn {
+    width: 47% !important;
+  } */
+  .search-fab {
+    width: 70%;
+  }
+  .question-search {
+    font-size: 14px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1400px) {
+  .mehsullar-acc-button::after {
+    top: 11px;
+  }
+  .detail-left-title p {
+    font-size: 28px;
+  }
+  .media-detail-img img{
+    max-width: 100%;
+    height: auto;
+  }
+  .media-detail-flex {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+  }
+  .media-tab-card {
+    width: 338px;
+  }
+  .ir-title-text p,
+  .why_fab_question p {
+    font-size: 27px;
+  }
+
+  .fab-info-box-texts p:nth-child(2) {
+    font-size: 14px;
+  }
+  .fab-info-box-texts p:nth-child(1) {
+    font-size: 22px;
+  }
+  .fab-phone-number-adress {
+    margin: 0;
+  }
+  .fab-phone-number-adress {
+    gap: 1rem;
+  }
+  .fab-flex-left {
+    gap: 2rem;
+  }
+  .korporativ-img::before {
+    right: -100px;
+    width: 42%;
+    height: 42%;
+  }
+  .middle-int-text p {
+    font-size: 20px;
+  }
+  .int-over-text p {
+    font-size: 20px;
+ }
+  .element a {
+    width: 96%;
+  }
+
+  .search-fab {
+    width: 50%;
+  }
+  .question-search {
+    font-size: 14px;
+  }
+}
+@media (min-width: 1400px) and (max-width: 1600px) {
+  .mehsullar-acc-button::after {
+    top: 11px;
+  }
+  .korporativ-img::before {
+    right: -140px;
+  }
+  .element a{
+    width: 80%;
+  }
+}
+
+@media (min-width: 1600px) {
+  .mehsullar-acc-button::after {
+    top: 11px;
+  }
+  .korporativ-img::before {
+    right: -140px;
+  }
+  .element a {
+    width: 78%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .footer-list{
+    border-bottom: 1px solid black;
+  }
+  .footer-list a{
+    border-bottom: 1px solid #8080803b;
+    padding-bottom: 1rem;
+  }
+  .footer-list-items {
+    flex-direction: column;
+    gap: 1em;
+  }
+  .footer-list.active .footer-list-items {
+    max-height: 1000px; 
+  }
+
+  /* .active {
+    max-height: 1000px; 
+  } */
+  
+  .fab-flex-left {
+    justify-content: center;
+    flex-direction: column;
+  }
+  .fab-bottom-elements {
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+  }
+  .social-media {
+    justify-content: start;
+  }
+  .fab-flex-footer {
+    flex-direction: column;
+    gap: 2rem;
+}
+  .fab-phone-number-adress {
+    margin: 0;
+    gap: 1rem;
+    justify-content: space-between;
+
+  }
+  .fab-flex-left {
+    gap: 2rem;
+    justify-content: space-between;
+  }
+  .footer-list .footer-list-items {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s;
+  }
+  
+  .footer-list.active .footer-list-items {
+    max-height: 1000px; 
+  }
+  
+}
