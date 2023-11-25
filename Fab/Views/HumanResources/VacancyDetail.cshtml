@@ -1,0 +1,203 @@
+﻿@model Fab.ViewModels.VacancyVM.VacancyVM
+@{
+    ViewData["Title"] = "VacancyDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!--*******************    Main Start    ******************************* -->
+<main>
+    <section id="head_bg" style="background-image: url(./assets/img/insan.resurslari/bg-other.png);">
+        <div class="container">
+            @if (Model.LangCode == "az")
+            {
+                <div class="ir-title">
+                    <div class="ir-title-links">
+                        <a asp-controller="Home" asp-action="Index">Ana səhifə</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="HumanResources" asp-action="Index">İnsan Resursları</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="HumanResources" asp-action="Vacancies">Vakansiyalar</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Vakansiyalar</p>
+                    </div>
+                </div>
+            }
+            else if (Model.LangCode == "en")
+            {
+                <div class="ir-title">
+                    <div class="ir-title-links">
+                        <a asp-controller="Home" asp-action="Index">Home Page</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="HumanResources" asp-action="Index">Human Resources</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="HumanResources" asp-action="Vacancies">Vacancies</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Vacancies</p>
+                    </div>
+                </div>
+            }
+            else
+            {
+
+                <div class="ir-title">
+                    <div class="ir-title-links">
+                        <a asp-controller="Home" asp-action="Index">Главная</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="HumanResources" asp-action="Index">Человеческие ресурсы</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="HumanResources" asp-action="Vacancies">Вакансии</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Вакансии</p>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </section>
+
+    <section id="vacancy_detail_pg">
+        <div class="container">
+            <div class="vacancy_detail_pg_flex">
+                <div class="position_and_date">
+                    <p class="position_name">@Model.Vacancy?.Translates?.FirstOrDefault(m=>m.LangCode==Model.LangCode)?.Position</p>
+                    <div class="vacancy-location-date">
+                        <p class="vacancy-location">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 13 13"
+                                 fill="none">
+                                <path d="M6.5 0C3.79082 0 1.625 2.16582 1.625 4.875C1.625 5.81191 1.9043 6.53555 2.38926 7.26934L5.98711 12.7283C6.09629 12.8934 6.28418 13 6.5 13C6.71582 13 6.90625 12.8908 7.01289 12.7283L10.6107 7.26934C11.0957 6.53555 11.375 5.81191 11.375 4.875C11.375 2.16582 9.20918 0 6.5 0ZM6.5 7.58164C5.00449 7.58164 3.79082 6.36797 3.79082 4.86992C3.79082 3.37188 5.00449 2.1582 6.5 2.1582C7.99551 2.1582 9.20918 3.37188 9.20918 4.86992C9.20918 6.36797 7.99551 7.58164 6.5 7.58164Z"
+                                      fill="#555555" fill-opacity="0.5" />
+                            </svg>
+                            Bakı, Azərbaycan
+                        </p>
+                        <p class="vacancy-date">
+                            @Model.Vacancy.CreatedDate
+                        </p>
+                    </div>
+                </div>
+                <div class="job_responsibilities">
+                    <p class="job_responsibilities_title">Vəzifə öhdəlikləri</p>
+                    <div class="job_responsibilities_content">
+                        <p>
+                            @Model.Vacancy?.Translates?.FirstOrDefault(m=>m.LangCode==Model.LangCode)?.Desc
+                            <br>
+                        </p>
+                    </div>
+                </div>
+                <div class="requirements_for_vacancy">
+                    <p class="requirements_title">Tələblər</p>
+                    <div class="requirements_list">
+                        <p>
+                            @Html.Raw(Model.Vacancy?.Translates?.FirstOrDefault(m=>m.LangCode==Model.LangCode)?.Requirements)
+                        </p>
+                     
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <section id="bizimle_calis">
+        <div class="container">
+            <div class="bizimle_calis_flex">
+                <div class="bizimle_calis-texts">
+                    @if (Model.LangCode == "az")
+                    {
+                        <p>Bizimlə çalışmaq istəyirsən?</p>
+                        <p>Bizimlə çalışmaq imkanı üçün formu doldurun</p>
+                    }
+                    else if (Model.LangCode == "en")
+                    {
+                        <p>Do you wanna work with us?</p>
+                        <p>Fill out the form for an opportunity to work with us</p>
+                    }
+                    else
+                    {
+                        <p>Хотите работать с нами?</p>
+                        <p>Заполните форму, чтобы получить возможность работать с нами</p>
+                    }
+
+                </div>
+                <div class="bizimle_calis_form">
+                    <form id="yourFormId" class="form-style" method="post" enctype="multipart/form-data" asp-action="SendCV" asp-controller="HumanResources">
+                        @if (Model.LangCode == "az")
+                        {
+                            <div class="mb-3">
+                                <input required placeholder="Ad Soyad" id="Fullname" name="Fullname" type="text" class="form-control form-control-style">
+                            </div>
+                            <div class="flex-form">
+                                <input required placeholder="Telefon" id="Tel" name="Tel" type="text" class="form-control form-control-style">
+                                <input required placeholder="E-mail" id="Email" name="Email" type="email" class="form-control form-control-style">
+                            </div>
+                            <div class="middle-add_file">
+                                <div class="add_file mt-3">
+                                    <label for="File" class="custom-file-upload">
+                                        <img src="~/assets/img/insan.resurslari/fileicon.svg" alt="icon-file">CV faylını
+                                        buraya yüklə
+                                    </label>
+                                    <input required type="File" id="File" name="File">
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn-fab-submit">Müraciət et</button>
+                        }
+                        else if (Model.LangCode == "en")
+                        {
+                            <div class="mb-3">
+                                <input placeholder="Full Name" type="text" class="form-control form-control-style">
+                            </div>
+                            <div class="flex-form">
+                                <input placeholder="Phone" type="text" class="form-control form-control-style">
+                                <input placeholder="E-mail" type="email" class="form-control form-control-style">
+                            </div>
+                            <div class="middle-add_file">
+                                <div class="add_file mt-3">
+                                    <label for="file" class="custom-file-upload">
+                                        <img src="~/assets/img/insan.resurslari/fileicon.svg" alt="icon-file">Upload your CV
+                                    </label>
+                                    <input type="file" id="file" name="file">
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn-fab-submit">Apply</button>
+                        }
+                        else
+                        {
+                            <div class="mb-3">
+                                <input placeholder="Имя Фамилия" type="text" class="form-control form-control-style">
+                            </div>
+                            <div class="flex-form">
+                                <input placeholder="Телефон" type="text" class="form-control form-control-style">
+                                <input placeholder="Электронная почта" type="email" class="form-control form-control-style">
+                            </div>
+                            <div class="middle-add_file">
+                                <div class="add_file mt-3">
+                                    <label for="file" class="custom-file-upload">
+                                        <img src="~/assets/img/insan.resurslari/fileicon.svg" alt="icon-file">Загрузите свое резюме
+                                    </label>
+                                    <input type="file" id="file" name="file">
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn-fab-submit">Применять</button>
+                        }
+                    </form>
+                    @{
+                        var errorMessage = TempData["ErrorMessage"] as string;
+                    }
+
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div style="color: white;">@errorMessage</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!--*******************    MAIN  END    ******************************* -->

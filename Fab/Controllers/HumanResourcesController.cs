@@ -2,6 +2,7 @@
 using Fab.Models.CVFolder;
 using Fab.Models.NewsFolder;
 using Fab.ViewModels;
+using Fab.ViewModels.VacancyVM;
 using FabAdmin.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -45,6 +46,55 @@ namespace Fab.Controllers
 
             };
             return View(page);
+        }
+
+        public async Task<IActionResult> Vacancies()
+        {
+            var lang = Request.Cookies["selectedLanguage"];
+            if (string.IsNullOrEmpty(lang))
+            {
+                lang = "az";
+            }
+            else
+            {
+                lang = lang.ToLower();
+            }
+
+            var vacancies = await _context.Vacancies.Take(4).Include(m => m.Translates.Where(m => m.LangCode == lang)).ToListAsync();
+            var human = await _context.HumanResources.Take(3).Include(m => m.Translates.Where(m => m.LangCode == lang)).ToListAsync();
+
+
+            HumanResourcesPageVM page = new()
+            {
+                LangCode = lang,
+                Vacancies = vacancies,
+                HumanResources = human,
+
+            };
+            return View(page);
+        }
+
+        public async Task<IActionResult> VacancyDetail(int id)
+        {
+            var lang = Request.Cookies["selectedLanguage"];
+            if (string.IsNullOrEmpty(lang))
+            {
+                lang = "az";
+            }
+            else
+            {
+                lang = lang.ToLower();
+            }
+
+            var vacancies = await _context.Vacancies.Include(m => m.Translates.Where(m => m.LangCode == lang && m.VacancyId==id)).FirstOrDefaultAsync();
+
+
+            VacancyVM vacancyVM = new VacancyVM()
+            {
+                LangCode=lang,
+                Vacancy=vacancies
+            };
+            return View(vacancyVM);
         }
 
         [HttpPost]

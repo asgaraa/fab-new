@@ -52,17 +52,17 @@
                         </svg>
                         @if (selectedLanguage == "az")
                         {
-                            <a href="#"><p>Ünvanımız</p></a>
+                            <a asp-controller="Contact" asp-action="Location"><p>Ünvanımız</p></a>
 
                         }
                         else if (selectedLanguage == "en")
                         {
-                            <a href="#"> <p>Location</p></a>
+                            <a asp-controller="Contact" asp-action="Location"> <p>Location</p></a>
                            
                         }
                         else if (selectedLanguage == "ru")
                         {
-                            <a href="#">  <p>Места</p></a>
+                            <a asp-controller="Contact" asp-action="Location">  <p>Места</p></a>
                            
                         }
 
@@ -261,10 +261,10 @@
                                     <a href="#">
                                         <p>Nə üçün FAB Şirkətlər Qrupu?</p>
                                     </a>
-                                    <a href="#">
+                                    <a asp-controller="HumanResources" asp-action="Vacancies">
                                         <p>Vakansiyalar</p>
                                     </a>
-                                    <a href="#">
+                                    <a asp-controller="HumanResources" asp-action="Index">
                                         <p>CV göndər</p>
                                     </a>
                                 </div>

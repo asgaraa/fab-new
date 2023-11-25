@@ -1,0 +1,66 @@
+﻿@model Fab.ViewModels.ContactPageVM
+
+@{
+    ViewData["Title"] = "Location";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<main>
+    <section id="head_bg" style="background-image: url('/assets/img/insan.resurslari/bg-other.png');">
+        <div class="container">
+            <div class="ir-title">
+                @if (Model.LangCode == "az")
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Ana səhifə</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Ünvanımız</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Ünvanımız</p>
+                    </div>
+                }
+                else if (Model.LangCode == "en")
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Home</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Location</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Location</p>
+                    </div>
+                }
+                else
+                {
+                    <div class="ir-title-links">
+                        <a href="index.html">Главная</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a href="insan.resurslari.html">Места</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Места</p>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </section>
+<section class="google-map">
+    <div class="container">
+        <div class="mapouter">
+            <div class="gmap_canvas">
+                <iframe id="gmap_canvas" style="width: 100%; height: 100%;"
+                        src="@Model.Informations.LocationLink"
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0">
+                </iframe>
+                <br>
+            </div>
+        </div>
+
+    </div>
+</section>
+</main>
+

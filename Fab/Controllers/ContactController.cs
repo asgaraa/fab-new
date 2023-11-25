@@ -38,5 +38,28 @@ namespace Fab.Controllers
 
             return View(contactPage);
         }
+
+        public async Task<IActionResult> Location()
+        {
+            var lang = Request.Cookies["selectedLanguage"];
+            if (string.IsNullOrEmpty(lang))
+            {
+                lang = "az";
+            }
+            else
+            {
+                lang = lang.ToLower();
+            }
+
+            var information = await _context.ContactInformations.FirstOrDefaultAsync();
+
+            ContactPageVM contactPage = new()
+            {
+                Informations = information,
+                LangCode = lang
+            };
+
+            return View(contactPage);
+        }
     }
 }
