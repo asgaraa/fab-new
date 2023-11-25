@@ -14,9 +14,9 @@
                 @if (Model.LangCode == "az")
                 {
                     <div class="ir-title-links">
-                        <a href="index.html">Ana səhifə</a>
+                        <a asp-controller="Home" asp-action="Index">Ana səhifə</a>
                         <img src="~/assets/img/ir.svg" alt="svg">
-                        <a href="insan.resurslari.html">Ünvanımız</a>
+                        <a asp-controller="Contact" asp-action="Location">Ünvanımız</a>
                     </div>
                     <div class="ir-title-text">
                         <p>Ünvanımız</p>
@@ -25,9 +25,9 @@
                 else if (Model.LangCode == "en")
                 {
                     <div class="ir-title-links">
-                        <a href="index.html">Home</a>
+                        <a asp-controller="Home" asp-action="Index">Home</a>
                         <img src="~/assets/img/ir.svg" alt="svg">
-                        <a href="insan.resurslari.html">Location</a>
+                        <a asp-controller="Contact" asp-action="Location">Location</a>
                     </div>
                     <div class="ir-title-text">
                         <p>Location</p>
@@ -36,9 +36,9 @@
                 else
                 {
                     <div class="ir-title-links">
-                        <a href="index.html">Главная</a>
+                        <a asp-controller="Home" asp-action="Index">Главная</a>
                         <img src="~/assets/img/ir.svg" alt="svg">
-                        <a href="insan.resurslari.html">Места</a>
+                        <a asp-controller="Contact" asp-action="Location">Места</a>
                     </div>
                     <div class="ir-title-text">
                         <p>Места</p>
