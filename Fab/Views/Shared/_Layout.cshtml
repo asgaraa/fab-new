@@ -187,16 +187,16 @@
                                         <p>Haqqımızda</p>
                                     </div>
                                     <div class="footer-list-items">
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Şirkət haqqında</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Fəaliyyət sahələrimiz</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Vizyon və missiyamız</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Nəaliyyətlərimiz</p>
                                         </a>
                                     </div>
@@ -209,16 +209,16 @@
                                         <p>About us</p>
                                     </div>
                                     <div class="footer-list-items">
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Company</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Our areas of activity</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Vision and mission</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Achievements </p>
                                         </a>
                                     </div>
@@ -228,19 +228,19 @@
                             {
                                 <div class="footer-list">
                                     <div class="footer-list-title">
-                                        <p>О нас</p>
+                                        <p asp-action="Index" asp-controller="About">О нас</p>
                                     </div>
                                     <div class="footer-list-items">
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Компания</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Наши сферы деятельности</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Видение и миссия</p>
                                         </a>
-                                        <a>
+                                        <a asp-action="Index" asp-controller="About">
                                             <p>Достижения</p>
                                         </a>
                                     </div>
@@ -250,25 +250,65 @@
 
                             @await Component.InvokeAsync("My")
 
-                            <div class="footer-list">
-                                <div class="footer-list-title">
-                                    <p>Insan resursları</p>
+                            @if (selectedLanguage=="az")
+                            {
+                                <div class="footer-list">
+                                    <div class="footer-list-title">
+                                        <p>Insan resursları</p>
+                                    </div>
+                                    <div class="footer-list-items">
+
+                                        <a asp-controller="HumanResources" asp-action="Index">
+                                            <p>Nə üçün FAB Şirkətlər Qrupu?</p>
+                                        </a>
+                                        <a asp-controller="HumanResources" asp-action="Vacancies">
+                                            <p>Vakansiyalar</p>
+                                        </a>
+                                        <a asp-controller="HumanResources" asp-action="Index">
+                                            <p>CV göndər</p>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="footer-list-items">
-                                    <a href="#">
-                                        <p>Boya</p>
-                                    </a>
-                                    <a href="#">
-                                        <p>Nə üçün FAB Şirkətlər Qrupu?</p>
-                                    </a>
-                                    <a asp-controller="HumanResources" asp-action="Vacancies">
-                                        <p>Vakansiyalar</p>
-                                    </a>
-                                    <a asp-controller="HumanResources" asp-action="Index">
-                                        <p>CV göndər</p>
-                                    </a>
+                            }else if (selectedLanguage=="en")
+                            {
+                                <div class="footer-list">
+                                    <div class="footer-list-title">
+                                        <p>Human resources</p>
+                                    </div>
+                                    <div class="footer-list-items">
+
+                                        <a asp-controller="HumanResources" asp-action="Index">
+                                            <p>Why FAB Group of Companies?</p>
+                                        </a>
+                                        <a asp-controller="HumanResources" asp-action="Vacancies">
+                                            <p>Vacancies</p>
+                                        </a>
+                                        <a asp-controller="HumanResources" asp-action="Index">
+                                            <p>Send CV</p>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
+                            }else
+                            {
+                                <div class="footer-list">
+                                    <div class="footer-list-title">
+                                        <p>Кадровые ресурсы</p>
+                                    </div>
+                                    <div class="footer-list-items">
+
+                                        <a asp-controller="HumanResources" asp-action="Index">
+                                            <p>Почему группа компаний FAB?</p>
+                                        </a>
+                                        <a asp-controller="HumanResources" asp-action="Vacancies">
+                                            <p>Вакансии</p>
+                                        </a>
+                                        <a asp-controller="HumanResources" asp-action="Index">
+                                            <p>Отправить резюме</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                       
                             <div class="footer-list">
                                 @if (selectedLanguage == "az")
                                 {
@@ -375,7 +415,32 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 
     <script>
-        // Function to set a cookie
+        // // Function to set a cookie
+        // function setCookie(name, value) {
+        //     document.cookie = name + "=" + value + "; path=/";
+        // }
+
+        // // Function to handle language change
+        // function changeLanguage(language) {
+        //     // Set the selected language cookie
+        //     setCookie("selectedLanguage", language);
+
+        //     // Reload the page
+        //     location.reload();
+        // }
+
+        // // Check if there is a selected language cookie
+        // const selectedLanguageCookie = document.cookie.replace(/(?:(?:^|.*;\s*)selectedLanguage\s*=\s*([^;]*).*$)|^.*$/, "$1");
+
+        // // If a selected language cookie is found, set the initial language
+        // if (selectedLanguageCookie) {
+        //     document.getElementById("selectedLanguageText").innerText = selectedLanguageCookie;
+
+        //     const flagImage = document.getElementById("selectedLanguageFlag");
+        //     flagImage.src = "assets/img/language-flag/" + selectedLanguageCookie.toLowerCase() + ".svg";
+        //     flagImage.alt = selectedLanguageCookie.toLowerCase();
+        // }
+
         function setCookie(name, value) {
             document.cookie = name + "=" + value + "; path=/";
         }
@@ -397,7 +462,7 @@
             document.getElementById("selectedLanguageText").innerText = selectedLanguageCookie;
 
             const flagImage = document.getElementById("selectedLanguageFlag");
-            flagImage.src = "assets/img/language-flag/" + selectedLanguageCookie.toLowerCase() + ".svg";
+            flagImage.src = "/assets/img/language-flag/" + selectedLanguageCookie.toLowerCase() + ".svg";
             flagImage.alt = selectedLanguageCookie.toLowerCase();
         }
     </script>

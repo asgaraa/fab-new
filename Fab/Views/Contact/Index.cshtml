@@ -84,32 +84,32 @@
                     </div>
                 </div>
                 <div class="contact-fab-form">
-                    <form>
+                    <form method="post" asp-action="SendMessage" asp-controller="Contact" onsubmit="return submitForm();">
                         @if (Model.LangCode == "az")
                         {
                             <div class="form-field">
-                                <input type="text" placeholder="Ad Soyad" name="adsoyad">
+                                <input required id="Fullname" name="Fullname" type="text" placeholder="Ad Soyad" >
                             </div>
                             <div class="form-field">
-                                <input type="text" placeholder="E mail" name="email">
+                                <input required id="Email" name="Email" type="email" placeholder="E mail">
                             </div>
                             <div class="form-field">
-                                <textarea placeholder="Mesajınız" name="mesaj"></textarea>
+                                <textarea required id="Message" name="Message" placeholder="Mesaj"></textarea>
                             </div>
                             <div class="sendbutton">
-                                <button type="submit">Gönder</button>
+                                <button type="submit">Göndər</button>
                             </div>
                         }
                         else if (Model.LangCode == "en")
                         {
                             <div class="form-field">
-                                <input type="text" placeholder="Full Name" name="adsoyad">
+                                <input required type="text" placeholder="Full Name" id="Fullname" name="Fullname">
                             </div>
                             <div class="form-field">
-                                <input type="text" placeholder="E mail" name="email">
+                                <input required type="email" placeholder="E mail" id="Email" name="Email">
                             </div>
                             <div class="form-field">
-                                <textarea placeholder="Message" name="mesaj"></textarea>
+                                <textarea required id="Message" name="Message"  placeholder="Message" ></textarea>
                             </div>
                             <div class="sendbutton">
                                 <button type="submit">Send</button>
@@ -118,16 +118,16 @@
                         else
                         {
                             <div class="form-field">
-                                <input type="text" placeholder="Full Name" name="adsoyad">
+                                <input required type="text" placeholder="Имя и фамилия" id="Fullname" name="Fullname">
                             </div>
                             <div class="form-field">
-                                <input type="text" placeholder="E mail" name="email">
+                                <input required type="email" placeholder="Электронная почта" id="Email" name="Email">
                             </div>
                             <div class="form-field">
-                                <textarea placeholder="Message" name="mesaj"></textarea>
+                                <textarea required placeholder="Сообщение" id="Message" name="Message"></textarea>
                             </div>
                             <div class="sendbutton">
-                                <button type="submit">Send</button>
+                                <button type="submit">Отправить</button>
                             </div>
                         }
                         
@@ -153,3 +153,56 @@
         </div>
     </section>
 </main>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Include SweetAlert CDN in your HTML file -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<@*!-- Your form -->
+<form method="post" asp-action="SendMessage" asp-controller="Contact" onsubmit="return submitForm();">
+    <!-- Your form fields -->
+
+    <div class="sendbutton">
+        <button type="submit">Göndər</button>
+    </div>
+</form>*@
+
+<!-- Your JavaScript code -->
+@*<script>
+    function submitForm() {
+        var langCode = '@Model.LangCode'; // Get the language code from the Razor model
+
+        // Language-specific success messages and titles
+        var successMessages = {
+            'az': 'Sizin mesajınız uğurla göndərildi.',
+            'en': 'Your message has been sent successfully.',
+            'ru': 'Ваше сообщение успешно отправлено.'
+        };
+
+        var successTitles = {
+            'az': 'Uğur!',
+            'en': 'Success!',
+            'ru': 'Успех!'
+        };
+
+        // Get the appropriate success message and title based on the language code
+        var successMessage = successMessages[langCode] || successMessages['en'];
+        var successTitle = successTitles[langCode] || successTitles['en'];
+
+        // Display SweetAlert with the language-specific success message and title
+        Swal.fire({
+            title: successTitle,
+            text: successMessage,
+            icon: 'success',
+            confirmButtonText: 'OK'
+        }).then(() => {
+            // Redirect to Contact/Index after the user clicks OK in SweetAlert
+            window.location.href = '/Contact/Index';
+        });
+
+        // Returning false to prevent the form from submitting (remove this line if you want to submit the form)
+        return false;
+    }
+</script>*@

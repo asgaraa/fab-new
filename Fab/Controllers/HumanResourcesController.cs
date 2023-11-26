@@ -110,7 +110,7 @@ namespace Fab.Controllers
                     {
                         TempData["ErrorMessage"] = "Çox sayda müraciət aşkar edildi. Zəhmət olmasa bir müddət gözləyin.";
                     }
-                    else if(cv.LangCode == "en")
+                    else if (cv.LangCode == "en")
                     {
                         TempData["ErrorMessage"] = "Too many form submissions detected. Please wait for a while.";
                     }

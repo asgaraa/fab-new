@@ -4,6 +4,7 @@
     {
         public string Position { get; set; }
         public string Desc { get; set; }
+        public string Requirements { get; set; }
         public string LangCode { get; set; }
     }
 }

@@ -56,7 +56,8 @@ namespace FabAdmin.Controllers
                     {
                         Position = translate.Position,
                         Desc = translate.Desc,
-                        LangCode = translate.LangCode
+                        LangCode = translate.LangCode,
+                        Requirements = translate.Requirements
                     };
                     vacancyTranslates.Add(entertainmentTranslate);
                 }
@@ -110,6 +111,7 @@ namespace FabAdmin.Controllers
                     LangCode = translate.LangCode,
                     Position = translate.Position,
                     Desc = translate.Desc,
+                    Requirements = translate.Requirements
                 };
                 essn.Translates.Add(vacancyTranslate);
             }

@@ -435,86 +435,34 @@ namespace Fab.Controllers
             return View(detailedProducts);
 
         }
-        //[HttpPost]
-        //public async Task<IActionResult> GetAllSubCategory(int categoryId)
-        //{
-        //    var lang = Request.Cookies["selectedLanguage"];
-        //    if (string.IsNullOrEmpty(lang))
-        //    {
-        //        lang = "az";
-        //    }
-        //    else
-        //    {
-        //        lang = lang.ToLower();
-        //    }
-        //    var allchars = _context.Characteristics.Select(x => new CharVM()
-        //    {
-        //        Id = x.Id,
-        //        CategoryId = x.Category.Id,
-        //        Name = x.Translates.FirstOrDefault(x => x.LangCode == lang).Name
-        //    }).ToList();
-        //    var allapplication = _context.Characteristics.Select(x => new ApplicationVm()
-        //    {
-        //        Id = x.Id,
-        //        CategoryId = x.Category.Id,
-        //        Name = x.Translates.FirstOrDefault(x => x.LangCode == lang).Name
-        //    }).ToList();
-        //    var allapperance = _context.Characteristics.Select(x => new ApperanceVm()
-        //    {
+        public async Task<IActionResult> SearchProduct(string searchTerm, int page = 1, int pageSize = 10)
+        {
+            searchTerm = searchTerm.ToLower();
+            var lang = Request.Cookies["selectedLanguage"];
+            if (string.IsNullOrEmpty(lang))
+            {
+                lang = "az";
+            }
+            else
+            {
+                lang = lang.ToLower();
+            }
+            // Linq kullanarak arama işlemini gerçekleştirelim
+            var results = _context.Products.Include(m => m.Images).Include(m => m.Translates)
+                .Where(p =>
+                    p.Brand.ToLower().Contains(searchTerm) ||
+                    p.ProductCode.Contains(searchTerm) ||
+                    p.Translates.Where(m => m.LangCode == lang).Any(t => t.Name.ToLower().Contains(searchTerm) || t.Desc.ToLower().Contains(searchTerm)))
+                .Distinct() // Duplikatları kaldır
+                .ToList();
 
-        //        Id = x.Id,
-        //        CategoryId = x.Category.Id,
-        //        Name = x.Translates.FirstOrDefault(x => x.LangCode == lang).Name
-        //    }).ToList();
-        //    var ctg = _context.Categories.Select(x => new GetCategory()
-        //    {
-        //        Id = x.Id,
-        //        Name = x.Translates.FirstOrDefault(x => x.LangCode == lang).Name,
-        //        Subcategories = x.Subcategories.Select(y => new Getsubcategory()
-        //        {
-        //            Name = y.Translates.FirstOrDefault(u => u.LangCode == lang).Name,
-        //            Id = y.Id,
-        //            CategoryId = x.Id
-        //        }).ToList(),
-        //    }).ToList();
-        //    var allcatg = new GetallCategory
-        //    {
-        //        Categories = ctg,
-        //        Apperance = allapperance.Where(x => x.CategoryId == categoryId).ToList(),
-        //        Applicat = allapplication.Where(x => x.CategoryId == categoryId).ToList(),
-        //        Chars = allchars.Where(x => x.CategoryId == categoryId).ToList()
-
-        //    };
-
-        //    return PartialView("_FilterPPartial", allcatg);
-        //}
-
-
-
-        //public async Task<ActionResult> GetSubCategories(int categoryId)
-        //{
-        //    var subCategories = await _context.Subcategories
-        //        .Where(x => x.CategoryId == categoryId)
-        //        .Select(he => new SubcategoryDTO
-        //        {
-        //            Id = he.Id,
-        //            Name = he.Translates.FirstOrDefault(het => het.LangCode == "en").Name
-        //        })
-        //        .ToListAsync();
-
-
-        //    var exProp = await _context.ExProps
-        //        .Where(x => x.CategoryId == categoryId)
-        //        .Select(he => new ExPropDTO
-        //        {
-        //            Id = he.Id,
-        //            Names = he.Translates.FirstOrDefault(het => het.LangCode == "en").Name
-        //        })
-        //        .ToListAsync();
-
-        /////bisheyler	
-
-        //    return Json(new { ExtraProperties = exProp, Subcategories = subCategories });
-        //}
+            ProductSearchVM result = new()
+            {
+                Products = results,
+                LangCode = lang
+            };
+            // Sonuçları bir view'e gönderelim
+            return View(result);
+        }
     }
 }

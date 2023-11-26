@@ -1,4 +1,6 @@
 ﻿using Fab.Data;
+using Fab.Models.ContactFolder;
+using Fab.Models.SubcategoryFolder;
 using Fab.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -60,6 +62,38 @@ namespace Fab.Controllers
             };
 
             return View(contactPage);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> SendMessage(ContactPageVM contact)
+        {
+            try
+            {
+                if (contact.Fullname == "" || contact.Message == "" || contact.Email == "")
+                {
+                    return RedirectToAction("Index");
+                }
+
+                Contact newContact = new()
+                {
+                    Message = contact.Message,
+                    Email = contact.Email,
+                    Fullname = contact.Fullname,
+                }
+
+                ;
+
+                await _context.Contacts.AddAsync(newContact);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction("Index");
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
     }
 }

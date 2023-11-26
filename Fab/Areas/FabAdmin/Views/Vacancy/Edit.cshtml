@@ -30,8 +30,8 @@
                     </p>*@
                 </label>
 
-                <output style="display:flex;" id="output1"></output>
-                <span style="color:gray;">.svg file, max-300kbt</span>
+               @* <output style="display:flex;" id="output1"></output>
+                <span style="color:gray;">.svg file, max-300kbt</span>*@
             </div>
         </div>
 
@@ -50,7 +50,10 @@
             <label class="labelstyle" for="translates[0].Desc">Desc-az</label>
             <textarea id="translates[0].Desc" name="Translates[0].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('a')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
         </div>
-
+         <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[0].Requirements">Requirements-en</label>
+            <textarea id="translates[0].Requirements" name="Translates[0].Requirements" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Requirements" class="form-control addhoverinput" required></textarea>
+        </div>
 
 
 
@@ -68,6 +71,10 @@
         <div class="form-group  mt-2 mb-3">
             <label class="labelstyle" for="translates[1].Desc">Desc-en</label>
             <textarea id="translates[1].Desc" name="Translates[1].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
+        </div>
+         <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[1].Requirements">Requirements-en</label>
+            <textarea id="translates[1].Requirements" name="Translates[1].Requirements" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Requirements" class="form-control addhoverinput" required></textarea>
         </div>
 
 
@@ -90,7 +97,10 @@
             <textarea id="translates[2].Desc" name="Translates[2].Desc" asp-for="Translates.Where(x=>x.LangCode.Contains('r')).FirstOrDefault().Desc" class="form-control addhoverinput" required></textarea>
         </div>
 
-
+         <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="translates[2].Requirements">Requirements-en</label>
+            <textarea id="translates[2].Requirements" name="Translates[2].Requirements" asp-for="Translates.Where(x=>x.LangCode.Contains('e')).FirstOrDefault().Requirements" class="form-control addhoverinput" required></textarea>
+        </div>
 
 
         <button type="submit" style="color:green;" class="btn createbuttonn editbutton">Edit</button>
@@ -149,3 +159,16 @@
         })
                                 ///////////////// end of it
     </script>
+
+<script src="~/ckeditor/ckeditor.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var textareaElements = document.querySelectorAll("textarea[id^='translates']");
+
+        for (var i = 0; i < textareaElements.length; i++) {
+            if (textareaElements[i].id.includes("Requirements")) {
+                CKEDITOR.replace(textareaElements[i].id);
+            }
+        }
+    });
+</script>

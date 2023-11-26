@@ -39,6 +39,7 @@ namespace FabAdmin.Controllers
             if (user is null)
             {
                 ModelState.AddModelError("", "Email or Password is incorrect");
+                return View(model);
             };
 
             
@@ -55,10 +56,10 @@ namespace FabAdmin.Controllers
                 if (result.IsNotAllowed)
                 {
                     ModelState.AddModelError("", "Please Confirm Your Accaunt");
-                    return View(user);
+                    return View(model);
                 }
                 ModelState.AddModelError("", "Email or Password is Wrong");
-                return View(user);
+                return View(model);
             }
             
             if (await _userManager.IsInRoleAsync(user, "Admin") || true)

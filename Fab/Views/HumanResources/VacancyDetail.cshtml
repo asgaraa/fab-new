@@ -78,7 +78,19 @@
                     </div>
                 </div>
                 <div class="job_responsibilities">
-                    <p class="job_responsibilities_title">Vəzifə öhdəlikləri</p>
+                    @if (Model.LangCode == "az")
+                    {
+                        <p class="job_responsibilities_title">Vəzifə öhdəlikləri</p>
+                    }
+                    else if(Model.LangCode == "en")
+                    {
+                        <p class="job_responsibilities_title">Responsibilities</p>
+                    }
+                    else
+                    {
+                          <p class="job_responsibilities_title">Обязанности</p>
+                    }
+
                     <div class="job_responsibilities_content">
                         <p>
                             @Model.Vacancy?.Translates?.FirstOrDefault(m=>m.LangCode==Model.LangCode)?.Desc
@@ -87,7 +99,19 @@
                     </div>
                 </div>
                 <div class="requirements_for_vacancy">
-                    <p class="requirements_title">Tələblər</p>
+                    @if(Model.LangCode == "az")
+                    {
+                        <p class="requirements_title">Tələblər</p>
+                    }
+                    else if(Model.LangCode == "en")
+                    {
+                        <p class="requirements_title">Requirements</p>
+                    }
+                    else
+                    {
+                          <p class="requirements_title">Требования</p>
+                    }
+
                     <div class="requirements_list">
                         <p>
                             @Html.Raw(Model.Vacancy?.Translates?.FirstOrDefault(m=>m.LangCode==Model.LangCode)?.Requirements)
@@ -148,11 +172,11 @@
                         else if (Model.LangCode == "en")
                         {
                             <div class="mb-3">
-                                <input placeholder="Full Name" type="text" class="form-control form-control-style">
+                                <input placeholder="Full Name" id="Fullname" name="Fullname" type="text" class="form-control form-control-style">
                             </div>
                             <div class="flex-form">
-                                <input placeholder="Phone" type="text" class="form-control form-control-style">
-                                <input placeholder="E-mail" type="email" class="form-control form-control-style">
+                                <input placeholder="Phone" type="text" id="Tel" name="Tel" class="form-control form-control-style">
+                                <input placeholder="E-mail" type="email" id="Email" name="Email" class="form-control form-control-style">
                             </div>
                             <div class="middle-add_file">
                                 <div class="add_file mt-3">
@@ -168,11 +192,11 @@
                         else
                         {
                             <div class="mb-3">
-                                <input placeholder="Имя Фамилия" type="text" class="form-control form-control-style">
+                                <input placeholder="Имя Фамилия" id="Fullname" name="Fullname" type="text" class="form-control form-control-style">
                             </div>
                             <div class="flex-form">
-                                <input placeholder="Телефон" type="text" class="form-control form-control-style">
-                                <input placeholder="Электронная почта" type="email" class="form-control form-control-style">
+                                <input placeholder="Телефон" type="text" id="Tel" name="Tel" class="form-control form-control-style">
+                                <input placeholder="Электронная почта" type="email" id="Email" name="Email" class="form-control form-control-style">
                             </div>
                             <div class="middle-add_file">
                                 <div class="add_file mt-3">

@@ -24,9 +24,10 @@ namespace FabAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
+
             ViewBag.CurrentController = "Subcategory";
             ViewBag.CurrentAction = "Index";
-            var subctg = await _context.Subcategories.Include(m => m.Translates).ToListAsync();
+            var subctg = await _context.Subcategories.Include(m => m.Category).ThenInclude(m => m.Translates).Include(m => m.Translates).ToListAsync();
             return View(subctg);
         }
 

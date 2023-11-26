@@ -72,17 +72,28 @@
                                 else if (Model.LangCode == "en")
                                 {
                                     <p>Looking for?</p>
-
                                 }
                                 else
                                 {
                                     <p>Что Вы ищете?</p>
                                 }
-
                             </div>
                             <div class="custom-dropdown">
                                 <button class="custom-dropdown-button" onclick="toggleDropdown()">
-                                    <span id="selected-item">Mehsullar</span>
+                                    <span id="selected-item">
+                                        @if (Model.LangCode == "az")
+                                        {
+                                            <span>Məhsullar</span>
+                                        }
+                                        else if (Model.LangCode == "en")
+                                        {
+                                            <span>Products</span>
+                                        }
+                                        else
+                                        {
+                                            <span>Продукты</span>
+                                        }
+                                    </span>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none"
                                          class="custom-dropdown-icon">
                                         <path d="M4.95841 7.08333L8.50008 10.625L12.0417 7.08333" stroke="#484848" stroke-linecap="round"
@@ -90,31 +101,73 @@
                                     </svg>
                                 </button>
                                 <div class="custom-dropdown-content" id="custom-dropdown-content">
-                                    <div class="custom-dropdown-item" onclick="selectItem(this)">Mehsul 1</div>
-                                    <div class="custom-dropdown-item" onclick="selectItem(this)">Mehsul 2</div>
-                                    <div class="custom-dropdown-item" onclick="selectItem(this)">Mehsul 3</div>
+                                    @if (Model.LangCode == "az")
+                                    {
+                                        <div class="custom-dropdown-item" onclick="selectItem(this)">Məhsullar</div>
+                                        <div class="custom-dropdown-item" onclick="selectItem(this)">Media</div>
+                                    }
+                                    else if (Model.LangCode == "en")
+                                    {
+                                        <div class="custom-dropdown-item" onclick="selectItem(this)">Products</div>
+                                        <div class="custom-dropdown-item" onclick="selectItem(this)">Media</div>
+                                    }
+                                    else
+                                    {
+                                        <div class="custom-dropdown-item" onclick="selectItem(this)">Продукты</div>
+                                        <div class="custom-dropdown-item" onclick="selectItem(this)">Медиа</div>
+                                    }
                                 </div>
                             </div>
+
+                            <script>
+                                function search() {
+                                    var selectedItem = document.getElementById("selected-item").innerText;
+                                    var searchTerm = document.getElementById("custom-search").value;
+
+                                    debugger
+                                    console.log("selectedItem:", selectedItem);
+                                    console.log("searchTerm:", searchTerm);
+                                    debugger
+                                    var url;
+
+                                    
+
+
+                                    if (selectedItem === "Məhsullar" || selectedItem === "Products" || selectedItem === "Продукты") {
+                                        url = "/Product/SearchProduct?searchTerm=" + searchTerm;
+                                    } else if (selectedItem === "Media" || selectedItem === "Медиа") {
+                                        // Eğer "Media" veya "Медиа" seçildiyse
+                                        url = "/Media/Search?searchTerm=" + searchTerm;
+                                    } else if (selectedItem === "Məhsullar " || selectedItem === "Products " || selectedItem === "Продукты ") {
+                                        url = "/Product/SearchProduct?searchTerm=" + searchTerm;
+                                    }
+                                    debugger
+                                    console.log("url:", url);
+
+                                    // Yönlendirme yap
+                                    window.location.href = url;
+                                }
+                            </script>
                         </div>
+
+
 
                         <div class="custom-search-container">
                             @if (Model.LangCode == "az")
                             {
                                 <input type="text" id="custom-search" placeholder="Axtardığınız sözü yazın">
-                                <button class="custom-search-button" type="submit">Axtar</button>
+                                <button class="custom-search-button" type="submit" onclick="search()">Axtar</button>
                             }
                             else if (Model.LangCode == "en")
                             {
                                 <input type="text" id="custom-search" placeholder="Type the word you are looking for?">
-                                <button class="custom-search-button" type="submit">Search</button>
-
+                                <button class="custom-search-button" type="submit" onclick="search()">Search</button>
                             }
                             else
                             {
                                 <input type="text" id="custom-search" placeholder="Введите слово, которое вы ищете">
-                                <button class="custom-search-button" type="submit">Поиск</button>
+                                <button class="custom-search-button" type="submit" onclick="search()">Поиск</button>
                             }
-
                         </div>
                     </div>
                 </div>
@@ -182,7 +235,7 @@
                     @foreach (var category in Model.Categories)
                     {
                         <div class="element">
-                            <a>
+                            <a asp-route-categoryid="@category.Id" asp-controller="Product" asp-action="Index">
                             @*     @if (category.Image.Contains("http://134.209.118.89/"))
                                 {
                                     <img class="fab-ctg-img" src="@category.Image" alt="img">

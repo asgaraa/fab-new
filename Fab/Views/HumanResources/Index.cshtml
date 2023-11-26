@@ -159,7 +159,7 @@
                     
                 </div>
                 <div class="bizimle_calis_form">
-                    <form id="yourFormId" class="form-style" method="post" enctype="multipart/form-data" asp-action="SendCV" asp-controller="HumanResources">
+                    <form id="yourFormId" accept=".pdf" class="form-style" method="post" enctype="multipart/form-data" asp-action="SendCV" asp-controller="HumanResources">
                         @if (Model.LangCode == "az")
                         {
                             <div class="mb-3">
@@ -184,11 +184,11 @@
                         else if (Model.LangCode == "en")
                         {
                             <div class="mb-3">
-                                <input placeholder="Full Name" type="text" class="form-control form-control-style">
+                                <input placeholder="Full Name" id="Fullname" name="Fullname" type="text" class="form-control form-control-style">
                             </div>
                             <div class="flex-form">
-                                <input placeholder="Phone" type="text" class="form-control form-control-style">
-                                <input placeholder="E-mail" type="email" class="form-control form-control-style">
+                                <input placeholder="Phone" type="text" id="Tel" name="Tel" class="form-control form-control-style">
+                                <input placeholder="E-mail" type="email" id="Email" name="Email" class="form-control form-control-style">
                             </div>
                             <div class="middle-add_file">
                                 <div class="add_file mt-3">
@@ -204,11 +204,11 @@
                         else
                         {
                             <div class="mb-3">
-                                <input placeholder="Имя Фамилия" type="text" class="form-control form-control-style">
+                                <input placeholder="Имя Фамилия" id="Fullname" name="Fullname" type="text" class="form-control form-control-style">
                             </div>
                             <div class="flex-form">
-                                <input placeholder="Телефон" type="text" class="form-control form-control-style">
-                                <input placeholder="Электронная почта" type="email" class="form-control form-control-style">
+                                <input placeholder="Телефон" type="text" id="Tel" name="Tel" class="form-control form-control-style">
+                                <input placeholder="Электронная почта" type="email" id="Email" name="Email" class="form-control form-control-style">
                             </div>
                             <div class="middle-add_file">
                                 <div class="add_file mt-3">

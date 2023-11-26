@@ -30,7 +30,12 @@ namespace FabAdmin.Controllers
         {
             ViewBag.CurrentController = "Product";
             ViewBag.CurrentAction = "Index";
-            var products = await _context.Products.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
+            var products = await _context.Products
+                .Where(m => m.IsDeleted == false)
+                .Include(m => m.Translates)
+                .Include(m => m.Subcategory).ThenInclude(m => m.Translates)
+                .Include(m => m.Category).ThenInclude(m => m.Translates)
+                .ToListAsync();
 
             return View(products);
         }
@@ -273,6 +278,8 @@ namespace FabAdmin.Controllers
                     productImages.Add(newImage);
                 }
                 productImages.FirstOrDefault().IsMain = true;
+                dbProduct.Images = productImages;
+
             }
 
             if (product.Properties != null)
@@ -286,7 +293,7 @@ namespace FabAdmin.Controllers
                 await FileHelper.SaveFileAsync(logoPath, product.Properties);
                 //dbProduct.Properties = "http://134.209.118.89/" + "ModelImages/ProductImages/" + logoFileName;
                 dbProduct.Properties = logoFileName;
-
+                
 
             }
 

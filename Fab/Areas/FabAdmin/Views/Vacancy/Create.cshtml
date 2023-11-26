@@ -11,7 +11,7 @@
 
     <form method="post" enctype="multipart/form-data" asp-action="Create" asp-controller="Vacancy">
 
-        <div class="form-group  mt-2 mb-4 my-5">
+       @* <div class="form-group  mt-2 mb-4 my-5">
             <div class="image-uploaddd">
                 <label class="labelstyle" for="iconfile">
                   
@@ -20,7 +20,7 @@
                 <output style="display:flex;" id="output1"></output>
                 <span style="color:gray;">.svg file, max-300kbt</span>
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group  mt-2 mb-3">
             <label class="labelstyle" for="translates[0].LangCode">Language Code</label>
@@ -38,13 +38,12 @@
             <label class="labelstyle" for="translates[0].Desc">Desc-az</label>
             <textarea id="editor1" name="editor1" class="form-control addhoverinput" rows="10" cols="80" required></textarea>
         </div>
+         <div class="form-group  mt-2 mb-3">
+                <label class="labelstyle" for="translates[0].Requirements">Requirements</label>
+                <textarea id="translates[0].Requirements " name="Translates[0].Requirements" class="form-control addhoverinput" required></textarea>
+            </div>
 
-        @section Scripts{
-            <script src="~/ckeditor/ckeditor.js"></script>
-
-            <script>CKEDITOR.replace("editor1");    </script>
-        }
-
+   
 
         <div class="form-group  mt-2 mb-3">
             <label class="labelstyle" for="translates[1].LangCode">Language Code</label>
@@ -61,6 +60,10 @@
             <label class="labelstyle" for="translates[1].Desc">Desc-en</label>
             <textarea id="translates[1].Desc" name="Translates[1].Desc" class="form-control addhoverinput" required></textarea>
         </div>
+          <div class="form-group  mt-2 mb-3">
+                <label class="labelstyle" for="translates[1].Requirements">Requirements</label>
+                <textarea id="translates[1].Requirements " name="Translates[1].Requirements" class="form-control addhoverinput" required></textarea>
+            </div>
 
 
 
@@ -81,16 +84,19 @@
             <label class="labelstyle" for="translates[2].Desc">Desc-ru</label>
             <textarea id="translates[2].Desc" name="Translates[2].Desc" class="form-control addhoverinput" required></textarea>
         </div>
-
+          <div class="form-group  mt-2 mb-3">
+                <label class="labelstyle" for="translates[2].Requirements">Requirements</label>
+                <textarea id="translates[2].Requirements " name="Translates[2].Requirements" class="form-control addhoverinput" required></textarea>
+            </div>
 
 
 
         <button type="submit"  class="btn createbuttonn">Create</button>
     </form>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+@*    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
-            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>*@
 
 
     @*////////////////////////////////////////////////// image preview unchange*@
@@ -141,3 +147,15 @@
                         ///////////////// end of it
     </script>*@
 
+<script src="~/ckeditor/ckeditor.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var textareaElements = document.querySelectorAll("textarea[id^='translates']");
+
+        for (var i = 0; i < textareaElements.length; i++) {
+            if (textareaElements[i].id.includes("Requirements")) {
+                CKEDITOR.replace(textareaElements[i].id);
+            }
+        }
+    });
+</script>

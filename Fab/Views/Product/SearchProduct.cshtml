@@ -1,0 +1,93 @@
+﻿@model Fab.ViewModels.ProductVM.ProductSearchVM
+
+
+<main>
+    <section id="head_bg" style="background-image: url(~/assets/img/insan.resurslari/bg-other.png);">
+        <div class="container">
+            <div class="ir-title">
+                @if (Model.LangCode == "az")
+                {
+                    <div class="ir-title-links">
+                        <a >Ana səhifə</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a>Axtarış nəticəsi</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Axtarış nəticəsi</p>
+                    </div>
+                }else if(Model.LangCode == "en")
+                {
+                    <div class="ir-title-links">
+                        <a>Home</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a>Search Results</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Search Results</p>
+                    </div>
+
+                }
+                else
+                {
+                    <div class="ir-title-links">
+                        <a >Главная</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a >Результаты поиска</a>
+                    </div>
+                    <div class="ir-title-text">
+                        <p>Результаты поиска</p>
+                    </div>
+
+                }
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="All_Mehsullar">
+        <div class="container">
+
+            <div class="mehsullar-cards-grid-4">
+                @if (Model.Products.Count() == 0)
+                {
+                    @if (Model.LangCode == "az")
+                    {
+                        <h3>Axtarışınıza uyğun nəticə tapılmadı.</h3>
+                    }else if (Model.LangCode == "en")
+                    {
+                        <h3>No results found for your search.</h3>
+                    }
+                    else
+                    {
+                        <h3>Результаты поиска не найдены.</h3>
+                    }
+                }
+                @foreach (var product in Model.Products)
+                {
+                    <div class="mehsullar-card">
+                        <div class="mehsullar-card-img">
+                            <a href="mehsullar-detail.html">
+                                @if (product.Images.FirstOrDefault().Image.Contains("http"))
+                                {
+                                    <img src="@product.Images.FirstOrDefault().Image" alt="mehsullar">
+                                }
+                                else
+                                {
+                                    <img src="~/ModelImages/ProductImages/@product.Images.FirstOrDefault().Image" alt="mehsullar">
+                                }
+
+                            </a>
+                        </div>
+                        <div class="mehsullar-card-texts">
+                            <p class="mehsullar-card-title">@product.Translates.FirstOrDefault().Name</p>
+                            <p class="mehsullar-card-desc">@product.Translates.FirstOrDefault().Size</p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+        </div>
+    </section>
+</main>
+

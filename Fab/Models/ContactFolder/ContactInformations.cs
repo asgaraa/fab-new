@@ -7,7 +7,7 @@
         //isnotrequiredonfrontside
         public string? Tel2 { get; set; }
         public string? Tel3 { get; set; }
-        //public string? Fax1{ get; set; }
+        public string Fax1 { get; set; }
         public string SocialLink1 { get; set; }
         public string SocialLink2 { get; set; }
         public string SocialLink3 { get; set; }

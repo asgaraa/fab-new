@@ -58,9 +58,11 @@
 
                 <div style="padding-bottom: 10px;">
                     <div class="flex-entm" style="border-radius:9px;">
-                        @translate.Name
                         <a class="name-entm">
                             @translate.Name
+                        </a>
+                        <a class="name-entm">
+                            @item.Category.Translates.FirstOrDefault(x => x.LangCode == "en").Name
                         </a>
                         <div>
                             <a asp-action="Delete" asp-controller="Subcategory" asp-route-id="@item.Id" style="text-align:right; text-decoration:none; margin-right:20px">

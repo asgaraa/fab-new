@@ -1,0 +1,85 @@
+﻿@model Fab.Models.ContactFolder.Contact;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="entert-form" style=" padding-top: 70px ; padding-left: 50px;">
+
+    <h1>Contact Mesage</h1>
+
+
+    <form>
+
+
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Fullname">Fullname</label>
+            <textarea id="Fullname" name="Fullname" asp-for="Fullname" class="form-control addhoverinput" disabled></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Email">Email</label>
+            <textarea id="Email" name="Email" asp-for="Email" class="form-control addhoverinput" disabled></textarea>
+        </div>
+
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Message">Message</label>
+            <textarea id="Message" name="Message" asp-for="Message" class="form-control addhoverinput" disabled></textarea>
+        </div>
+
+    </form>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+    @*////////////////////////////////////////////////// image preview unchange*@
+    <script>
+        const outputaz = document.querySelector("#output1");
+
+        const inputaz = document.querySelector(".imagepreview1");
+        let imagesArrayaz = [];
+
+        function displayImagesone() {
+            let images = ""
+            imagesArrayaz.forEach((image, index) => {
+                images += `<div class="image" style="display:flex;" >
+                                                                                <img src="${URL.createObjectURL(image)}" alt="image" style="width:100px; height:100px; display:block;">
+                                                                            <span onclick="deleteImageaz(${index})" style="cursor:pointer;">&times;</span>
+                                                                          </div>`
+            })
+            outputaz.innerHTML = images
+
+
+        }
+        function deleteImageaz(index) {
+            imagesArrayaz.splice(index, 1)
+            inputaz.value = ""; // Clear the input element's value
+            updateInputFilesaz();
+            displayImagesone();
+
+        }
+
+        function updateInputFilesaz() {
+            const newFiles = new DataTransfer();
+            imagesArrayaz.forEach((image) => {
+                newFiles.items.add(image);
+            });
+            inputaz.files = newFiles.files;
+        }
+
+        inputaz.addEventListener("change", () => {
+            //const files = input.files
+            //for (let i = 0; i < files.length; i++) {
+            //    imagesArray.push(files[i])
+            //}
+            const filesaz = Array.from(inputaz.files);
+            imagesArrayaz = imagesArrayaz.concat(filesaz);
+
+            displayImagesone();
+        })
+                                                ///////////////// end of it
+    </script>
+

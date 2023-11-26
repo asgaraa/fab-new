@@ -1,0 +1,79 @@
+﻿@model Fab.Models.CVFolder.CV;
+@{
+    ViewData["Title"] = "Detail";
+    
+}
+<div class="entert-form" style="padding-left: 50px;">
+    <h1 class="text-change-size">Edit Product</h1>
+    <form>
+        <div class="form-group  mt-5 mb-4 my-5">
+            <div class="image-uploaddd">
+                <label class="labelstyle addimages-lbl" for="iconfile">
+                    <div class="file-input" style="border:none;">
+                        <h3 class="mt-1 addlogoclass" style="color: black;">
+                            <span>+</span>  Add img
+                            <input type="file" id="Images" name="Images" class="form-control-file addhoverinput imagepreview1" onchange="CreateImgPre(this)" accept=".jpg,.png" />
+                        </h3>
+                        
+                    </div>
+                </label>
+                <output style="display:flex;" id="output1"></output>
+                <span style="color:gray;">.svg file, max-300kbt</span>
+            </div>
+        </div>
+
+
+        <div class="form-group  mt-2 mb-4 my-5">
+            <div class="File-uploaddd">
+
+               
+                <output style="display:flex;" id="restaurantmenupdf">
+
+                    <iframe src="~/ModelImages/ProductImages/@Model.FileName" id="PdfPreviewbanner" style=" height: 300px;border: none;width:28%;"></iframe>
+                </output>
+
+
+
+                <output style="display:flex;" id="output1"></output>
+                <span style="color:gray;">(  .pdf file, max-1300kbt )</span>
+            </div>
+        </div>
+        
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Brand">Fullname</label>
+            <textarea id="Fullname" name="Fullname" asp-for="Fullname" class="form-control addhoverinput" disabled></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="ProductCode">Email</label>
+            <textarea id="Email" name="Email" asp-for="Email" class="form-control addhoverinput" disabled></textarea>
+        </div>
+        <div class="form-group  mt-2 mb-3">
+            <label class="labelstyle" for="Phone">Phone</label>
+            <textarea id="Tel" name="Tel" asp-for="Tel" class="form-control addhoverinput" disabled></textarea>
+        </div>
+        @*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+    </form>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+
+        function imageIsLoaded(e) {
+
+            $('#pdfprew' + abc)
+                .attr('src', e.target.result);
+        };
+
+
+        function CreatePdfPre(inputmenu) {
+            $('#restaurantmenupdf').css("display", "block")
+            //$("restaurantmenupdf").css("display", "block")
+            if (inputmenu.files[0]) {
+                var uploadimg = new FileReader();
+                uploadimg.onload = function (displayimg) {
+                    $("#PdfPreviewbanner").attr('src', displayimg.target.result);
+                }
+                uploadimg.readAsDataURL(inputmenu.files[0]);
+            }
+        }
+    </script>

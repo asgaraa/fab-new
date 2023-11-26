@@ -21,7 +21,9 @@
     <div class="footer-list-items">
         @foreach (var category in Model.Categories)
         {
-            <p>@category.Translates.FirstOrDefault().Name</p>
+            <p>
+                <a style="color:#555" asp-route-categoryid="@category.Id" asp-controller="Product" asp-action="Index">@category.Translates.FirstOrDefault().Name</a>
+            </p>
         }
         
        

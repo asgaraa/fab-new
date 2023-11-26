@@ -1,7 +1,9 @@
 ﻿using Fab.Data;
 using Fab.Models.BlogsFolder;
+using Fab.Models.NewsFolder;
 using Fab.ViewModels;
 using Fab.ViewModels.Blog;
+using Fab.ViewModels.ProductVM;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -29,7 +31,6 @@ namespace Fab.Controllers
             {
                 lang = lang.ToLower();
             }
-
             MediaPageVM media = new()
             {
                 Blogs = await _context.Blogs.Take(6).Include(m => m.Translates.Where(m => m.LangCode == lang)).ToListAsync(),
@@ -37,9 +38,49 @@ namespace Fab.Controllers
                 Presses = await _context.Presses.Take(6).Include(m => m.Translates.Where(m => m.LangCode == lang)).ToListAsync(),
                 LangCode = lang,
             };
+            return View(media);
+        }
 
+        public async Task<IActionResult> Search(string searchTerm)
+        {
+            searchTerm = searchTerm.ToLower();
+            var lang = Request.Cookies["selectedLanguage"];
+            if (string.IsNullOrEmpty(lang))
+            {
+                lang = "az";
+            }
+            else
+            {
+                lang = lang.ToLower();
+            }
+            // Linq kullanarak arama işlemini gerçekleştirelim
+            
 
+            MediaPageVM media = new MediaPageVM
+            {
+                LangCode = lang,
+                Blogs = await _context.Blogs
+        .Include(m => m.Translates.Where(M => M.LangCode == lang))
+        .Where(blog => blog.Translates.Any(translate =>
+            translate.Header.ToLower().Contains(searchTerm) || translate.Desc.ToLower().Contains(searchTerm)))
+        .Distinct()
+        .ToListAsync(),
+                News = await _context.News
+        .Include(m => m.Translates.Where(M => M.LangCode == lang))
+        .Where(news => news.Translates.Any(translate =>
+                   translate.Header.ToLower().Contains(searchTerm) || translate.Desc.ToLower().Contains(searchTerm)))
+        .Distinct()
+                    .ToListAsync(),
+                Presses = await _context.Presses
+                    .Include(m => m.Translates.Where(M => M.LangCode == lang))
+                    .Where(press => press.Translates.Any(translate =>
+                   translate.Header.ToLower().Contains(searchTerm) || translate.Desc.ToLower().Contains(searchTerm)))
+        .Distinct()
+        .ToListAsync(),
+                
+            };
 
+            // Sonuçları bir view'e gönderelim
             return View(media);
         }
 
@@ -61,11 +102,11 @@ namespace Fab.Controllers
                 Blogs = await _context.Blogs.Take(6).Include(m => m.Translates.Where(m => m.LangCode == lang)).ToListAsync(),
 
                 LangCode = lang,
-                Blog= await _context.Blogs.Include(m=>m.Translates.Where(m=>m.LangCode== lang)).FirstOrDefaultAsync(m=>m.Id==id),
+                Blog = await _context.Blogs.Include(m => m.Translates.Where(m => m.LangCode == lang)).FirstOrDefaultAsync(m => m.Id == id),
             };
 
-            
-           
+
+
 
 
 
