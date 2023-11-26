@@ -112,6 +112,62 @@ namespace Fab.Controllers
 
             return View(blogvm);
         }
+
+        public async Task<IActionResult> NewsDetail(int id)
+        {
+            var lang = Request.Cookies["selectedLanguage"];
+            if (string.IsNullOrEmpty(lang))
+            {
+                lang = "az";
+            }
+            else
+            {
+                lang = lang.ToLower();
+            }
+
+            NewsVM blogvm = new NewsVM()
+            {
+                News = await _context.News.Take(6).Include(m => m.Translates.Where(m => m.LangCode == lang)).ToListAsync(),
+
+                LangCode = lang,
+                New = await _context.News.Include(m => m.Translates.Where(m => m.LangCode == lang)).FirstOrDefaultAsync(m => m.Id == id),
+            };
+
+
+
+
+
+
+            return View(blogvm);
+        }
+
+        public async Task<IActionResult> PressDetail(int id)
+        {
+            var lang = Request.Cookies["selectedLanguage"];
+            if (string.IsNullOrEmpty(lang))
+            {
+                lang = "az";
+            }
+            else
+            {
+                lang = lang.ToLower();
+            }
+
+            PressesVM blogvm = new PressesVM()
+            {
+                Presses = await _context.Presses.Take(6).Include(m => m.Translates.Where(m => m.LangCode == lang)).ToListAsync(),
+
+                LangCode = lang,
+                Press = await _context.Presses.Include(m => m.Translates.Where(m => m.LangCode == lang)).FirstOrDefaultAsync(m => m.Id == id),
+            };
+
+
+
+
+
+
+            return View(blogvm);
+        }
         //public async Task<List<SearchResultVM>> Search(string keyword)
         //{
         //    var lang = Request.Cookies["selectedLanguage"];

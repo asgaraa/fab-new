@@ -110,7 +110,7 @@
                         <div class="vakansiyalar-box">
                             <p>@vacancy.Translates.FirstOrDefault().Position</p>
                             <p>@vacancy.Translates.FirstOrDefault().Desc </p>
-                            <a>
+                            <a asp-controller="HumanResources" asp-action="VacancyDetail" asp-route-id="@vacancy.Id">
                                 @if (Model.LangCode == "az")
                                 {
                                     <p>İşin təsviri</p>
@@ -124,7 +124,7 @@
                                     <p>Описание работы</p>
                                 }
 
-                                <img src="./assets/img/vakansiyalar-link.svg" alt="icon >>">
+                                <img src="~/assets/img/vakansiyalar-link.svg" alt="icon >>">
                             </a>
                         </div>
 
