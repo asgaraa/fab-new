@@ -44,6 +44,7 @@
     <Folder Include="wwwroot\ModelImages\HumanResourcesImages\" />
     <Folder Include="wwwroot\ModelImages\AchivementImages\" />
     <Folder Include="wwwroot\ModelImages\ActivityImages\" />
+    <Folder Include="wwwroot\ModelImages\UserCv\" />
     <Folder Include="wwwroot\ModelImages\VisionImages\" />
     <Folder Include="wwwroot\ModelImages\PressImages\" />
     <Folder Include="wwwroot\ModelImages\PressImages\" />

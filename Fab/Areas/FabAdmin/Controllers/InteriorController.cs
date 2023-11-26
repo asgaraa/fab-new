@@ -25,6 +25,8 @@ namespace FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Interior";
+            ViewBag.CurrentAction = "Index";
             var interior = await _context.Interiors.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(interior);
         }
@@ -67,7 +69,7 @@ namespace FabAdmin.Controllers
                 {
 
                     //Image = "http://134.209.118.89/" + "ModelImages/InteriorImages/" + logoFileName,
-                    Image = logoFileName,
+                    Image =  logoFileName,
 
                     Translates = interiorTranslates,
                 };

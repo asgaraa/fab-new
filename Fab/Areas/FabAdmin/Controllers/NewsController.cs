@@ -25,6 +25,8 @@ namespace FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "News";
+            ViewBag.CurrentAction = "Index";
             var news = await _context.News.Where(m => m.IsDeleted == false)
                 .Include(m => m.Translates)
                 .ToListAsync();
@@ -69,7 +71,7 @@ namespace FabAdmin.Controllers
                 {
 
                     //Image = "http://134.209.118.89/" + "ModelImages/NewsImages/" + logoFileName,
-                    Image = logoFileName,
+                    Image =  logoFileName,
 
                     Translates = newsTranslates,
                 };

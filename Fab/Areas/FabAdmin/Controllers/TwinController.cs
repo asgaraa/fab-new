@@ -25,6 +25,8 @@ namespace FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Twin";
+            ViewBag.CurrentAction = "Index";
             var twin = await _context.Twins.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(twin);
         }
@@ -69,9 +71,8 @@ namespace FabAdmin.Controllers
                 {
                     //WideImage = "http://134.209.118.89/" + "ModelImages/TwinImages/" + logoFileName2,
                     //Image = "http://134.209.118.89/" + "ModelImages/TwinImages/" + logoFileName,
-
                     WideImage = logoFileName2,
-                    Image = logoFileName,
+                    Image =logoFileName,
                     Translates = twinTranslates,
                 };
 
@@ -114,7 +115,7 @@ namespace FabAdmin.Controllers
                   essn.Image);
                 FileHelper.DeleteFile(filebanner);
                 //essn.Image = "http://134.209.118.89/" + "ModelImages/TwinImages/" + logoFileName;
-                essn.Image = logoFileName;
+                essn.Image =  logoFileName;
 
 
             }

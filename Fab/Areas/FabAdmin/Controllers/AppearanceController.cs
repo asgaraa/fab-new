@@ -25,6 +25,8 @@ namespace Fab.Areas.FabAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Appearance";
+            ViewBag.CurrentAction = "Index";
             var appear = await _context.AppearanceFields.Include(m => m.Translates).ToListAsync();
             return View(appear);
         }

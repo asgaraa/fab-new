@@ -25,6 +25,8 @@ namespace Fab.Areas.FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Vision";
+            ViewBag.CurrentAction = "Index";
             var vision = await _context.Visions.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(vision);
         }

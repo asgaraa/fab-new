@@ -25,6 +25,8 @@ namespace FabAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Ads";
+            ViewBag.CurrentAction = "Index";
             var ads = await _context.Ads.Where(m => m.IsDeleted == false).ToListAsync();
             return View(ads);
         }
@@ -102,7 +104,7 @@ namespace FabAdmin.Controllers
                   essn.Image);
                 FileHelper.DeleteFile(filebanner);
                 //essn.Image = "http://134.209.118.89/" + "ModelImages/AdsImages/" + logoFileName;
-                essn.Image =logoFileName;
+                essn.Image = logoFileName;
 
 
             }

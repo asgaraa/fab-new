@@ -15,7 +15,7 @@ namespace Fab.ViewModels
         public List<Banner> Banners { get; set; }
         public List<Category> Categories { get; set; }
         public List<News> News { get; set; }
-        public List<Blog> Blogs { get; set; }
+        public List<Fab.Models.BlogsFolder.Blog> Blogs { get; set; }
         public List<Interior> Interiors { get; set; }
         public List<Twin> Twins { get; set; }
         public List<Corporate> Corporates { get; set; }

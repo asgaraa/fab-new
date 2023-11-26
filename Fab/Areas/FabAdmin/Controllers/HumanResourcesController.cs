@@ -65,7 +65,8 @@ namespace FabAdmin.Controllers
                 {
 
                     //Image = "http://134.209.118.89/" + "ModelImages/HumanResourcesImages/" + logoFileName,
-                    //Image = logoFileName,
+                    Image =  logoFileName,
+
                     Translates = humanResourcesTranslates,
                 };
 
@@ -115,7 +116,7 @@ namespace FabAdmin.Controllers
                   essn.Image);
                 FileHelper.DeleteFile(filebanner);
                 //essn.Image = "http://134.209.118.89/" + "ModelImages/HumanResourcesImages/" + logoFileName;
-                essn.Image =logoFileName;
+                essn.Image =  logoFileName;
 
 
             }

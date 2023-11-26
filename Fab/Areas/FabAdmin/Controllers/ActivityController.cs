@@ -23,6 +23,8 @@ namespace Fab.Areas.FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Activity";
+            ViewBag.CurrentAction = "Index";
             var about = await _context.Activities.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(about);
         }
@@ -100,6 +102,8 @@ namespace Fab.Areas.FabAdmin.Controllers
                 await FileHelper.SaveFileAsync(logoPath, activity.ImageFile);
 
                 //var pathbanner = dbActivity.Image.Replace("http://134.209.118.89/", "");
+            
+
 
                 var filebanner = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/ActivityImages/",
                   dbActivity.Image);

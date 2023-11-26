@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\Fab NEW\\FabLastProduct\\Fab\\Fab.csproj": {}
+    "C:\\Projects\\fabtest\\FabLastProduct\\Fab\\Fab.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\Fab NEW\\FabLastProduct\\Fab\\Fab.csproj": {
+    "C:\\Projects\\fabtest\\FabLastProduct\\Fab\\Fab.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\Fab NEW\\FabLastProduct\\Fab\\Fab.csproj",
+        "projectUniqueName": "C:\\Projects\\fabtest\\FabLastProduct\\Fab\\Fab.csproj",
         "projectName": "Fab",
-        "projectPath": "C:\\Projects\\Fab NEW\\FabLastProduct\\Fab\\Fab.csproj",
+        "projectPath": "C:\\Projects\\fabtest\\FabLastProduct\\Fab\\Fab.csproj",
         "packagesPath": "C:\\Users\\asger\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\Fab NEW\\FabLastProduct\\Fab\\obj\\",
+        "outputPath": "C:\\Projects\\fabtest\\FabLastProduct\\Fab\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

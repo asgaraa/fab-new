@@ -26,6 +26,8 @@ namespace FabAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Blog";
+            ViewBag.CurrentAction = "Index";
             var blogs = await _context.Blogs.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(blogs);
         }
@@ -68,6 +70,7 @@ namespace FabAdmin.Controllers
 
                     //Image = "http://134.209.118.89/" + "ModelImages/BlogImages/" + logoFileName,
                     Image =  logoFileName,
+
                     Translates = blogTranslates,
                 };
 
@@ -111,7 +114,9 @@ namespace FabAdmin.Controllers
                 var filebanner = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/BlogImages/",
                   essn.Image);
                 FileHelper.DeleteFile(filebanner);
-                essn.Image =  logoFileName;
+                //essn.Image = "http://134.209.118.89/" + "ModelImages/BlogImages/" + logoFileName;
+                essn.Image = logoFileName;
+
 
             }
             essn.Translates.Clear();

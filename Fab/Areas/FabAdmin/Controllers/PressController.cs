@@ -27,6 +27,8 @@ namespace FabAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Press";
+            ViewBag.CurrentAction = "Index";
             var presses = await _context.Presses.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(presses);
         }
@@ -68,7 +70,7 @@ namespace FabAdmin.Controllers
                 {
 
                     //Image = "http://134.209.118.89/" + "ModelImages/PressImages/" + logoFileName,
-                    Image =logoFileName,
+                    Image =  logoFileName,
 
                     Translates = pressTranslates,
                 };

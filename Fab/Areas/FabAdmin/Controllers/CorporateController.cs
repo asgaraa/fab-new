@@ -24,6 +24,8 @@ namespace FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Corporate";
+            ViewBag.CurrentAction = "Index";
             var corporate = await _context.Corporates.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(corporate);
         }
@@ -75,8 +77,8 @@ namespace FabAdmin.Controllers
                     //FrontImage = "http://134.209.118.89/" + "ModelImages/CorporateImages/" + logoFileName2,
                     //BackgroundImage = "http://134.209.118.89/" + "ModelImages/CorporateImages/" + logoFileName3,
                     Image = logoFileName,
-                    FrontImage = logoFileName2,
-                    BackgroundImage = logoFileName3,
+                    FrontImage =logoFileName2,
+                    BackgroundImage =  logoFileName3,
                     Translates = corporateTranslates,
                 };
 
@@ -139,7 +141,7 @@ namespace FabAdmin.Controllers
                   essn.FrontImage);
                 FileHelper.DeleteFile(filebanner2);
                 //essn.FrontImage = "http://134.209.118.89/" + "ModelImages/CorporateImages/" + logoFileName2;
-                essn.FrontImage = logoFileName2;
+                essn.FrontImage =  logoFileName2;
 
 
             }
@@ -157,7 +159,7 @@ namespace FabAdmin.Controllers
                   essn.BackgroundImage);
                 FileHelper.DeleteFile(filebanner3);
                 //essn.BackgroundImage = "http://134.209.118.89/" + "ModelImages/CorporateImages/" + logoFileName3;
-                essn.BackgroundImage =  logoFileName3;
+                essn.BackgroundImage =logoFileName3;
 
 
             }

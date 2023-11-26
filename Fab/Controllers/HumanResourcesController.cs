@@ -135,7 +135,8 @@ namespace Fab.Controllers
             }
 
             string logoFileName = Guid.NewGuid().ToString() + "_" + cv.File.FileName;
-            string logoPath = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/Files/UserCVs/", logoFileName);
+            //string logoPath = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/Files/UserCVs/", logoFileName);
+            string logoPath = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/UserCv", logoFileName);
             await FileHelper.SaveFileAsync(logoPath, cv.File);
 
             CV newCv = new()

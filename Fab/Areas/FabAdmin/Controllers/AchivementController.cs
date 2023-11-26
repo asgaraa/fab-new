@@ -24,6 +24,8 @@ namespace Fab.Areas.FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Achivement";
+            ViewBag.CurrentAction = "Index";
             var achivement = await _context.Achivements.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(achivement);
         }
@@ -62,7 +64,7 @@ namespace Fab.Areas.FabAdmin.Controllers
                 {
 
                     //Image = "http://134.209.118.89/" + "ModelImages/AchivementImages/" + logoFileName,
-                    Image =logoFileName,
+                    Image = logoFileName,
 
                     Translates = achviementTranslates,
                 };
@@ -104,7 +106,7 @@ namespace Fab.Areas.FabAdmin.Controllers
                 var filebanner = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/AchivementImages/", dbAchivement.Image);
                 FileHelper.DeleteFile(filebanner);
                 //dbAchivement.Image = "http://134.209.118.89/" + "ModelImages/AchivementImages/" + logoFileName;
-                dbAchivement.Image = logoFileName;
+                dbAchivement.Image =logoFileName;
 
             }
             dbAchivement.Translates.Clear();
@@ -135,6 +137,7 @@ namespace Fab.Areas.FabAdmin.Controllers
             if (dbAchivement.Image != null && dbAchivement.Image != "")
             {
                 //var pathbanner = dbAchivement.Image.Replace("http://134.209.118.89/", "");
+
                 var filebanner = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/AchivementImages/", dbAchivement.Image);
                 FileHelper.DeleteFile(filebanner);
             }

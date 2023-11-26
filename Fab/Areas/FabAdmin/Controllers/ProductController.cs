@@ -28,6 +28,8 @@ namespace FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Product";
+            ViewBag.CurrentAction = "Index";
             var products = await _context.Products.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
 
             return View(products);
@@ -96,8 +98,8 @@ namespace FabAdmin.Controllers
                 ProductImages newImage = new()
                 {
                     //Image = "http://134.209.118.89/" + "ModelImages/ProductImages/" + fileName,
-                    //Image = "ModelImages/ProductImages/" + fileName,
-                    Image =fileName,
+                    Image =  fileName,
+
                 };
                 productImages.Add(newImage);
             }
@@ -117,8 +119,8 @@ namespace FabAdmin.Controllers
                 Images = productImages,
                 Translates = productTranslates,
                 //Properties = "http://134.209.118.89/" + "ModelImages/ProductImages/"+ logoFileName,
-                //Properties ="ModelImages/ProductImages/" + logoFileName,
-                Properties = logoFileName,
+                Properties =  logoFileName,
+
                 AppearanceFieldId = model.AppearId,
                 ApplicationFieldId=model.ApplicatId,
                 CharacteristicId=model.CharId
@@ -283,8 +285,7 @@ namespace FabAdmin.Controllers
                 string logoPath = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/ProductImages/", logoFileName);
                 await FileHelper.SaveFileAsync(logoPath, product.Properties);
                 //dbProduct.Properties = "http://134.209.118.89/" + "ModelImages/ProductImages/" + logoFileName;
-
-                dbProduct.Properties =logoFileName;
+                dbProduct.Properties = logoFileName;
 
 
             }

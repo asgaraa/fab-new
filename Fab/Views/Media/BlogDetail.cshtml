@@ -1,0 +1,201 @@
+﻿@model Fab.ViewModels.Blog.BlogVM
+@{
+    ViewData["Title"] = "BlogDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <section id="head_bg" style="background-image: url(./assets/img/insan.resurslari/bg-other.png);">
+        <div class="container">
+            <div class="ir-title">
+                <div class="ir-title-links">
+                    @if (Model.LangCode == "az")
+                    {
+                        <a asp-controller="Home" asp-action="Index">Ana səhifə</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Media</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Blog</a>
+                    }
+                    else if (Model.LangCode == "en")
+                    {
+                        <a asp-controller="Home" asp-action="Index">Home page</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Media</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Blog</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Home" asp-action="Index">Главная</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Медиа</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Блог</a>
+                    }
+                </div>
+                <div class="ir-title-text">
+                    @if (Model.LangCode == "az")
+                    {
+                        <p>Blog</p>
+                    }
+                    else if (Model.LangCode == "en")
+                    {
+                        <p>Blog</p>
+                    }
+                    else
+                    {
+                        <p>Блог</p>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="media-detail">
+        <div class="container">
+            <div class="media-detail-flex">
+                <div class="detail-left">
+                    <div class="detail-left-title">
+                        @Model.Blog?.Translates.FirstOrDefault(m=>m.LangCode==Model.LangCode)?.Header
+                        <p></p>
+                    </div>
+                    <div class="detail-elements">
+                        <div class="detail-left-date">
+
+                            <img src="~/assets/img/calendar.svg" alt="calendar-icon">
+                            <p>15 sentyabr</p>
+
+                        </div>
+                        <div class="share-link">
+                            <a href="#"><img src="~/assets/img/share.svg" alt="share icon svg"></a>
+                        </div>
+                    </div>
+                    <div class="media-detail-img">
+                        <img src="~/ModelImages/BlogImages/@Model.Blog.Image" alt="news_detail_img">
+                    </div>
+                    <div class="detail-info-text">
+                        <p>
+                          @Model.Blog?.Translates.FirstOrDefault(m=>m.LangCode==Model.LangCode)?.Desc
+                        </p>
+                    </div>
+
+                </div>
+                <div class="other-news">
+                    <div class="other-news-title">
+                        @if (Model.LangCode == "az")
+                        {
+                            <p>Digər bloq yazıları</p>
+                        }
+                        else if (Model.LangCode == "en")
+                        {
+                            <p>Other blog posts</p>
+                        }
+                        else 
+                        {
+                            <p>Другие блоговые записи</p>
+                        }
+                       
+                    </div>
+                    <div class="other-news-cards">
+                        @foreach (var item in Model.Blogs)
+                        {
+                            <div class="other-news-card">
+                                <div class="other-news-card-img">
+                                    <a href="#">
+                                        <img src="~/ModelImages/BlogImages/@item.Image" alt="other-news card img">
+                                    </a>
+                                </div>
+                                <div class="other-news-card-texts">
+                                    <p class="other-news-card-texts-p_1">
+                                        @item.Translates.FirstOrDefault(m=>m.LangCode==Model.LangCode).Header
+                                    </p>
+                                    <div class="detail-left-date">
+
+                                        <img src="~/assets/img/calendar.svg" alt="calendar-icon">
+                                        <p> @item.CreatedDate</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                      @*   <div class="other-news-card">
+                            <div class="other-news-card-img">
+                                <a href="#">
+                                    <img src="./assets/img/bloq1.png" alt="other-news card img">
+                                </a>
+                            </div>
+                            <div class="other-news-card-texts">
+                                <p class="other-news-card-texts-p_1">
+                                    Ofis mebelini necə seçməli
+                                </p>
+                                <div class="detail-left-date">
+
+                                    <img src="./assets/img/calendar.svg" alt="calendar-icon">
+                                    <p> 15 sentyabr</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-news-card">
+                            <div class="other-news-card-img">
+                                <a href="#">
+                                    <img src="./assets/img/bloq2.png" alt="other-news card img">
+                                </a>
+                            </div>
+                            <div class="other-news-card-texts">
+                                <p class="other-news-card-texts-p_1">
+                                    Abşeronda yeni mağazamız açıldı, sizi yeni....
+                                </p>
+                                <div class="detail-left-date">
+
+                                    <img src="./assets/img/calendar.svg" alt="calendar-icon">
+                                    <p>15 sentyabr</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-news-card">
+                            <div class="other-news-card-img">
+                                <a href="#">
+                                    <img src="./assets/img/media/m4.png" alt="other-news card img">
+                                </a>
+                            </div>
+                            <div class="other-news-card-texts">
+                                <p class="other-news-card-texts-p_1">
+                                    Abşeronda yeni mağazamız açıldı
+                                </p>
+                                <div class="detail-left-date">
+
+                                    <img src="./assets/img/calendar.svg" alt="calendar-icon">
+                                    <p> 15 sentyabr</p>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="other-news-card">
+                            <div class="other-news-card-img">
+                                <a href="#">
+                                    <img src="./assets/img/media/m4.png" alt="other-news card img">
+                                </a>
+                            </div>
+                            <div class="other-news-card-texts">
+                                <p class="other-news-card-texts-p_1">
+                                    Abşeronda yeni mağazamız açıldı
+                                </p>
+                                <div class="detail-left-date">
+
+                                    <img src="./assets/img/calendar.svg" alt="calendar-icon">
+                                    <p> 15 sentyabr</p>
+
+                                </div>
+                            </div>
+                        </div> *@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+

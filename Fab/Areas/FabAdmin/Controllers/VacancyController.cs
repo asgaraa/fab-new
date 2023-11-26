@@ -24,6 +24,8 @@ namespace FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Vacancy";
+            ViewBag.CurrentAction = "Index";
             var vacancy = await _context.Vacancies.Where(m => m.IsDeleted == false)
                 .Include(m => m.Translates)
                 .ToListAsync();

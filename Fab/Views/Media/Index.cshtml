@@ -1,0 +1,234 @@
+﻿@model Fab.ViewModels.MediaPageVM
+
+
+<main>
+    <section id="head_bg" style="background-image: url(./assets/img/insan.resurslari/bg-other.png);">
+        <div class="container">
+            <div class="ir-title">
+                <div class="ir-title-links">
+                    @if (Model.LangCode=="az")
+                    {
+                        <a asp-controller="Home" asp-action="Index">Ana səhifə</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Media</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Xəbərlər</a>
+                    }else if (Model.LangCode=="en")
+                    {
+                        <a asp-controller="Home" asp-action="Index">Home page</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Media</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">News</a>
+                    }else
+                    {
+                        <a asp-controller="Home" asp-action="Index">Главная</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Медиа</a>
+                        <img src="~/assets/img/ir.svg" alt="svg">
+                        <a asp-controller="Media" asp-action="Index">Новости</a>
+                    }
+                   
+                </div>
+                <div class="ir-title-text">
+                    @if (Model.LangCode == "az")
+                    {
+                        <p>Media</p>
+                    }
+                    else if (Model.LangCode == "en")
+                    {
+                        <p>Media</p>
+                    }
+                    else
+                    {
+                        <p>Медиа</p>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="Media">
+        <div class="media-tab">
+            <div class="container">
+                <div class="media-nav">
+                    <div class="flex-media-items">
+
+                        <ul class="nav nav-tabs mb-3" id="ex1" role="tablist">
+                            @if (Model.LangCode == "az")
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active orange-tab" id="tab_ex_1" data-bs-toggle="tab" href="#ex1-tabs-1"
+                                       role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Xəbərlər</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="tab_ex_2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
+                                       aria-controls="ex1-tabs-2" aria-selected="false">Press relizlər</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="tab_ex_3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
+                                       aria-controls="ex1-tabs-3" aria-selected="false">Bloq</a>
+                                </li>
+                            }
+                            else if (Model.LangCode == "en")
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active orange-tab" id="tab_ex_1" data-bs-toggle="tab" href="#ex1-tabs-1"
+                                       role="tab" aria-controls="ex1-tabs-1" aria-selected="true">News</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="tab_ex_2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
+                                       aria-controls="ex1-tabs-2" aria-selected="false">Press releases</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="tab_ex_3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
+                                       aria-controls="ex1-tabs-3" aria-selected="false">Blog</a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link active orange-tab" id="tab_ex_1" data-bs-toggle="tab" href="#ex1-tabs-1"
+                                       role="tab" aria-controls="ex1-tabs-1" aria-selected="true">Новости</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="tab_ex_2" data-bs-toggle="tab" href="#ex1-tabs-2" role="tab"
+                                       aria-controls="ex1-tabs-2" aria-selected="false">Пресс-релизы</a>
+                                </li>
+                                <li class="nav-item" role="presentation">
+                                    <a class="nav-link orange-tab" id="tab_ex_3" data-bs-toggle="tab" href="#ex1-tabs-3" role="tab"
+                                       aria-controls="ex1-tabs-3" aria-selected="false">Блог</a>
+                                </li>
+
+                            }
+
+                        </ul>
+                    </div>
+
+                </div>
+
+                <div class="tab-content media_content-tab" id="ex1-content">
+                    <!-- *************  Xeberler Tab Content Start   *************-->
+                    <div class="tab-pane fade show active" id="ex1-tabs-1" role="tabpanel" aria-labelledby="tab_ex_1">
+                        @foreach (var item in Model.News)
+                        {
+                            <div class="media-tab-card">
+
+                                <!--  Img  -->
+                                <div class="p-img-container">
+                                    <div class="p-img">
+                                        <a asp-action="Detail" asp-controller="Media" asp-route-newsid="@item.Id">
+                                            
+                                            
+                                                <img src="~/ModelImages/NewsImages/@item.Image" class="p-img-front" alt="img">
+                                            
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!--  Text  -->
+                                <div class="p-box-text">
+
+
+                                    <!--title-->
+                                    <a class="media-title-box">
+                                        @item.Translates.FirstOrDefault().Header
+                                    </a>
+
+                                    <!--date-->
+                                    <div class="media-date-box">
+                                        <span>@item.Translates.FirstOrDefault().Date</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        }
+
+                    </div>
+                    <!--***************  Xeberler Tab Content End  ***************** -->
+                    <!--*************   Press relizlər Tab Content Start   ************-->
+                    <div class="tab-pane fade" id="ex1-tabs-2" role="tabpanel" aria-labelledby="tab_ex_2">
+                        @foreach (var item in Model.Presses)
+                        {
+                            <div class="media-tab-card">
+
+                                <!--  Img  -->
+                                <div class="p-img-container">
+                                    <div class="p-img">
+                                        <a asp-action="Detail" asp-controller="Media" asp-route-pressesid="@item.Id">
+                                          
+                                                <img src="~/ModelImages/PressImages/@item.Image" class="p-img-front" alt="img">
+                                            
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!--  Text  -->
+                                <div class="p-box-text">
+
+
+                                    <!--title-->
+                                    <a class="media-title-box">
+                                        @item.Translates.FirstOrDefault().Header
+                                    </a>
+
+                                    <!--date-->
+                                    <div class="media-date-box">
+                                        <span>@item.Translates.FirstOrDefault().Date</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        }
+
+                    </div>
+                    <!--**************   Press relizlər Tab Content End   ***************-->
+                    <!--*************   Bloq Tab Content Start   ************-->
+                    <div class="tab-pane fade" id="ex1-tabs-3" role="tabpanel" aria-labelledby="tab_ex_3">
+
+                        @foreach (var item in Model.Blogs)
+                        {
+                            <div class="media-tab-card">
+
+                                <!--  Img  -->
+                                <div class="p-img-container">
+                                    <div class="p-img">
+                                        <a asp-action="BlogDetail" asp-controller="Media" asp-route-id="@item.Id">
+                                          
+                                                <img src="~/ModelImages/BlogImages/@item.Image" class="p-img-front" alt="img">
+                                            
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <!--  Text  -->
+                                <div class="p-box-text">
+
+
+                                    <!--title-->
+                                    <a class="media-title-box">
+                                        @item.Translates.FirstOrDefault().Header
+                                    </a>
+
+                                    <!--date-->
+                                    <div class="media-date-box">
+                                        <span>@item.Translates.FirstOrDefault().Date</span>
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        }
+                    </div>
+                    <!--*************   Bloq Tab Content End   ************-->
+
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</main>

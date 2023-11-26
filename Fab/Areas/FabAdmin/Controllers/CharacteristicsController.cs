@@ -25,6 +25,8 @@ namespace Fab.Areas.FabAdmin.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Characteristics";
+            ViewBag.CurrentAction = "Index";
             var character = await _context.Characteristics.Include(m => m.Translates).ToListAsync();
             return View(character);
         }

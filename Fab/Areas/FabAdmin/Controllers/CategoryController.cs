@@ -27,6 +27,8 @@ namespace FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "Category";
+            ViewBag.CurrentAction = "Index";
             var category = await _context.Categories.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(category);
         }
@@ -71,9 +73,8 @@ namespace FabAdmin.Controllers
                     Link = category.Link,
                     //Icon = "http://134.209.118.89/" + "ModelImages/CategoryImages/" + logoFileName2,
                     //Image = "http://134.209.118.89/" + "ModelImages/CategoryImages/" + logoFileName,
-
                     Icon =  logoFileName2,
-                    Image =  logoFileName,
+                    Image =logoFileName,
                     Translates = categoryTranslates,
                 };
 
@@ -121,7 +122,7 @@ namespace FabAdmin.Controllers
                   essn.Image);
                 FileHelper.DeleteFile(filebanner);
                 //essn.Image = "http://134.209.118.89/" + "ModelImages/CategoryImages/" + logoFileName;
-                essn.Image =  logoFileName;
+                essn.Image = logoFileName;
 
 
             }
@@ -134,10 +135,10 @@ namespace FabAdmin.Controllers
                 //var pathbanner = essn.Icon.Replace("http://134.209.118.89/", "");
 
                 var filebanner = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/CategoryImages/",
-                  essn.Icon);
+                  essn.Image);
                 FileHelper.DeleteFile(filebanner);
                 //essn.Icon = "http://134.209.118.89/" + "ModelImages/CategoryImages/" + logoFileName2;
-                essn.Icon =  logoFileName2;
+                essn.Icon = logoFileName2;
 
 
             }
@@ -183,7 +184,7 @@ namespace FabAdmin.Controllers
                 //var pathbanner = category.Icon.Replace("http://134.209.118.89/", "");
 
                 var filebanner = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/CategoryImages/",
-                 category.Image);
+                 category.Icon);
                 FileHelper.DeleteFile(filebanner);
             }
 

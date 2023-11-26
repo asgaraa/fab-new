@@ -24,6 +24,8 @@ namespace Fab.Areas.FabAdmin.Controllers
         }
         public async Task<IActionResult> Index()
         {
+            ViewBag.CurrentController = "About";
+            ViewBag.CurrentAction = "Index";
             var about = await _context.Abouts.Where(m => m.IsDeleted == false).Include(m => m.Translates).ToListAsync();
             return View(about);
         }
@@ -62,7 +64,7 @@ namespace Fab.Areas.FabAdmin.Controllers
                 {
 
                     //Image = "http://134.209.118.89/" + "ModelImages/AboutImages/" + logoFileName,
-                    Image =  logoFileName,
+                    Image = logoFileName,
 
                     Translates = aboutTranslates,
                 };
@@ -105,9 +107,7 @@ namespace Fab.Areas.FabAdmin.Controllers
                 //var pathbanner = dbAbout.Image.Replace("http://134.209.118.89/", "");
                 var filebanner = FileHelper.GetFilePath(_env.WebRootPath, "ModelImages/AboutImages/", dbAbout.Image);
                 FileHelper.DeleteFile(filebanner);
-                //dbAbout.Image = "http://134.209.118.89/" + "ModelImages/AboutImages/" + logoFileName;
-                dbAbout.Image = logoFileName;
-
+                dbAbout.Image =  logoFileName;
 
             }
             dbAbout.Translates.Clear();

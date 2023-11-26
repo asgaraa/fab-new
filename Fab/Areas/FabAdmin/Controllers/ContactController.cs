@@ -25,6 +25,8 @@ namespace FabAdmin.Controllers
 
         public async Task<IActionResult> Index1()
         {
+            ViewBag.CurrentController = "Contact";
+            ViewBag.CurrentAction = "Index1";
             var contactInfo = await _context.ContactInformations.ToListAsync();
 
             return View(contactInfo);
