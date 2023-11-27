@@ -7,9 +7,9 @@
 }
 
 
-<div class="entert-form" style=" padding-top: 70px ; padding-left: 50px;">
+<div class="entert-form" style=" padding-left: 50px;">
 
-    <h1>Edit Application</h1>
+    <h1 class="text-change-size">Edit Application</h1>
 
 
     <form method="post" enctype="multipart/form-data" asp-action="Edit" asp-controller="Application">
@@ -19,7 +19,7 @@
 
 
         <div class="form-group">
-            <label for="categoryId">This Category is ==></label>
+            <label for="categoryId">This Category is:</label>
             @foreach (var categor in ViewBag.ThisCategory)
             {
                 <span>@categor.Name</span>
@@ -31,7 +31,7 @@
 
 
         <div class="form-group">
-            <label for="categoryId">Category (Leave blank if you won't change')</label>
+            <label style="font-weight:600; margin-bottom:0.5rem;" for="categoryId">Category (Leave blank if you won't change')</label>
             <select class="form-control" id="CategoryId" name="CategoryId">
                 <option value="@categoryId">Select a category</option>
                 @foreach (var category in ViewBag.Category)
@@ -107,7 +107,7 @@
 
 
 
-        <button type="submit" style="color:green;" class="btn createbuttonn">Edit</button>
+        <button type="submit"  class="btn editbutton">Edit</button>
     </form>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

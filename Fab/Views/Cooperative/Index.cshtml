@@ -1,0 +1,177 @@
+﻿@model Fab.ViewModels.CorperativeFolder.CorperativePageVM
+
+@foreach (var corporate in Model.Corporates)
+{
+    <div id="Korporativ-sifarisler">
+        <div class="bg-img-k">
+            @if (corporate.BackgroundImage.Contains("http://134"))
+            {
+                <img src="@corporate.BackgroundImage" alt="img">
+
+            }
+            else
+            {
+                <img src="~/ModelImages/CorporateImages/@corporate.BackgroundImage" alt="img">
+
+            }
+        </div>
+
+        <div class="korporativ-flex">
+            <div class="container">
+                <div class="betweenitems-korporativ">
+                    <div class="korporativ-img">
+                        @if (corporate.BackgroundImage.Contains("http://134"))
+                        {
+                            <img class="kp-back-img" src="@corporate.Image" alt="img-korporativ">
+
+                        }
+                        else
+                        {
+                            <img class="kp-back-img" src="~/ModelImages/CorporateImages/@corporate.Image" alt="img-korporativ">
+
+                        }
+
+                    </div>
+                    <div class="korporativ-texts">
+                        <div class="int-left-text">
+                            <div class="int-left-text-flex">
+                                <div class="int-left-text-title">
+                                    <p>@corporate.Translates.FirstOrDefault().Header</p>
+                                </div>
+                                <div class="int-left-text-desciription">
+                                    <p>
+                                        @corporate.Translates.FirstOrDefault().Desc
+                                    </p>
+                                </div>
+                                @* <div class="loadmore-btn">
+                                    @if (Model.LangCode == "az")
+                                    {
+                                        <button>Daha ətraflı</button>
+                                    }
+                                    else if (Model.LangCode == "en")
+                                    {
+                                        <button>Learn more</button>
+                                    }
+                                    else
+                                    {
+                                        <button>Узнать больше</button>
+                                    }
+                                </div> *@
+                            </div>
+                            <style>
+                                .korporativ-img::before {
+                                    content: "";
+                                    background-image: url('/ModelImages/CorporateImages/@corporate.FrontImage');
+                                    background-repeat: no-repeat;
+                                    background-size: contain;
+                                    position: absolute;
+                                    z-index: 21;
+                                    width: 50%;
+                                    height: 50%;
+                                }
+                            </style>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section id="bizimle_calis">
+        <div class="container">
+            <div class="bizimle_calis_flex">
+                <div class="bizimle_calis-texts">
+                    @if (Model.LangCode == "az")
+                    {
+                        <p>Bizimlə çalışmaq istəyirsən?</p>
+                        <p>Bizimlə çalışmaq imkanı üçün formu doldurun</p>
+                    }
+                    else if (Model.LangCode == "en")
+                    {
+                        <p>Do you wanna work with us?</p>
+                        <p>Fill out the form for an opportunity to work with us</p>
+                    }
+                    else
+                    {
+                        <p>Хотите работать с нами?</p>
+                        <p>Заполните форму, чтобы получить возможность работать с нами</p>
+                    }
+
+                </div>
+                <div class="bizimle_calis_form">
+                    <form id="yourFormId" accept=".pdf" class="form-style" method="post" enctype="multipart/form-data" asp-action="SendCV" asp-controller="Cooperative">
+                        @if (Model.LangCode == "az")
+                        {
+                            <div class="mb-3">
+                                <input required placeholder="Ad Soyad" id="Fullname" name="Fullname" type="text" class="form-control form-control-style">
+                            </div>
+                            <div class="flex-form">
+                                <input required placeholder="Telefon" id="Tel" name="Tel" type="text" class="form-control form-control-style">
+                                <input required placeholder="E-mail" id="Email" name="Email" type="email" class="form-control form-control-style">
+                            </div>
+                            <div class="middle-add_file">
+                                <div class="add_file mt-3">
+                                    <label for="File" class="custom-file-upload">
+                                        <img src="~/assets/img/insan.resurslari/fileicon.svg" alt="icon-file">CV faylını
+                                        buraya yüklə
+                                    </label>
+                                    <input required type="File" id="File" name="File">
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn-fab-submit">Müraciət et</button>
+                        }
+                        else if (Model.LangCode == "en")
+                        {
+                            <div class="mb-3">
+                                <input placeholder="Full Name" id="Fullname" name="Fullname" type="text" class="form-control form-control-style">
+                            </div>
+                            <div class="flex-form">
+                                <input placeholder="Phone" type="text" id="Tel" name="Tel" class="form-control form-control-style">
+                                <input placeholder="E-mail" type="email" id="Email" name="Email" class="form-control form-control-style">
+                            </div>
+                            <div class="middle-add_file">
+                                <div class="add_file mt-3">
+                                    <label for="file" class="custom-file-upload">
+                                        <img src="~/assets/img/insan.resurslari/fileicon.svg" alt="icon-file">Upload your CV
+                                    </label>
+                                    <input type="file" id="file" name="file">
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn-fab-submit">Apply</button>
+                        }
+                        else
+                        {
+                            <div class="mb-3">
+                                <input placeholder="Имя Фамилия" id="Fullname" name="Fullname" type="text" class="form-control form-control-style">
+                            </div>
+                            <div class="flex-form">
+                                <input placeholder="Телефон" type="text" id="Tel" name="Tel" class="form-control form-control-style">
+                                <input placeholder="Электронная почта" type="email" id="Email" name="Email" class="form-control form-control-style">
+                            </div>
+                            <div class="middle-add_file">
+                                <div class="add_file mt-3">
+                                    <label for="file" class="custom-file-upload">
+                                        <img src="~/assets/img/insan.resurslari/fileicon.svg" alt="icon-file">Загрузите свое резюме
+                                    </label>
+                                    <input type="file" id="file" name="file">
+                                </div>
+
+                            </div>
+                            <button type="submit" class="btn-fab-submit">Применять</button>
+                        }
+                    </form>
+                    @{
+                        var errorMessage = TempData["ErrorMessage"] as string;
+                    }
+
+                    @if (!string.IsNullOrEmpty(errorMessage))
+                    {
+                        <div style="color: white;">@errorMessage</div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}

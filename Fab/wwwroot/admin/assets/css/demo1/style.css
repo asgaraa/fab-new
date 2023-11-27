@@ -4831,7 +4831,6 @@ div.tox .btn-group-lg > .tox-button + .dropdown-toggle-split,
         .nav-tabs .nav-link.active,
         .nav-tabs .nav-item.show .nav-link {
             color: var(--bs-nav-tabs-link-active-color);
-            background-color: var(--bs-nav-tabs-link-active-bg);
             border-color: var(--bs-nav-tabs-link-active-border-color);
         }
 
@@ -5627,6 +5626,7 @@ div.tox .btn-group-lg > .tox-button + .dropdown-toggle-split,
     border: 0;
     border-radius: 0;
     overflow-anchor: none;
+    gap:1rem;
     transition: var(--bs-accordion-transition);
 }
 
@@ -9251,7 +9251,7 @@ div.tox .tox-button .badge,
 }
 
 .pb-3 {
-    padding-left: 10rem !important;
+    padding-left: 15rem !important;
     padding-top: 4rem !important;
 }
 
@@ -9268,6 +9268,7 @@ div.tox .tox-button .badge,
 
 .text-change-size {
     font-size: 28px !important;
+     margin-bottom:2rem;
 }
 
 
@@ -24156,7 +24157,7 @@ div.tox .buy-now-wrapper .tox-button svg,
 }
 
 .sidebar {
-    width: 240px;
+    width: 320px;
     height: 100%;
     position: fixed;
     left: 0;
@@ -24169,17 +24170,18 @@ div.tox .buy-now-wrapper .tox-button svg,
     .sidebar .sidebar-header {
         background: #fff;
         height: 60px;
-        border-bottom: 1px solid #e9ecef;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         align-items: center;
         padding: 0 25px;
-        border-right: 1px solid #e9ecef;
         z-index: 999;
-        width: 240px;
+        width: auto;
         -webkit-transition: width 0.1s ease;
         transition: width 0.1s ease;
+        margin-bottom: 3rem; 
     }
+
+
 
 .sidebar-open .sidebar .sidebar-header {
     border-bottom: 1px solid #e9ecef;
@@ -24472,12 +24474,11 @@ div.tox .buy-now-wrapper .tox-button svg,
 .sidebar .sidebar-body {
     max-height: calc(100% - 60px);
     position: relative;
-    border-right: 1px solid #e9ecef;
-    height: 100%;
-    -webkit-box-shadow: 0 8px 10px 0 rgba(183, 192, 206, 0.2);
-    box-shadow: 0 8px 10px 0 rgba(183, 192, 206, 0.2);
+    height: auto;
     background: #fff;
+    z-index:9999;
 }
+
 
     .sidebar .sidebar-body .nav {
         display: flex;
@@ -24624,7 +24625,8 @@ div.tox .buy-now-wrapper .tox-button svg,
 
                         .sidebar .sidebar-body .nav.sub-menu .nav-item .nav-link.active::before {
                             border: 1px solid #6571ff;
-                            background: #6571ff;
+                            background: white;
+                            color:red;
                         }
 
                 .sidebar .sidebar-body .nav.sub-menu .nav-item:hover .nav-link {
@@ -28045,10 +28047,10 @@ div.tox .tox-dialog__body {
     margin-top: 5rem;
 }
 
-.entert-form {
+/*.entert-form {
     padding-top: 3rem !important;
 }
-
+*/
 
 .delete-slider i:hover {
     color: blue;
@@ -28195,9 +28197,8 @@ div.tox .tox-dialog__body {
 }
 
 .active {
-    background: #16244A;
-    color: white !important;
-    padding: 0.9rem 1rem !important;
+    background: white;
+    color: red !important;
 }
 
     .active:hover {
@@ -28244,6 +28245,9 @@ div.tox .tox-dialog__body {
         margin-left: 1.2rem !important;
     }
 
+    .nav_name-dropdown {
+        font-size: 17px !important;
+    }
     .nav-link:hover {
         color: #8F9297;
     }
@@ -28471,6 +28475,17 @@ h4 {
 
 .form-style-elegance {
     width: 50%;
-    margin-top:  4rem;
+    margin-top:4rem;
 }
 
+.accordion-button:not(.collapsed) {
+    color:black;
+}
+
+.dash-title-text{
+    font-size:20px;
+}
+
+.name-entm{
+    color:black;
+}

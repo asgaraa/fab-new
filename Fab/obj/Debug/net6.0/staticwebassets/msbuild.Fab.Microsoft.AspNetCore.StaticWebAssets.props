@@ -32240,6 +32240,22 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\ModelImages\TwinImages\880c5958-e968-4409-b575-f9755cf847fb_unsplash_rEJxpBskj3Q.png))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\ModelImages\UserCv\2a7bf765-a0ad-444f-8b35-05dd824427b6_CV_2023-01-30_Damral_Gara.pdf))">
+      <SourceType>Package</SourceType>
+      <SourceId>Fab</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/Fab</BasePath>
+      <RelativePath>ModelImages/UserCv/2a7bf765-a0ad-444f-8b35-05dd824427b6_CV_2023-01-30_Damral_Gara.pdf</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\ModelImages\UserCv\2a7bf765-a0ad-444f-8b35-05dd824427b6_CV_2023-01-30_Damral_Gara.pdf))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath($(MSBuildThisFileDirectory)..\staticwebassets\ModelImages\UserCv\891c37e2-2f57-4499-b084-5e7a785179b3_Residents list.xlsx))">
       <SourceType>Package</SourceType>
       <SourceId>Fab</SourceId>

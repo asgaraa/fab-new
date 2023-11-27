@@ -62,8 +62,8 @@
                             @translate.Name
                         </a>
                         <a class="name-entm">
-                            @item.Category.Translates.FirstOrDefault(x => x.LangCode == "en").Name (@item.Subcategory.Translates.FirstOrDefault(x => x.LangCode == "en").Name)
-                        </a>
+@*                            @item.Category.Translates.FirstOrDefault(x => x.LangCode == "en").Name (@item.Subcategory.Translates.FirstOrDefault(x => x.LangCode == "en").Name)
+*@                        </a>
                         <div>
                             <a asp-action="Delete" asp-controller="Product" asp-route-id="@item.Id" style="text-align:right; text-decoration:none; margin-right:20px">
                                 <button type="submit" class="btn-delete delete-ent-button" style="background-color:#F9FAFB;">

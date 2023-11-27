@@ -7,6 +7,6 @@ namespace Fab.Models.AdsFolder
         public string Image { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
-        public string Link { get; set; }
+        public string? Link { get; set; }
     }
 }

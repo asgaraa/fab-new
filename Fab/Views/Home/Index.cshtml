@@ -709,15 +709,26 @@
                                     <div class="loadmore-btn">
                                         @if (Model.LangCode == "az")
                                         {
-                                            <button>Daha ətraflı</button>
+                                            <a asp-action="Index" asp-controller="Cooperative">
+                                                <button>Daha ətraflı</button>
+
+                                            </a>
                                         }
                                         else if (Model.LangCode == "en")
                                         {
-                                            <button>Learn more</button>
+                                            <a asp-action="Index" asp-controller="Cooperative">
+                                                <button>Learn more</button>
+
+
+                                            </a>
                                         }
                                         else
                                         {
-                                            <button>Узнать больше</button>
+                                            <a asp-action="Index" asp-controller="Cooperative">
+                                                <button>Узнать больше</button>
+
+
+                                            </a>
                                         }
                                     </div>
                                 </div>
@@ -748,13 +759,18 @@
 
             <section class="customer-logos slider">
 
-                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo1.png" alt="brand-img"></div>
-                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo2.png" alt="brand-img"></div>
-                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo3.png" alt="brand-img"></div>
-                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo2.png" alt="brand-img"></div>
-                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo1.png" alt="brand-img"></div>
-                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo3.png" alt="brand-img"></div>
-                <div class="slide  border-right-slick"><img src="~/assets/img/brands/logo2.png" alt="brand-img"></div>
+                @foreach (var ad in Model.Ads)
+                {
+                    if (ad.Image.Contains("http"))
+                    {
+                        <div class="slide  border-right-slick"><img src="~/ModelImages/AdsImages/@ad.Image" alt="brand-img"></div>
+
+                    }else{
+                        <div class="slide  border-right-slick"><img src="@ad.Image" alt="brand-img"></div>
+                    }
+
+                }
+                
 
             </section>
 

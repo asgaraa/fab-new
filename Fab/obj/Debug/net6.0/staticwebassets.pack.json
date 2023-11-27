@@ -357,6 +357,10 @@
       "PackagePath": "staticwebassets\\ModelImages\\TwinImages\\880c5958-e968-4409-b575-f9755cf847fb_unsplash_rEJxpBskj3Q.png"
     },
     {
+      "Id": "C:\\Projects\\LastFab\\FabLastProduct\\Fab\\wwwroot\\ModelImages\\UserCv\\2a7bf765-a0ad-444f-8b35-05dd824427b6_CV_2023-01-30_Damral_Gara.pdf",
+      "PackagePath": "staticwebassets\\ModelImages\\UserCv\\2a7bf765-a0ad-444f-8b35-05dd824427b6_CV_2023-01-30_Damral_Gara.pdf"
+    },
+    {
       "Id": "C:\\Projects\\LastFab\\FabLastProduct\\Fab\\wwwroot\\ModelImages\\UserCv\\891c37e2-2f57-4499-b084-5e7a785179b3_Residents list.xlsx",
       "PackagePath": "staticwebassets\\ModelImages\\UserCv\\891c37e2-2f57-4499-b084-5e7a785179b3_Residents list.xlsx"
     },

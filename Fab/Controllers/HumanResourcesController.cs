@@ -100,33 +100,6 @@ namespace Fab.Controllers
         [HttpPost]
         public async Task<IActionResult> SendCV(HumanResourcesPageVM cv)
         {
-            if ((DateTime.UtcNow - lastSubmitTime).TotalMilliseconds < 600000) // 1 dakika
-            {
-                submitCount++;
-
-                if (submitCount > 1)
-                {
-                    if (cv.LangCode == "az")
-                    {
-                        TempData["ErrorMessage"] = "Çox sayda müraciət aşkar edildi. Zəhmət olmasa bir müddət gözləyin.";
-                    }
-                    else if (cv.LangCode == "en")
-                    {
-                        TempData["ErrorMessage"] = "Too many form submissions detected. Please wait for a while.";
-                    }
-                    else
-                    {
-                        TempData["ErrorMessage"] = "Обнаружено слишком много отправленных форм. Пожалуйста, подожди минутку.";
-                    }
-                    return RedirectToAction("Index", "HumanResources");
-                }
-            }
-            else
-            {
-                // Belirli bir süre geçtikten sonra sayaçları sıfırla
-                lastSubmitTime = DateTime.UtcNow;
-                submitCount = 1;
-            }
 
 
             if (cv.Tel == null || cv.Fullname == null || cv.File == null || cv.File.FileName == "" || cv.Email == null)
